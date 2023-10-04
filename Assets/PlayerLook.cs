@@ -16,7 +16,7 @@ public class PlayerLook : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        XYrotation.x = transform.eulerAngles.y;
     }
 
     // Update is called once per frame
@@ -29,13 +29,13 @@ public class PlayerLook : MonoBehaviour
             y = Input.GetAxis("Mouse Y")
         };
 
-        XYrotation.x -= mouseInput.y * sensitivities.y;
-        XYrotation.y += mouseInput.x * sensitivities.x;
+        XYrotation.y -= mouseInput.y * sensitivities.y;
+        XYrotation.x += mouseInput.x * sensitivities.x;
 
-        XYrotation.x = Mathf.Clamp(XYrotation.x, -90f, 90f);
+        XYrotation.y = Mathf.Clamp(XYrotation.y, -90f, 90f);
 
-        transform.eulerAngles = new Vector3(0f, XYrotation.y, 0f);
-        playerCam.localEulerAngles = new Vector3(XYrotation.x, 0f, 0f);
+        transform.eulerAngles = new Vector3(0f, XYrotation.x, 0f);
+        playerCam.localEulerAngles = new Vector3(XYrotation.y, 0f, 0f);
     }
     
     

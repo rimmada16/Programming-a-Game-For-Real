@@ -6,9 +6,11 @@ using UnityEngine.Serialization;
 
 public class PlayerController : MonoBehaviour
 {
+    [SerializeField]
+    private float moveSmoothTime,gravityStrength,jumpStrength,walkSpeed,raycastDepth;
 
     [SerializeField]
-    private float moveSmoothTime,gravityStrength,jumpStrength,walkSpeed,runSpeed;
+    private float altSpeed;
 
     [SerializeField] 
     private CharacterController controller;
@@ -17,33 +19,36 @@ public class PlayerController : MonoBehaviour
     private Vector3 _currentForceVelocity;
 
      
-    // Start is called before the first frame update
     void Start()
     {
         controller = GetComponent<CharacterController>(); 
     }
 
-    // Update is called once per frame
     void Update()
     {
 
 
+        //get raw inputs
         Vector3 playerInput = new Vector3
         {
             x = Input.GetAxisRaw("Horizontal"),
             y = 0f,
             z = Input.GetAxisRaw("Vertical")
         };
-
-
+        
+        //normalise if being inputted
         if (playerInput.magnitude > 1)
         {
             playerInput.Normalize();
         }
 
+        //get forward
         Vector3 moveVector = transform.TransformDirection(playerInput);
-        float currentSpeed = Input.GetKey(KeyCode.LeftShift) ? runSpeed : walkSpeed;
+        
+        //if left shift being held down, use a different speed value
+        float currentSpeed = Input.GetKey(KeyCode.LeftShift) ? altSpeed : walkSpeed;
 
+        //dampen the movement velocity
         _currentMoveVelocity = Vector3.SmoothDamp(
             _currentMoveVelocity,
             moveVector * currentSpeed,
@@ -51,12 +56,19 @@ public class PlayerController : MonoBehaviour
             moveSmoothTime
         );
 
+        //apply the input motions
         controller.Move(_currentMoveVelocity * Time.deltaTime);
 
+        
+        //-----------vertical motion-----------
+        //raycast down looking for floor
         Ray groundCheckRay = new Ray(transform.position, Vector3.down);
-        if (Physics.Raycast(groundCheckRay, 1.1f))
+        if (Physics.Raycast(groundCheckRay, raycastDepth))
         {
-            _currentForceVelocity.y = -2f;
+            //provide a constant downward pull even when on the floor
+
+            _currentForceVelocity.y = Mathf.Clamp(_currentForceVelocity.y, -100, -2);
+            //_currentForceVelocity.y = -2f;
 
             if (Input.GetKey(KeyCode.Space))
             {
