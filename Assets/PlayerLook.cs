@@ -17,6 +17,9 @@ public class PlayerLook : MonoBehaviour
     void Start()
     {
         XYrotation.x = transform.eulerAngles.y;
+        Cursor.lockState = CursorLockMode.Locked;
+        // Locks the cursor upon script start
+        // Documentation used: https://docs.unity3d.com/ScriptReference/Cursor-lockState.html
     }
 
     // Update is called once per frame
