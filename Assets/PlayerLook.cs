@@ -20,6 +20,7 @@ public class PlayerLook : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         // Locks the cursor upon script start
         // Documentation used: https://docs.unity3d.com/ScriptReference/Cursor-lockState.html
+        // This line was added for the Discord Git test
     }
 
     // Update is called once per frame
