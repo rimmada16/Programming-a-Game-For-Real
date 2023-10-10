@@ -5,7 +5,7 @@ using UnityEngine;
 
 // CURRENTLY CAN ONLY DASH FORWARD
 
-// Script for a basic dash - the current iteration allows the player to dash roughly ~7.5m on the ground and in the air
+// Script for a basic dash - the current iteration allows the player to dash roughly ~5m on the ground and in the air
 // The script makes use of Raycasting to see if the player is within 5m of a wall, the reasoning for this is to prevent
 // clipping, this has been a prevalent issue and a 5m raycast seems to be the lowest I can get it without any clipping occuring
 // 1.5m was tried as well as 3m but clipping through walls would occur. The clipping happens due to the way the dash
