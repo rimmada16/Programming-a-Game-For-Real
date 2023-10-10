@@ -18,7 +18,6 @@ public class PlayerController : MonoBehaviour
     private Vector3 _currentMoveVelocity,_moveDampVelocity;
     private Vector3 _currentForceVelocity;
 
-     
     void Start()
     {
         controller = GetComponent<CharacterController>(); 
@@ -26,7 +25,6 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-
 
         //get raw inputs
         Vector3 playerInput = new Vector3
