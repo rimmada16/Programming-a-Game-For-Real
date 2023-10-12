@@ -12,15 +12,17 @@ public class BarDisplayManager : MonoBehaviour
     public float rotation;
     
     public GameObject referenceSegment;
-    
+
     
     // Start is called before the first frame update
     void Start()
     {
         UpdateBars();
+
     }
 
     
+    /*
     private void OnValidate()
     {
         try
@@ -32,9 +34,8 @@ public class BarDisplayManager : MonoBehaviour
         {
             
         }
-    }
-    
-    
+    }*/
+
     void UpdateBars()
     {
         foreach (var bar in displaysSynced)

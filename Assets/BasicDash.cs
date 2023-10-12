@@ -30,10 +30,13 @@ public class BasicDash : MonoBehaviour
 {
     private PlayerController _moveScript;
     public float dashSpeed;
-    public float dashCooldown;
+    public float dashCooldownMax = 3;
+    public float dashCooldownCounter;
     private float dashTime = 1f;
     
     public float range = 2f;
+
+    public valueGrabber rechargeBarUI;
 
     // Another attempt at preventing clipping
     // If the object has the tag of wall then it will set the dashTime to 0 so that it ends and will translate the
@@ -59,7 +62,12 @@ public class BasicDash : MonoBehaviour
     void Update()
         {
             // Slowing decrementing the dash cooldown timer
-            dashCooldown -= Time.deltaTime;
+            if (dashCooldownCounter > 0)
+            {
+                dashCooldownCounter-= Time.deltaTime;
+                rechargeBarUI.SetValue(dashCooldownCounter);
+            }
+            
             
             // Outputs how long is left on the Dash cooldown in the console if the player presses "E"
             // Was quite spammy so commented it out, enable at own peril
@@ -93,7 +101,7 @@ public class BasicDash : MonoBehaviour
             {
                 // If the player presses E and the Dash Cooldown is less than or equal to 0 then the Dash
                 // Coroutine will execute
-                if (Input.GetKey(KeyCode.E) && dashCooldown <= 0)
+                if (Input.GetKey(KeyCode.E) && dashCooldownCounter <= 0)
                 {
                     StartCoroutine(Dash());
                 }
@@ -110,7 +118,7 @@ public class BasicDash : MonoBehaviour
                     transform.Translate(Vector3.forward * dashSpeed);
                     
                     // Sets the dash to a cooldown of 3 seconds
-                    dashCooldown = 3;
+                    dashCooldownCounter = dashCooldownMax;
 
                     yield return null;
                 }

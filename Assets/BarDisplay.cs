@@ -23,18 +23,38 @@ public class BarDisplay : MonoBehaviour
 
     public GameObject referenceSegment;
     
+    public valueGrabber value;
+
+    
     // Start is called before the first frame update
     void Start()
     {
         barSegments = new List<Transform>();
         UpdateBar();
         segmentsShown = segments;
+        
+        
+        if (value != null)
+        {
+            value.OnValueUpdate += UpdateValue;
+        }
     }
 
 
-    void Update()
+    private void Update()
     {
-        segmentsShown = Mathf.Clamp(segmentsShown,0, segments);
+        //UpdateSegmentDisplay();
+    }
+
+    private void UpdateValue()
+    {
+        segmentsShown = value.GetValueI();
+            UpdateSegmentDisplay();
+    }
+    
+    void UpdateSegmentDisplay()
+    {
+        segmentsShown = Mathf.Clamp(segmentsShown,0, segments+1);
         if (segmentsShown < segments)
         {
             foreach (var segment in barSegments)
@@ -44,6 +64,7 @@ public class BarDisplay : MonoBehaviour
             barSegments[segmentsShown].GameObject().SetActive(false);
         }
     }
+
 
 
     void UpdateBar()
