@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class valueGrabber : MonoBehaviour
 {
+    [SerializeField] 
     private float value;
 
     [SerializeField] private float inputMin, inputMax, outputMin, outputMax;
@@ -21,19 +22,36 @@ public class valueGrabber : MonoBehaviour
 
     public float GetValueF()
     {
-        float newValue = Mathf.Lerp(outputMin, outputMax, inputMin / inputMax);
+        float t = Mathf.InverseLerp(inputMin, inputMax, value);
+        float newValue = Mathf.Lerp(outputMin, outputMax, t);
         return newValue;
     }
     
     public int GetValueI()
     {
-        int newValue = Mathf.FloorToInt(Mathf.Lerp(outputMin, outputMax, inputMin / inputMax)) ;
-        return newValue;
+        float t = Mathf.InverseLerp(inputMin, inputMax, value);
+        float newValue = Mathf.Lerp(outputMin, outputMax, t);
+        Debug.Log("mapped value is "+ newValue);
+        return Mathf.FloorToInt(newValue);
+    }
+
+    public void SetInputMinMax(float min, float max)
+    {
+        inputMin = min;
+        inputMax = max;
     }
 
     public void SetValue(float valueInput)
     {
-        value = Mathf.Clamp(valueInput, inputMin, inputMax);
+        if (inputMin < inputMax)
+        {
+            value = Mathf.Clamp(valueInput, inputMin, inputMax);
+        }
+        else
+        {
+            value = Mathf.Clamp(valueInput, inputMax, inputMin);
+        }
+        Debug.Log("value changed to "+valueInput+" but actually "+value);
         Notify();
     }
 

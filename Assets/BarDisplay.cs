@@ -54,15 +54,18 @@ public class BarDisplay : MonoBehaviour
     
     void UpdateSegmentDisplay()
     {
-        segmentsShown = Mathf.Clamp(segmentsShown,0, segments+1);
+        segmentsShown = Mathf.Clamp(segmentsShown,0, segments);
+        
+        foreach (var segment in barSegments)
+        {
+            segment.GameObject().SetActive(true);
+        }
+
         if (segmentsShown < segments)
         {
-            foreach (var segment in barSegments)
-            {
-                segment.GameObject().SetActive(true);
-            }
             barSegments[segmentsShown].GameObject().SetActive(false);
         }
+        
     }
 
 

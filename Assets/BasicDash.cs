@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 // CURRENTLY CAN ONLY DASH FORWARD
 // WALLS MUST BE GIVEN THE "Wall" TAG
@@ -32,7 +33,9 @@ public class BasicDash : MonoBehaviour
     public float dashSpeed;
     public float dashCooldownMax = 3;
     public float dashCooldownCounter;
-    private float dashTime = 1f;
+
+    public float dashTimeMax = 1f;
+    public float dashTimeCounter = 1f;
     
     public float range = 2f;
 
@@ -46,7 +49,7 @@ public class BasicDash : MonoBehaviour
     {
         if (col.gameObject.tag == "Wall")
         {
-            dashTime = 0;
+            dashTimeCounter = 0;
             transform.Translate(new Vector3(0, 0, 0 ));
             Debug.Log("The collision detector did its thing");
         }
@@ -56,6 +59,7 @@ public class BasicDash : MonoBehaviour
     void Start()
     {
         _moveScript = GetComponent<PlayerController>();
+        rechargeBarUI.SetInputMinMax(dashCooldownMax, 0);
     }
     
     // Update is called once per frame
@@ -89,7 +93,7 @@ public class BasicDash : MonoBehaviour
             {
                 if (hit.collider.tag == "Wall")
                 {
-                    dashTime = 0;
+                    dashTimeCounter = 0;
                     transform.Translate(new Vector3(0, 0, 0 ));
                     Debug.Log("The raycast has hit a wall and a dash cannot occur");
                     // Very spammy, enable at will   
@@ -103,6 +107,8 @@ public class BasicDash : MonoBehaviour
                 // Coroutine will execute
                 if (Input.GetKey(KeyCode.E) && dashCooldownCounter <= 0)
                 {
+                    // Sets the dash to a cooldown of 3 seconds
+                    dashCooldownCounter = dashCooldownMax;
                     StartCoroutine(Dash());
                 }
             }
@@ -112,13 +118,12 @@ public class BasicDash : MonoBehaviour
             {
                 float startTime = Time.time;
                 // Seems to prevent clipping by having dashTime set to 1 second >>> 12/10/23
-                dashTime = 1f;
-                while (Time.time < startTime + dashTime)
+                dashTimeCounter = dashTimeMax;
+                while (Time.time < startTime + dashTimeCounter)
                 {
                     transform.Translate(Vector3.forward * dashSpeed);
                     
-                    // Sets the dash to a cooldown of 3 seconds
-                    dashCooldownCounter = dashCooldownMax;
+                    //moved dash counter start to the coroutine start
 
                     yield return null;
                 }

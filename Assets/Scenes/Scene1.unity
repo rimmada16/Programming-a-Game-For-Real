@@ -833,7 +833,6 @@ GameObject:
   - component: {fileID: 946236362}
   - component: {fileID: 946236361}
   - component: {fileID: 946236366}
-  - component: {fileID: 946236365}
   - component: {fileID: 946236360}
   - component: {fileID: 946236359}
   - component: {fileID: 946236358}
@@ -975,24 +974,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dashSpeed: 0.1
-  dashCooldownMax: 3
+  dashCooldownMax: 1
   dashCooldownCounter: 0
-  range: 1.5
+  dashTimeMax: 0.3
+  dashTimeCounter: 1
+  range: 1
   rechargeBarUI: {fileID: 1046583483}
---- !u!64 &946236365
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 946236357}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 0
-  serializedVersion: 4
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!54 &946236366
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1074,7 +1061,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d6d376196670db145b89ebb24524a352, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inputMin: 3
+  value: 0
+  inputMin: 2
   inputMax: 0
   outputMin: 0
   outputMax: 10
@@ -2108,7 +2096,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2204564829174945839, guid: 905c70a77e7f18b4da647e1d9751474c, type: 3}
       propertyPath: m_Name
-      value: Stamina Bar (1)
+      value: Health Bar
       objectReference: {fileID: 0}
     - target: {fileID: 2204564829174945839, guid: 905c70a77e7f18b4da647e1d9751474c, type: 3}
       propertyPath: m_IsActive
