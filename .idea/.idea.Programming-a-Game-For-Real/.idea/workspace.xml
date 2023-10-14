@@ -9,6 +9,8 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/Assets/BarDisplayManager.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/GameStateManager.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Singleton.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -84,7 +86,8 @@
       <workItem from="1696432607365" duration="4304000" />
       <workItem from="1696782888739" duration="9940000" />
       <workItem from="1697138479855" duration="1816000" />
-      <workItem from="1697198933350" duration="2489000" />
+      <workItem from="1697198933350" duration="4708000" />
+      <workItem from="1697307699147" duration="1349000" />
     </task>
     <servers />
   </component>

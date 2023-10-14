@@ -65,6 +65,12 @@ public class BasicDash : MonoBehaviour
     // Update is called once per frame
     void Update()
         {
+            
+            if (GameStateManager.Instance.isPaused)
+            {
+                return;
+            }
+            
             // Slowing decrementing the dash cooldown timer
             if (dashCooldownCounter > 0)
             {
@@ -121,7 +127,12 @@ public class BasicDash : MonoBehaviour
                 dashTimeCounter = dashTimeMax;
                 while (Time.time < startTime + dashTimeCounter)
                 {
-                    transform.Translate(Vector3.forward * dashSpeed);
+                    
+                    if (!GameStateManager.Instance.isPaused)
+                    {
+                        
+                        transform.Translate(Vector3.forward * dashSpeed);
+                    }
                     
                     //moved dash counter start to the coroutine start
 

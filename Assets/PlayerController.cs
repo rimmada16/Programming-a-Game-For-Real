@@ -26,6 +26,10 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
 
+        if (GameStateManager.Instance.isPaused)
+        {
+            return;
+        }
         //get raw inputs
         Vector3 playerInput = new Vector3
         {

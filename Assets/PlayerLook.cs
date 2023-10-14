@@ -17,15 +17,19 @@ public class PlayerLook : MonoBehaviour
     void Start()
     {
         XYrotation.x = transform.eulerAngles.y;
-        Cursor.lockState = CursorLockMode.Locked;
-        // Locks the cursor upon script start
-        // Documentation used: https://docs.unity3d.com/ScriptReference/Cursor-lockState.html
-        // This line was added for the Discord Git test
+        
+        //cursor lock moved to GameStateManager
     }
 
     // Update is called once per frame
     void Update()
     {
+        
+        if (GameStateManager.Instance.isPaused)
+        {
+            return;
+        }
+        
         Vector2 mouseInput = new Vector2
         {
 
