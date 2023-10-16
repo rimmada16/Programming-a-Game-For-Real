@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class valueGrabber : MonoBehaviour
+public class ValueGrabber : MonoBehaviour
 {
     [SerializeField] 
     private float value;
@@ -31,7 +31,7 @@ public class valueGrabber : MonoBehaviour
     {
         float t = Mathf.InverseLerp(inputMin, inputMax, value);
         float newValue = Mathf.Lerp(outputMin, outputMax, t);
-        Debug.Log("mapped value is "+ newValue);
+        //Debug.Log("mapped value is "+ newValue);
         return Mathf.FloorToInt(newValue);
     }
 
@@ -51,7 +51,7 @@ public class valueGrabber : MonoBehaviour
         {
             value = Mathf.Clamp(valueInput, inputMax, inputMin);
         }
-        Debug.Log("value changed to "+valueInput+" but actually "+value);
+        //Debug.Log("value changed to "+valueInput+" but actually "+value);
         Notify();
     }
 

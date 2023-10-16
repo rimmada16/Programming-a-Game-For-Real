@@ -23,7 +23,7 @@ public class BarDisplay : MonoBehaviour
 
     public GameObject referenceSegment;
     
-    public valueGrabber value;
+    public ValueGrabber value;
 
     
     // Start is called before the first frame update
@@ -78,7 +78,6 @@ public class BarDisplay : MonoBehaviour
             return;
         }
 
-        Vector2 lastVector = new Vector2();
         for (int i = 0; i < segments; i++)
         {
             GameObject newSegment;

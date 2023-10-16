@@ -39,7 +39,7 @@ public class BasicDash : MonoBehaviour
     
     public float range = 2f;
 
-    public valueGrabber rechargeBarUI;
+    public ValueGrabber rechargeBarUI;
 
     // Another attempt at preventing clipping
     // If the object has the tag of wall then it will set the dashTime to 0 so that it ends and will translate the
