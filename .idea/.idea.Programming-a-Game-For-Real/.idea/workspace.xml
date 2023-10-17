@@ -6,17 +6,34 @@
   <component name="ChangeListManager">
     <list default="true" id="f8e236dd-b0a8-4a95-b682-3e772a3eb9e0" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Programming-a-Game-For-Real/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Programming-a-Game-For-Real/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/BarDisplay.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/BarDisplay.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/BarDisplayManager.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/BarDisplayManager.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/BasicDash.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/BasicDash.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/BarDisplay.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/BarDisplay.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/BarDisplay.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/BarDisplay.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/BarDisplayManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/BarDisplayManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/BarDisplayManager.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/BarDisplayManager.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/BasicDash.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/BasicDash.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/BasicDash.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/BasicDash.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/ColliderHitbox.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ColliderHitbox.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/ColliderHitbox.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ColliderHitbox.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/DropItemOnDeath.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/DropItemOnDeath.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/DropItemOnDeath.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/DropItemOnDeath.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/GameOverOnDeath.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/GameOverOnDeath.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/GameOverOnDeath.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/GameOverOnDeath.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/GameStateManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/GameStateManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/GameStateManager.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/GameStateManager.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/HealthUnit.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/HealthUnit.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/HealthUnit.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/HealthUnit.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/MeleeAttackTest.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/MeleeAttackTest.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/MeleeAttackTest.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/MeleeAttackTest.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/PlayerController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/PlayerController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/PlayerController.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/PlayerController.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/PlayerLook.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/PlayerLook.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/PlayerLook.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/PlayerLook.cs.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/Scene1.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Scene1.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/valueGrabber.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ValueGrabber.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/valueGrabber.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/manifest.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/packages-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/packages-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Singleton.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Singleton.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Singleton.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Singleton.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/ValueGrabber.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ValueGrabber.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/ValueGrabber.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ValueGrabber.cs.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ProjectSettings/Packages/com.unity.testtools.codecoverage/Settings.json" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/Packages/com.unity.testtools.codecoverage/Settings.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -24,13 +41,10 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/Assets/BarDisplayManager.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/DropItemOnDeath.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/GameOverOnDeath.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/GameStateManager.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/HealthUnit.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/MeleeAttackTest.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Singleton.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -40,26 +54,26 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Discover.Launch.Via.Unity": "true",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Discover.Launch.Via.Unity&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
-  "keyToStringList": {
-    "rider.external.source.directories": [
-      "C:\\Users\\muk405\\AppData\\Roaming\\JetBrains\\Rider2023.1\\resharper-host\\DecompilerCache",
-      "C:\\Users\\muk405\\AppData\\Roaming\\JetBrains\\Rider2023.1\\resharper-host\\SourcesCache",
-      "C:\\Users\\muk405\\AppData\\Local\\Symbols\\src"
+  &quot;keyToStringList&quot;: {
+    &quot;rider.external.source.directories&quot;: [
+      &quot;C:\\Users\\muk405\\AppData\\Roaming\\JetBrains\\Rider2023.1\\resharper-host\\DecompilerCache&quot;,
+      &quot;C:\\Users\\muk405\\AppData\\Roaming\\JetBrains\\Rider2023.1\\resharper-host\\SourcesCache&quot;,
+      &quot;C:\\Users\\muk405\\AppData\\Local\\Symbols\\src&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
     <configuration name="Start Unity" type="RunUnityExe" factoryName="Unity Executable">
       <option name="EXE_PATH" value="C:\Program Files\Unity 2021.3.5f1\Editor\Unity.exe" />
@@ -95,10 +109,10 @@
       </option>
       <method v="2" />
     </configuration>
-    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="20128">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
-      <option name="pid" />
+      <option name="pid" value="20128" />
       <option name="projectPathOnTarget" />
       <option name="selectedOptions">
         <list />
@@ -121,6 +135,7 @@
       <workItem from="1697198933350" duration="4708000" />
       <workItem from="1697307699147" duration="1349000" />
       <workItem from="1697463305667" duration="7800000" />
+      <workItem from="1697532720579" duration="6011000" />
     </task>
     <servers />
   </component>

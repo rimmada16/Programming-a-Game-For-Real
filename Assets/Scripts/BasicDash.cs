@@ -131,11 +131,11 @@ public class BasicDash : MonoBehaviour
                     if (!GameStateManager.Instance.isPaused)
                     {
                         
-                        transform.Translate(Vector3.forward * dashSpeed);
+                        transform.Translate(Vector3.forward * dashSpeed *Time.deltaTime);
+                        yield return null;
                     }
                     
                     //moved dash counter start to the coroutine start
-
                     yield return null;
                 }
             }

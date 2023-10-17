@@ -18,6 +18,12 @@ public class PlayerController : MonoBehaviour
     private Vector3 _currentMoveVelocity,_moveDampVelocity;
     private Vector3 _currentForceVelocity;
 
+
+    [SerializeField] 
+    private Vector3 castOffset;
+    [SerializeField] 
+    private float castRadius = 0.8f;
+    
     void Start()
     {
         controller = GetComponent<CharacterController>(); 
@@ -25,11 +31,13 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-
+        //pause check
         if (GameStateManager.Instance.isPaused)
         {
             return;
         }
+        
+        
         //get raw inputs
         Vector3 playerInput = new Vector3
         {
@@ -58,14 +66,14 @@ public class PlayerController : MonoBehaviour
             moveSmoothTime
         );
 
-        //apply the input motions
-        controller.Move(_currentMoveVelocity * Time.deltaTime);
 
         
         //-----------vertical motion-----------
-        //raycast down looking for floor
-        Ray groundCheckRay = new Ray(transform.position, Vector3.down);
-        if (Physics.Raycast(groundCheckRay, raycastDepth))
+        
+        //true if grounded
+        bool castHitFloor = controller.isGrounded;
+        
+        if (castHitFloor)
         {
             //provide a constant downward pull even when on the floor
 
@@ -83,7 +91,20 @@ public class PlayerController : MonoBehaviour
             _currentForceVelocity.y -= gravityStrength * Time.deltaTime;
         }
 
-        controller.Move(_currentForceVelocity * Time.deltaTime);
+        //------------apply all motions--------------
+        
+        controller.Move(_currentForceVelocity * Time.deltaTime + _currentMoveVelocity * Time.deltaTime);
     }
 
+    private void OnDrawGizmos()
+    {
+        
+        Vector3 castOrigin = transform.position + castOffset;
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawSphere(castOrigin, 0.1f);
+        Gizmos.DrawWireSphere(castOrigin,castRadius);
+        Gizmos.color = Color.green;
+        Gizmos.DrawLine(transform.position, transform.position+ new Vector3(0,-raycastDepth,0));
+        
+    }
 }

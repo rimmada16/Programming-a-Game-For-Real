@@ -60,7 +60,7 @@ public class MeleeAttackTest : MonoBehaviour
         SlashCounter = SlashCooldown;
         SlashCollider.enabled = true;
         ColliderOn = true;
-        Debug.Log("ColliderOn "+ SlashCounter);
+        //Debug.Log("ColliderOn "+ SlashCounter);
     }
 
     void EndCollision()
@@ -69,7 +69,7 @@ public class MeleeAttackTest : MonoBehaviour
         SlashCollider.enabled = false;
         
         ColliderOn = false;
-        Debug.Log("ColliderOff "+ SlashCounter);
+        //Debug.Log("ColliderOff "+ SlashCounter);
     }
 
     void AttackCollided(Collider otherCol)
