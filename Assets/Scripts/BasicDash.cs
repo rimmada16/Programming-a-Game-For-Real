@@ -7,25 +7,15 @@ using UnityEngine.Serialization;
 // CURRENTLY CAN ONLY DASH FORWARD
 // WALLS MUST BE GIVEN THE "Wall" TAG
 
-// -- PRE ANTI CLIPPING MEASURES - Left these in for context --
-// Script for a basic dash - the current iteration allows the player to dash roughly ~5m on the ground and in the air
-// The script makes use of Raycasting to see if the player is within 5m of a wall, the reasoning for this is to prevent
-// clipping, this has been a prevalent issue and a 5m raycast seems to be the lowest I can get it without any clipping occuring
-// 1.5m was tried as well as 3m but clipping through walls would occur. The clipping happens due to the way the dash
-// is executed via transform.Translate, if rigidbodies were to be made use of in this and the player controller this could perhaps
-// be circumvented. Rigidbody would also be less taxing on a computer but that is for another day I suppose.
+// ---Movement while dashing tests---
+// Distance reference are the mini squares inside of one of the planes (floor) squares -- grid
+// 10 mini squares in one of the plane squares
+// When dashing on the ground or in air and not holding a directional key from the right edge of a plane square
+// the player travels 9 mini squares
+// When dashing on the ground or in the air and holding the backwards directional key from the right edge of the plane
+// square the player travels 8 mini squares before travelling backwards
 
-// -- 12/10/23 -- (Adam)
-// Cooldown now works - Set to 3 seconds.
-// Dash speed now set to 0.3 - Anything higher than 0.5 seems to be too fast.
-// Made it so the dashTime is non adjustable in the editor and set to a constant of 1s, this seems to prevent clipping.
-// Added another method of preventing clipping using collision detection with tags.
-// Ground and Jump dash now move the player ~15m.
-// Raycast set to 1.5m
-
-
-// Some additions I would like to make are so that you keep all momentum when exiting a dash and make it so the player
-// can dash in any direction.
+// In my opinion I think letting the player have the ability to micro adjust their dash is something that we should keep
 
 public class BasicDash : MonoBehaviour
 {
@@ -41,16 +31,13 @@ public class BasicDash : MonoBehaviour
 
     public ValueGrabber rechargeBarUI;
 
-    // Another attempt at preventing clipping
-    // If the object has the tag of wall then it will set the dashTime to 0 so that it ends and will translate the
-    // gameobject by nothing -- seems to work
-    // Had to add a Rigidbody to the player for this to work
+    // Anti clipping measure
     private void OnCollisionEnter(Collision col)
     {
         if (col.gameObject.tag == "Wall")
         {
             dashTimeCounter = 0;
-            transform.Translate(new Vector3(0, 0, 0 ));
+            transform.Translate(Vector3.zero);
             Debug.Log("The collision detector did its thing");
         }
     }
@@ -65,7 +52,6 @@ public class BasicDash : MonoBehaviour
     // Update is called once per frame
     void Update()
         {
-            
             if (GameStateManager.Instance.isPaused)
             {
                 return;
@@ -77,35 +63,20 @@ public class BasicDash : MonoBehaviour
                 dashCooldownCounter-= Time.deltaTime;
                 rechargeBarUI.SetValue(dashCooldownCounter);
             }
-            
-            
-            // Outputs how long is left on the Dash cooldown in the console if the player presses "E"
-            // Was quite spammy so commented it out, enable at own peril
-            if (Input.GetKey(KeyCode.E))
-            {
-                // Debug.Log("There is currently: " + dashCooldown + "seconds left before the Dash can be used again!");
-            }
-        
-            // Raycasting shenanigans
-            // Sets up the Raycast plus a Debug Raycast for use in the editor
-            // Used to prevent clipping
+
+            // Raycasting shenanigans - Sets up the Raycast plus a Debug Raycast for use in the editor
             Vector3 direction = Vector3.forward;
-            // direction * range should be 1 * 1.5
             Ray theRay = new Ray(transform.position, transform.TransformDirection(direction * range));
             Debug.DrawRay(transform.position, transform.TransformDirection(direction * range));
 
             // Raycast hit condition
-            if (Physics.Raycast(theRay, out RaycastHit hit, range))
+            if (Physics.Raycast(theRay, out RaycastHit hit, range) && hit.collider.tag == "Wall")
             {
-                if (hit.collider.tag == "Wall")
-                {
-                    dashTimeCounter = 0;
-                    transform.Translate(new Vector3(0, 0, 0 ));
-                    Debug.Log("The raycast has hit a wall and a dash cannot occur");
-                    // Very spammy, enable at will   
-                }
+                dashTimeCounter = 0;
+                transform.Translate(Vector3.zero);
+                Debug.Log("The raycast has hit a wall and a dash cannot occur");
             }
-            
+
             // Raycast miss condition - runs the dash code
             else
             {
@@ -113,7 +84,7 @@ public class BasicDash : MonoBehaviour
                 // Coroutine will execute
                 if (Input.GetKey(KeyCode.E) && dashCooldownCounter <= 0)
                 {
-                    // Sets the dash to a cooldown of 3 seconds
+                    // Sets the dash to a cooldown of 3s in the script, currently 1s in the editor
                     dashCooldownCounter = dashCooldownMax;
                     StartCoroutine(Dash());
                 }
@@ -125,19 +96,14 @@ public class BasicDash : MonoBehaviour
                 float startTime = Time.time;
                 // Seems to prevent clipping by having dashTime set to 1 second >>> 12/10/23
                 dashTimeCounter = dashTimeMax;
-                while (Time.time < startTime + dashTimeCounter)
+                while (Time.time < startTime + dashTimeCounter && !GameStateManager.Instance.isPaused)
                 {
-                    
-                    if (!GameStateManager.Instance.isPaused)
-                    {
                         
-                        transform.Translate(Vector3.forward * dashSpeed *Time.deltaTime);
-                        yield return null;
-                    }
-                    
-                    //moved dash counter start to the coroutine start
+                    transform.Translate(Vector3.forward * dashSpeed * Time.deltaTime);
                     yield return null;
                 }
+
+                yield return null;
             }
         }
 }
