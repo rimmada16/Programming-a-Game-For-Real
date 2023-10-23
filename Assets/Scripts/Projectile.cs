@@ -9,8 +9,10 @@ public class Projectile : MonoBehaviour
 {
     public GameObject MovingProjectile;
     private Rigidbody _rb;
-    public float projectileSpeed = 5f;
-
+    public string projectileName;
+    private float projectileCooldownCounter;
+    // Sets the maximum cooldown for the projectile in the editor
+    public float projectileCooldownMax;
     // Start is called before the first frame update
     void Start()
     {
@@ -20,12 +22,20 @@ public class Projectile : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // For the player
-        if (Input.GetMouseButtonDown(1))
+        // Decrements the cooldown for the projectile
+        // This could possibly be altered by upgrades / power-ups
+        if (projectileCooldownCounter > 0)
         {
-            // Spawns the Kunai 2m in front of the player
+            projectileCooldownCounter -= Time.deltaTime;
+        }
+        
+        // For the player
+        if (Input.GetMouseButtonDown(1) && projectileCooldownCounter <= 0)
+        {
+            projectileCooldownCounter = projectileCooldownMax;
+            // Spawns the projectile 2m in front of the player
             Instantiate(MovingProjectile, transform.position + (transform.forward * 2), transform.rotation);
-            MovingProjectile.name = "MovingProjectile";
+            MovingProjectile.name = projectileName;
             Debug.Log("Right Click was pressed");
         }
 
