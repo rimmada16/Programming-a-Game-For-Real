@@ -23,10 +23,13 @@ public class PlayerController : MonoBehaviour
     private Vector3 castOffset;
     [SerializeField] 
     private float castRadius = 0.8f;
+
+    public bool lockMovement;
     
     void Start()
     {
-        controller = GetComponent<CharacterController>(); 
+        controller = GetComponent<CharacterController>();
+        lockMovement = false;
     }
 
     void Update()
@@ -37,6 +40,13 @@ public class PlayerController : MonoBehaviour
             return;
         }
         
+        if (lockMovement)
+        {
+            _currentForceVelocity = Vector3.zero;
+            Debug.Log(_currentForceVelocity);
+            return;
+        }
+
         
         //get raw inputs
         Vector3 playerInput = new Vector3
@@ -51,6 +61,8 @@ public class PlayerController : MonoBehaviour
         {
             playerInput.Normalize();
         }
+
+        
 
         //get forward
         Vector3 moveVector = transform.TransformDirection(playerInput);
