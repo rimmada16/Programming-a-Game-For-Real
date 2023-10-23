@@ -43,7 +43,7 @@ public class PlayerController : MonoBehaviour
         if (lockMovement)
         {
             _currentForceVelocity = Vector3.zero;
-            Debug.Log(_currentForceVelocity);
+            //Debug.Log(_currentForceVelocity);
             return;
         }
 
