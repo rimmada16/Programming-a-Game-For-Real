@@ -34,9 +34,17 @@ public class ProjectileMovement : MonoBehaviour
     }
     private void OnCollisionEnter(Collision collision)
     {
-        AttackCollided(collision.collider);
-        // Destroys the projectile that has been created when it collides with anything
-        Destroy(gameObject);
+        if (collision.gameObject.tag == "Player")
+        {
+            Debug.Log("Hit the player");
+        }
+        else
+        {
+            AttackCollided(collision.collider);
+            // Destroys the projectile that has been created when it collides with anything
+            Destroy(gameObject);
+        }
+
     }
     void AttackCollided(Collider otherCol)
     {

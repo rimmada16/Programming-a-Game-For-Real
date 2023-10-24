@@ -13,6 +13,8 @@ public class Projectile : MonoBehaviour
     private float projectileCooldownCounter;
     // Sets the maximum cooldown for the projectile in the editor
     public float projectileCooldownMax;
+
+    [SerializeField] Transform referenceDirection;
     // Start is called before the first frame update
     void Start()
     {
@@ -34,7 +36,12 @@ public class Projectile : MonoBehaviour
         {
             projectileCooldownCounter = projectileCooldownMax;
             // Spawns the projectile 2m in front of the player
-            Instantiate(MovingProjectile, transform.position + (transform.forward * 2), transform.rotation);
+            var newProjectile =  Instantiate(MovingProjectile, transform.position + (transform.forward * 0) + (transform.up * 0.75f), transform.rotation );
+
+            if (referenceDirection != null)
+            {
+                newProjectile.transform.rotation = referenceDirection.rotation;
+            }
             MovingProjectile.name = projectileName;
             Debug.Log("Right Click was pressed");
         }

@@ -2994,7 +2994,7 @@ GameObject:
   - component: {fileID: 946236370}
   m_Layer: 6
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3219,6 +3219,7 @@ MonoBehaviour:
   MovingProjectile: {fileID: 4935935072231150399, guid: bbd41a726501004419507111660248bc, type: 3}
   projectileName: Kunai
   projectileCooldownMax: 1
+  referenceDirection: {fileID: 891801248}
 --- !u!1 &984590843
 GameObject:
   m_ObjectHideFlags: 0
