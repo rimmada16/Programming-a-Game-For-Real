@@ -6,34 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="f8e236dd-b0a8-4a95-b682-3e772a3eb9e0" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Programming-a-Game-For-Real/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Programming-a-Game-For-Real/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/BarDisplay.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/BarDisplay.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/BarDisplay.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/BarDisplay.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/BarDisplayManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/BarDisplayManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/BarDisplayManager.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/BarDisplayManager.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/BasicDash.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/BasicDash.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/BasicDash.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/BasicDash.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/ColliderHitbox.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ColliderHitbox.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/ColliderHitbox.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ColliderHitbox.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/DropItemOnDeath.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/DropItemOnDeath.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/DropItemOnDeath.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/DropItemOnDeath.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GameOverOnDeath.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/GameOverOnDeath.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GameOverOnDeath.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/GameOverOnDeath.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GameStateManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/GameStateManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GameStateManager.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/GameStateManager.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/HealthUnit.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/HealthUnit.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/HealthUnit.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/HealthUnit.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/MeleeAttackTest.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/MeleeAttackTest.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/MeleeAttackTest.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/MeleeAttackTest.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/PlayerController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/PlayerController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/PlayerController.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/PlayerController.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/PlayerLook.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/PlayerLook.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/PlayerLook.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/PlayerLook.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Scene1.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Scene1.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Singleton.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Singleton.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Singleton.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Singleton.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/ValueGrabber.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ValueGrabber.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/ValueGrabber.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ValueGrabber.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/Packages/com.unity.testtools.codecoverage/Settings.json" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/Packages/com.unity.testtools.codecoverage/Settings.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -41,10 +13,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/AIBehaviour.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -109,10 +78,10 @@
       </option>
       <method v="2" />
     </configuration>
-    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="20128">
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
-      <option name="pid" value="20128" />
+      <option name="pid" />
       <option name="projectPathOnTarget" />
       <option name="selectedOptions">
         <list />
@@ -135,7 +104,8 @@
       <workItem from="1697198933350" duration="4708000" />
       <workItem from="1697307699147" duration="1349000" />
       <workItem from="1697463305667" duration="7800000" />
-      <workItem from="1697532720579" duration="6011000" />
+      <workItem from="1697532720579" duration="6792000" />
+      <workItem from="1698137968321" duration="1575000" />
     </task>
     <servers />
   </component>
