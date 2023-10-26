@@ -3463,6 +3463,7 @@ MonoBehaviour:
   MovingProjectile: {fileID: 4935935072231150399, guid: bbd41a726501004419507111660248bc, type: 3}
   projectileName: Kunai
   projectileCooldownMax: 1
+  theParent: {fileID: 946236363}
   referenceDirection: {fileID: 891801248}
 --- !u!1 &984590843
 GameObject:

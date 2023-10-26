@@ -27,10 +27,11 @@ public class ProjectileMovement : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    
+
     {
-        // Transforms the Projectile in a direct straight path -- Does not take into account verticality 
-        transform.position += transform.forward * Time.deltaTime * speed;
+        // Transforms the Projectile
+        var transform1 = transform;
+        transform1.position += transform1.forward * (Time.deltaTime * speed);
     }
     private void OnCollisionEnter(Collision collision)
     {
@@ -38,33 +39,53 @@ public class ProjectileMovement : MonoBehaviour
         {
             Debug.Log("Hit the player");
         }
-        else
+        if (transform.parent != null && transform.parent.gameObject.name == "Player")
         {
-            AttackCollided(collision.collider);
+            PlayerProjectile(collision.collider);
             // Destroys the projectile that has been created when it collides with anything
             Destroy(gameObject);
         }
-
+        else
+        {
+            EnemyProjectile(collision.collider);
+            Destroy(gameObject);
+        }
     }
-    void AttackCollided(Collider otherCol)
+
+    // Player projectile shenanigans 
+    private void PlayerProjectile(Collider collisionTwo)
     {
-        Debug.Log("AttackCollided ran");
+        Debug.Log("PlayerProjectile ran");
         // Sorts out the dmg dealt when the Projectile collides with something that can take dmg
-        if (otherCol.gameObject.layer == gameObject.layer)
+        if (collisionTwo.gameObject.layer == gameObject.layer || collisionTwo.gameObject.layer == LayerMask.GetMask("Terrain"))
         {
             return;
         }
 
-        if (otherCol.gameObject.layer == LayerMask.GetMask("Terrain"))
-        {
-            return;
-        }
-
-        HealthUnit otherHU = otherCol.GetComponent<HealthUnit>();
+        HealthUnit otherHU = collisionTwo.GetComponent<HealthUnit>();
         if (otherHU == null)
         {
             return;
         }
         otherHU.TakeDamage(damage);
     }
+    
+    // Enemy projectile shenanigans
+    private void EnemyProjectile(Collider collisionThree)
+    {
+        Debug.Log("PlayerProjectile ran");
+        // Sorts out the dmg dealt when the Projectile collides with something that can take dmg
+        if (collisionThree.gameObject.layer == gameObject.layer || collisionThree.gameObject.layer == LayerMask.GetMask("Terrain"))
+        {
+            return;
+        }
+
+        HealthUnit otherHU = collisionThree.GetComponent<HealthUnit>();
+        if (otherHU == null)
+        {
+            return;
+        }
+        otherHU.TakeDamage(damage);
+    }
+    
 }
