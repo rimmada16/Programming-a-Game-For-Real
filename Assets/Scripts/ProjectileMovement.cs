@@ -39,15 +39,16 @@ public class ProjectileMovement : MonoBehaviour
         {
             Debug.Log("Hit the player");
         }
-        // If the parent of the projectiles name is Player this will run:
-        if (transform.parent != null && transform.parent.gameObject.name == "Player")
+        // If the projectile name contains "playerProj" and it does not collide with the Player then PlayerProjectile will run
+        if (gameObject.name.Contains("playerProj") && collision.gameObject.tag != "Player")
         {
             PlayerProjectile(collision.collider);
+            //Debug.Log
             // Destroys the projectile that has been created when it collides with anything
             Destroy(gameObject);
         }
-        // If the parent of the projectiles name is anything other than Player this will run:
-        else
+        // If the projectile name contains "enemyProj" and it does not collide with the Player then EnemyProjectile will run
+        if (gameObject.name.Contains("enemyProj") && collision.gameObject.tag != "Enemy")
         {
             EnemyProjectile(collision.collider);
             Destroy(gameObject);
