@@ -54,7 +54,7 @@ public class Projectile : MonoBehaviour
     {
         // Spawns the projectile 2m in front of the player / enemy
         var newProjectile =  Instantiate(MovingProjectile,  transform.position + (transform.forward * 2) + (transform.up * 0.75f), transform.rotation );
-        newProjectile.transform.parent = theParent;
+        //newProjectile.transform.parent = theParent;
         if (referenceDirection != null)
         {
             newProjectile.transform.rotation = referenceDirection.rotation;

@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 1273529784877772504}
   - component: {fileID: 1273529784877772508}
   - component: {fileID: 1273529784877772509}
+  - component: {fileID: 6326600332830745476}
   m_Layer: 0
   m_Name: MovingProjectile
   m_TagString: Untagged
@@ -130,3 +131,22 @@ MonoBehaviour:
   damage: 2
   speed: 20
   lifetime: 1
+--- !u!1818360609 &6326600332830745476
+RotationConstraint:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4935935072231150399}
+  m_Enabled: 1
+  m_Weight: 1
+  m_RotationAtRest: {x: 0, y: 0, z: 0}
+  m_RotationOffset: {x: 0, y: 0, z: 0}
+  m_AffectRotationX: 1
+  m_AffectRotationY: 1
+  m_AffectRotationZ: 1
+  m_IsContraintActive: 0
+  m_IsLocked: 1
+  m_Sources:
+  - sourceTransform: {fileID: 6369060488890109034, guid: fd9fa3891367d1540b4ab5190666501c, type: 3}
+    weight: 1
