@@ -39,12 +39,14 @@ public class ProjectileMovement : MonoBehaviour
         {
             Debug.Log("Hit the player");
         }
+        // If the parent of the projectiles name is Player this will run:
         if (transform.parent != null && transform.parent.gameObject.name == "Player")
         {
             PlayerProjectile(collision.collider);
             // Destroys the projectile that has been created when it collides with anything
             Destroy(gameObject);
         }
+        // If the parent of the projectiles name is anything other than Player this will run:
         else
         {
             EnemyProjectile(collision.collider);
@@ -57,7 +59,8 @@ public class ProjectileMovement : MonoBehaviour
     {
         Debug.Log("PlayerProjectile ran");
         // Sorts out the dmg dealt when the Projectile collides with something that can take dmg
-        if (collisionTwo.gameObject.layer == gameObject.layer || collisionTwo.gameObject.layer == LayerMask.GetMask("Terrain"))
+        // collisionTwo.gameObject.name == "Player" -- Friendly fire check
+        if (collisionTwo.gameObject.layer == gameObject.layer || collisionTwo.gameObject.layer == LayerMask.GetMask("Terrain") || collisionTwo.gameObject.name == "Player")
         {
             return;
         }
@@ -73,9 +76,10 @@ public class ProjectileMovement : MonoBehaviour
     // Enemy projectile shenanigans
     private void EnemyProjectile(Collider collisionThree)
     {
-        Debug.Log("PlayerProjectile ran");
+        Debug.Log("EnemyProjectile ran");
         // Sorts out the dmg dealt when the Projectile collides with something that can take dmg
-        if (collisionThree.gameObject.layer == gameObject.layer || collisionThree.gameObject.layer == LayerMask.GetMask("Terrain"))
+        // collisionThree.gameObject.layer == LayerMask.GetMask("Enemy") -- Friendly fire check -- For all enemies apply the "Enemy" Layer
+        if (collisionThree.gameObject.layer == gameObject.layer || collisionThree.gameObject.layer == LayerMask.GetMask("Terrain") || collisionThree.gameObject.layer == LayerMask.GetMask("Enemy"))
         {
             return;
         }
