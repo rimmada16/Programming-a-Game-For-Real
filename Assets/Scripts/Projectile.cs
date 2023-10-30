@@ -65,7 +65,6 @@ public class Projectile : MonoBehaviour
 
             MovingProjectile.name = projectileName + "playerProj";
             Debug.Log("The projectile has been created");
-            _playerInstantiated = false;
         }
     }
 }
