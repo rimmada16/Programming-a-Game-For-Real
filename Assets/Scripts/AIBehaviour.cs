@@ -7,6 +7,7 @@ public abstract class AIBehaviour
 {
     protected Transform me;
     protected Transform lookingDirection;
+
     public abstract void Update();
 
     public virtual void EnterBehaviour()
@@ -89,10 +90,24 @@ public class AIAttackMelee : AIBehaviour
 
 public class AIAttackProjectile : AIBehaviour
 {
+    // hard coded time - put into the editor if possible
+    public float projectileCooldownMaxT = 1f;
+    private float projectileCooldownCounter;
+    
     public override void Update()
+    
     {
+        if (projectileCooldownCounter > 0)
+        {
+            projectileCooldownCounter -= Time.deltaTime;
+        }
+
+        if (projectileCooldownCounter <= 0)
+        {
+            projectileCooldownCounter = projectileCooldownMaxT;
+            ProjectileManager.Instance.MakeProjectileAt(me.gameObject, lookingDirection, 0); 
+        }
         
-        ProjectileManager.Instance.MakeProjectileAt(me.gameObject, lookingDirection, 0);
     }
 }
 
