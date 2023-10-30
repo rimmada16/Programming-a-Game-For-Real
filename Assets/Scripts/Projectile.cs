@@ -62,6 +62,7 @@ public class Projectile : MonoBehaviour
             // Spawns the projectile 2m in front of the player / enemy
             var newProjectile = Instantiate(MovingProjectile,
                 transform.position + (transform.forward * 2) + (transform.up * 0.75f), transform.rotation);
+            newProjectile.layer = gameObject.layer;
             //newProjectile.transform.parent = theParent;
             if (referenceDirection != null)
             {
@@ -73,7 +74,7 @@ public class Projectile : MonoBehaviour
             _playerInstantiated = false;
         }
 
-        if (_enemyInstantiated)
+        /*if (_enemyInstantiated)
         {
             // Spawns the projectile 2m in front of the player / enemy
             var newProjectile = Instantiate(MovingProjectile,
@@ -87,6 +88,6 @@ public class Projectile : MonoBehaviour
             MovingProjectile.name = projectileName + "enemyProj";
             Debug.Log("The projectile has been created");
             _enemyInstantiated = false;
-        }
+        }*/
     }
 }

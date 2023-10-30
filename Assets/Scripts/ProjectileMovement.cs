@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 public class ProjectileMovement : MonoBehaviour
@@ -33,64 +34,39 @@ public class ProjectileMovement : MonoBehaviour
         var transform1 = transform;
         transform1.position += transform1.forward * (Time.deltaTime * speed);
     }
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider other)
     {
-        if (collision.gameObject.tag == "Player")
+        if (other.gameObject.layer == gameObject.layer)
         {
-            Debug.Log("Hit the player");
+            return;
         }
-        // If the projectile name contains "playerProj" and it does not collide with the Player then PlayerProjectile will run
-        if (gameObject.name.Contains("playerProj") && collision.gameObject.tag != "Player")
+
+        string[] layersWanted = { "Player", "Enemy", "Prop" };
+        int otherLayer = (int) Mathf.Pow(2,other.gameObject.layer) ;
+        if (otherLayer != LayerMask.GetMask(layersWanted[0])&& 
+            otherLayer != LayerMask.GetMask(layersWanted[1])&&
+            otherLayer != LayerMask.GetMask(layersWanted[2]))
         {
-            PlayerProjectile(collision.collider);
-            //Debug.Log
-            // Destroys the projectile that has been created when it collides with anything
+            Debug.Log("hit something on wrong layer");
+            
+            Debug.Log("hitLayer" + other.gameObject.layer);
+            Debug.Log("Good layers would be " + LayerMask.GetMask(layersWanted[0]) + "," +
+                      LayerMask.GetMask(layersWanted[1]) + "," + LayerMask.GetMask(layersWanted[2]));
             Destroy(gameObject);
-        }
-        // If the projectile name contains "enemyProj" and it does not collide with the Player then EnemyProjectile will run
-        if (gameObject.name.Contains("enemyProj") && collision.gameObject.tag != "Enemy")
-        {
-            EnemyProjectile(collision.collider);
-            Destroy(gameObject);
-        }
-    }
-
-    // Player projectile shenanigans 
-    private void PlayerProjectile(Collider collisionTwo)
-    {
-        Debug.Log("PlayerProjectile ran");
-        // Sorts out the dmg dealt when the Projectile collides with something that can take dmg
-        // collisionTwo.gameObject.name == "Player" -- Friendly fire check
-        if (collisionTwo.gameObject.layer == gameObject.layer || collisionTwo.gameObject.layer == LayerMask.GetMask("Terrain") || collisionTwo.gameObject.name == "Player")
-        {
             return;
         }
 
-        HealthUnit otherHU = collisionTwo.GetComponent<HealthUnit>();
-        if (otherHU == null)
+        var HU = other.GetComponent<HealthUnit>();
+        if ( HU == null)
         {
+            Debug.Log("hit something without a health unit");
             return;
         }
-        otherHU.TakeDamage(damage);
-    }
-    
-    // Enemy projectile shenanigans
-    private void EnemyProjectile(Collider collisionThree)
-    {
-        Debug.Log("EnemyProjectile ran");
-        // Sorts out the dmg dealt when the Projectile collides with something that can take dmg
-        // collisionThree.gameObject.layer == LayerMask.GetMask("Enemy") -- Friendly fire check -- For all enemies apply the "Enemy" Layer
-        if (collisionThree.gameObject.layer == gameObject.layer || collisionThree.gameObject.layer == LayerMask.GetMask("Terrain") || collisionThree.gameObject.layer == LayerMask.GetMask("Enemy"))
-        {
-            return;
-        }
-
-        HealthUnit otherHU = collisionThree.GetComponent<HealthUnit>();
-        if (otherHU == null)
-        {
-            return;
-        }
-        otherHU.TakeDamage(damage);
+        Debug.Log("dealt dmg");
+        HU.TakeDamage(damage);
+        Destroy(gameObject);
+        
     }
     
 }
+
