@@ -16,6 +16,7 @@ public class HealthUnit : MonoBehaviour
     private bool invincible;
     
     //value grabber link?
+    public ValueGrabber healthBarUI;
     
     
     public delegate void DeathHandler();
@@ -24,6 +25,11 @@ public class HealthUnit : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+
+        if (healthBarUI != null)
+        {
+            healthBarUI.SetInputMinMax(0, maxHealth);
+        }
         HealthMax();
     }
 
@@ -86,6 +92,7 @@ public class HealthUnit : MonoBehaviour
         newHealth = Mathf.Clamp(newHealth, 0, maxHealth);//clamp health
         currentHealth = newHealth;
         
+        
         UpdateDisplay();
         //run healing effects to indicate player got healed
     }
@@ -94,12 +101,17 @@ public class HealthUnit : MonoBehaviour
     private void HealthMax()
     {
         currentHealth = maxHealth;
+        
         UpdateDisplay();
     }
 
     private void UpdateDisplay()
     {
-        //tell ui to change display
+        if (healthBarUI != null)
+        {
+            healthBarUI.SetValue(currentHealth);
+        }
+        
     }
 
     private void CallDeath()

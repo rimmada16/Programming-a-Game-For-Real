@@ -6,6 +6,7 @@ using UnityEngine;
 public abstract class AIBehaviour
 {
     protected Transform me;
+    protected Transform lookingDirection;
     public abstract void Update();
 
     public virtual void EnterBehaviour()
@@ -18,9 +19,10 @@ public abstract class AIBehaviour
         Debug.Log(this.GetType().Name + " exit");
     }
 
-    public void SetMe(Transform newMe)
+    public void SetMe(Transform newMe, Transform newLooking)
     {
         me = newMe;
+        lookingDirection = newLooking;
     }
 }
 
@@ -90,6 +92,7 @@ public class AIAttackProjectile : AIBehaviour
     public override void Update()
     {
         
+        ProjectileManager.Instance.MakeProjectileAt(me.gameObject, lookingDirection, 0);
     }
 }
 

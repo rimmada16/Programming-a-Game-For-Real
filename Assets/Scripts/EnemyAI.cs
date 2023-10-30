@@ -15,6 +15,8 @@ public class EnemyAI : MonoBehaviour
     [SerializeField]
     private Transform target;
 
+    [SerializeField] private Transform lookingObject;
+
     [SerializeField]
     private float maxMeleeDistance,maxProjectileDistance,minProjectileDistance,preferredDistance;
 
@@ -178,6 +180,6 @@ public class EnemyAI : MonoBehaviour
         }
         currentBehaviour = newBehaviour;
         currentBehaviour.EnterBehaviour();
-        currentBehaviour.SetMe(transform);
+        currentBehaviour.SetMe(transform, lookingObject);
     }
 }
