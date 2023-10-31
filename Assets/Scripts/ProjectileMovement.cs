@@ -23,7 +23,7 @@ public class ProjectileMovement : MonoBehaviour
     {
         // On Instantiate, destroy the gameobject after lifetime 
         Destroy(gameObject, lifetime);
-        Debug.Log("The projectile lifetime ran out");
+        //Debug.Log("The projectile lifetime ran out");
     }
 
     // Update is called once per frame
@@ -47,11 +47,8 @@ public class ProjectileMovement : MonoBehaviour
             otherLayer != LayerMask.GetMask(layersWanted[1])&&
             otherLayer != LayerMask.GetMask(layersWanted[2]))
         {
-            Debug.Log("hit something on wrong layer");
+            //Debug.Log("hit something on wrong layer");
             
-            Debug.Log("hitLayer" + other.gameObject.layer);
-            Debug.Log("Good layers would be " + LayerMask.GetMask(layersWanted[0]) + "," +
-                      LayerMask.GetMask(layersWanted[1]) + "," + LayerMask.GetMask(layersWanted[2]));
             Destroy(gameObject);
             return;
         }
@@ -62,7 +59,7 @@ public class ProjectileMovement : MonoBehaviour
             Debug.Log("hit something without a health unit");
             return;
         }
-        Debug.Log("dealt dmg");
+        Debug.Log("hit success");
         HU.TakeDamage(damage);
         Destroy(gameObject);
         

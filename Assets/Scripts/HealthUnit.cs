@@ -54,11 +54,13 @@ public class HealthUnit : MonoBehaviour
     {
         if (iFrameCounter > 0)
         {
+            Debug.Log("still has iframes");
             return false; //break out if iframes are still up
         }
 
         if (damage <= 0)
         {
+            Debug.Log("no damage assigned");
             return false;
         }
         

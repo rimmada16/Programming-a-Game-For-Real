@@ -5,11 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f8e236dd-b0a8-4a95-b682-3e772a3eb9e0" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Programming-a-Game-For-Real/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Programming-a-Game-For-Real/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Models/MovingProjectile.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Models/MovingProjectile.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Projectile.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Projectile.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/HealthUnit.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/HealthUnit.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/ProjectileMovement.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ProjectileMovement.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/Packages/com.unity.testtools.codecoverage/Settings.json" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/Packages/com.unity.testtools.codecoverage/Settings.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -22,9 +19,9 @@
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 3
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 3
+}</component>
   <component name="ProjectId" id="2WIuIjYIs0fCj3ds4bne4HcFCzx" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -45,9 +42,9 @@
   },
   "keyToStringList": {
     "rider.external.source.directories": [
-      "C:\\Users\\mul783\\AppData\\Roaming\\JetBrains\\Rider2023.2\\resharper-host\\DecompilerCache",
-      "C:\\Users\\mul783\\AppData\\Roaming\\JetBrains\\Rider2023.2\\resharper-host\\SourcesCache",
-      "C:\\Users\\mul783\\AppData\\Local\\Symbols\\src"
+      "C:\\Users\\muk405\\AppData\\Roaming\\JetBrains\\Rider2023.2\\resharper-host\\DecompilerCache",
+      "C:\\Users\\muk405\\AppData\\Roaming\\JetBrains\\Rider2023.2\\resharper-host\\SourcesCache",
+      "C:\\Users\\muk405\\AppData\\Local\\Symbols\\src"
     ]
   }
 }]]></component>
@@ -116,6 +113,7 @@
       <workItem from="1698137968321" duration="1575000" />
       <workItem from="1698242982084" duration="6704000" />
       <workItem from="1698676156970" duration="2337000" />
+      <workItem from="1698747066262" duration="308000" />
     </task>
     <servers />
   </component>
@@ -133,14 +131,7 @@
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/Assets/Scripts/ProjectileMovement.cs</url>
           <line>37</line>
-          <properties documentPath="C:\Users\mul783\Documents\GitHub\Programming-a-Game-For-Real\Assets\Scripts\ProjectileMovement.cs" initialLine="36" containingFunctionPresentation="Method 'OnTriggerEnter'">
-            <startOffsets>
-              <option value="902" />
-            </startOffsets>
-            <endOffsets>
-              <option value="903" />
-            </endOffsets>
-          </properties>
+          <properties documentPath="C:\Users\mul783\Documents\GitHub\Programming-a-Game-For-Real\Assets\Scripts\ProjectileMovement.cs" initialLine="36" containingFunctionPresentation="Method 'OnTriggerEnter'" />
           <option name="timeStamp" value="1" />
         </line-breakpoint>
       </breakpoints>
