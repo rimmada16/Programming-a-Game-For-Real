@@ -7,6 +7,8 @@ using UnityEngine;
 public class ProjectileMovement : MonoBehaviour
 {
     [SerializeField] private int damage;
+    [SerializeField] private int knockback;
+    public Transform source;
 
     public float speed = 10f;
 
@@ -60,7 +62,7 @@ public class ProjectileMovement : MonoBehaviour
             return;
         }
         Debug.Log("hit success");
-        HU.TakeDamage(damage);
+        HU.TakeDamage(damage, knockback, source);
         Destroy(gameObject);
         
     }

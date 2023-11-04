@@ -17,6 +17,7 @@ public class ProjectileManager : Singleton<ProjectileManager>
         // Spawns the projectile 2m in front of the player / enemy
         var newProjectile = Instantiate(projectilePrefabs[projectileIndex]);
         newProjectile.layer = gameObject.layer;
+        newProjectile.GetComponent<ProjectileMovement>().source = source.transform;
         
         var newTransform = newProjectile.transform;
         newTransform.position = sourceTransform.position;
