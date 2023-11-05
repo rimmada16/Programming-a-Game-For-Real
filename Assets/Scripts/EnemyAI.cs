@@ -175,11 +175,9 @@ public class EnemyAI : MonoBehaviour
     {
         if (doExit)
         {
-            
             currentBehaviour.ExitBehaviour();
         }
         currentBehaviour = newBehaviour;
-        currentBehaviour.EnterBehaviour();
-        currentBehaviour.SetMe(transform, lookingObject);
+        currentBehaviour.EnterBehaviour(transform, lookingObject);
     }
 }

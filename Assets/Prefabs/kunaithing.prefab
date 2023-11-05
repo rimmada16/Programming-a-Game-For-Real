@@ -199,7 +199,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 2
-  knockback: 20
+  knockback: 10
   source: {fileID: 0}
   speed: 20
   lifetime: 1

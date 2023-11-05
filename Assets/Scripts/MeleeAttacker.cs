@@ -20,6 +20,19 @@ public class MeleeAttacker : MonoBehaviour
     [SerializeField] private int damage, damageDud;
     [SerializeField] private float knockback, knockbackDud;
     
+    
+    [SerializeField] 
+    private ValueGrabber cooldownBarUI;
+
+
+    private void Start()
+    {
+        if (cooldownBarUI != null)
+        {
+            cooldownBarUI.SetInputMinMax(0, timeBeforeCanAttack+ extraTimeForFullDamage);
+        }
+    }
+
     private void Update()
     {
         if (GameStateManager.Instance.isPaused)
@@ -30,6 +43,11 @@ public class MeleeAttacker : MonoBehaviour
         if (cooldownCounter > 0)
         {
             cooldownCounter -= Time.deltaTime;
+        }
+        
+        if (cooldownBarUI != null)
+        {
+            cooldownBarUI.SetValue(cooldownCounter);
         }
     }
 

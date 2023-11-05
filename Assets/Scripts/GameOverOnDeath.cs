@@ -18,5 +18,7 @@ public class GameOverOnDeath : MonoBehaviour
     void CauseGameOver()
     {
         //player game over code
+        
+        GameStateManager.Instance.SetDeathMenu(true);
     }
 }

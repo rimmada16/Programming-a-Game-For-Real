@@ -10,8 +10,9 @@ public abstract class AIBehaviour
 
     public abstract void Update();
 
-    public virtual void EnterBehaviour()
+    public virtual void EnterBehaviour(Transform newMe, Transform newLookingDirection)
     {
+        SetMe(newMe,newLookingDirection);
         Debug.Log(this.GetType().Name + " enter");
     }
     public virtual void ExitBehaviour()
@@ -63,11 +64,6 @@ public class AIApproach : AIBehaviour
             //Debug.Log("moving by "+ distToMove);
         }
     }
-    public override void EnterBehaviour()
-    {
-        //Debug.Log(this.GetType().Name + " enter at speed "+ speed);
-    }
-
     public Vector3 GetTargetDirection()
     {
         Vector3 newDir =  target.position - me.position;
@@ -82,9 +78,44 @@ public class AIApproach : AIBehaviour
 
 public class AIAttackMelee : AIBehaviour
 {
+    
+    // hard coded time - put into the editor if possible
+    public float attackCooldownMaxT = 1.5f;
+    private float attackCooldownCounter;
+    
+    private MeleeAttacker thisMeleeAttacker;
+    private bool getAttackFailed = false;
+
+    public override void EnterBehaviour(Transform newMe, Transform newLookingDirection)
+    {
+        base.EnterBehaviour(newMe, newLookingDirection);
+        
+        attackCooldownCounter = attackCooldownMaxT;
+        thisMeleeAttacker = me.GetComponent<MeleeAttacker>();
+        if (thisMeleeAttacker == null)
+        {
+            getAttackFailed = true;
+        }
+    }
+
     public override void Update()
     {
+        if (getAttackFailed)
+        {
+            return;
+        }
         
+        if (attackCooldownCounter > 0)
+        {
+            attackCooldownCounter -= Time.deltaTime;
+        }
+
+        if (attackCooldownCounter <= 0)
+        {
+            attackCooldownCounter = attackCooldownMaxT;
+            thisMeleeAttacker.Attack();
+            
+        }
     }
 }
 
