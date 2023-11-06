@@ -45,6 +45,7 @@ public class TimeTrial : MonoBehaviour
             if (timer <= 0)
             {
                 // death stuff
+                GameStateManager.Instance.SetDeathMenu(true);
                 Debug.Log("The player died");
             }
         }
