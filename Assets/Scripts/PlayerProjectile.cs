@@ -12,6 +12,8 @@ public class PlayerProjectile : MonoBehaviour
     // Sets the maximum cooldown for the projectile in the editor
     public float projectileCooldownMax;
     private float projectileCooldownCounter;
+    [SerializeField] private int kunaiAmmo;
+    [SerializeField] private int maxKunaiAmmo;
 
     [SerializeField] Transform shootTransform;
     
@@ -27,19 +29,17 @@ public class PlayerProjectile : MonoBehaviour
         }
         
         // For the player
-        if (Input.GetMouseButtonDown(1) && projectileCooldownCounter <= 0)
+        if (Input.GetMouseButtonDown(1) && projectileCooldownCounter <= 0 && kunaiAmmo >= 1)
         {
+            kunaiAmmo--;
             projectileCooldownCounter = projectileCooldownMax;
             ProjectileManager.Instance.MakeProjectileAt(gameObject,shootTransform, projectileIndex);
         }
-        
-        // For the enemy
-        // if (something == something)
-        // {
-        //     // Code here
-        //     projectileCooldownCounter = projectileCooldownMax;
-        //     ProjectileCreation();
-        // }
+
+        if (kunaiAmmo > maxKunaiAmmo)
+        {
+            kunaiAmmo--;
+        }
 
     }
 
