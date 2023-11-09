@@ -12,8 +12,7 @@ public class HealthInteractable : MonoBehaviour
     {
         player = GameObject.Find("Player");
     }
-
-    // Update is called once per frame
+    
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.layer == 6)
@@ -28,7 +27,7 @@ public class HealthInteractable : MonoBehaviour
         HealthUnit healthUnit = player.GetComponent<HealthUnit>();
         if (healthUnit != null)
         {
-            // Call the GetHealed method to heal the player.
+            // Do the heal + Nuke the object
             Debug.Log("Healed the player");
             healthUnit.GetHealed(heal);
             Destroy(gameObject);

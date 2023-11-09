@@ -6,7 +6,7 @@ using Random = UnityEngine.Random;
 
 public class InteractablesManager : MonoBehaviour
 {
-    private int randomiserChoice;
+    private int _randomiserChoice;
     [SerializeField] private GameObject healthInteractablePrefab;
     private GameObject healthInteractableGameObject;
 
@@ -15,12 +15,12 @@ public class InteractablesManager : MonoBehaviour
     {
         Randomiser();
         
-        if (randomiserChoice == 1)
+        if (_randomiserChoice == 1)
         {
             healthInteractableGameObject = Instantiate(healthInteractablePrefab, transform.position, Quaternion.identity);
             healthInteractableGameObject.transform.parent = transform;
             healthInteractableGameObject.transform.parent = null;
-            Debug.Log(randomiserChoice + " - Spawned HP Interactable");
+            Debug.Log(_randomiserChoice + " - Spawned HP Interactable");
             
             Destroy(gameObject);
         }
@@ -30,7 +30,7 @@ public class InteractablesManager : MonoBehaviour
         
         else
         {
-            Debug.Log(randomiserChoice + " - Spawned Nothing");
+            Debug.Log(_randomiserChoice + " - Spawned Nothing");
             Destroy(gameObject);
         }
     }
@@ -38,7 +38,7 @@ public class InteractablesManager : MonoBehaviour
     private void Randomiser()
     {
         // Currently guaranteed to spawn health pickup
-        //randomiserChoice = Random.Range(minVal, maxVal);
-        randomiserChoice = Random.Range(1, 1);
+        //_randomiserChoice = Random.Range(minVal, maxVal);
+        _randomiserChoice = Random.Range(1, 1);
     }
 }

@@ -89,11 +89,7 @@ public class HealthUnit : MonoBehaviour
                 
                 EnemyInteractableManager = Instantiate(EnemyInteractableManagerPrefab, enemyPosition, Quaternion.identity);
                 EnemyInteractableManager.transform.parent = transform;
-                
-                if (EnemyInteractableManager != null)
-                {
-                    EnemyInteractableManager.transform.parent = null;
-                }
+                EnemyInteractableManager.transform.parent = null;
             }
             CallDeath();
         }
