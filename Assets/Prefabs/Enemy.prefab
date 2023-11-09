@@ -145,6 +145,7 @@ MonoBehaviour:
   iFrameTime: 0.5
   iFrameCounter: 0
   invincible: 0
+  EnemyInteractableManagerPrefab: {fileID: 8043055000312456301, guid: 5ae137877e900064a90a83ee2f32c699, type: 3}
   healthBarUI: {fileID: 0}
   myRB: {fileID: 0}
 --- !u!54 &3544041461002043479
@@ -205,6 +206,7 @@ MonoBehaviour:
   damageDud: 0
   knockback: 10
   knockbackDud: 0
+  cooldownBarUI: {fileID: 0}
 --- !u!1 &3544041462426139738
 GameObject:
   m_ObjectHideFlags: 0
