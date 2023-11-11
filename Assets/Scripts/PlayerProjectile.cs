@@ -12,11 +12,10 @@ public class PlayerProjectile : MonoBehaviour
     // Sets the maximum cooldown for the projectile in the editor
     public float projectileCooldownMax;
     private float projectileCooldownCounter;
-    [SerializeField] private int kunaiAmmo;
+    public int kunaiAmmo;
     [SerializeField] private int maxKunaiAmmo;
 
     [SerializeField] Transform shootTransform;
-    
 
     // Update is called once per frame
     void Update()

@@ -44,4 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ad6047a1cca57a4d8fc6d5760ddc0c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  randMinVal: 1
+  randMaxVal: 3
   healthInteractablePrefab: {fileID: 7707350956827505354, guid: 8ba6bd5767b880045b8ad9d904b70cfd, type: 3}
+  ammoInteractablePrefab: {fileID: 565083899948436003, guid: 932aa5671e8107d4ab53b7ff7974662c, type: 3}

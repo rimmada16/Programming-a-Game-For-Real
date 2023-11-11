@@ -8,7 +8,7 @@ public class HealthInteractable : MonoBehaviour
     public GameObject player;
     [SerializeField] private int heal;
 
-    private void Update()
+    private void Start()
     {
         player = GameObject.Find("Player");
     }
