@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 5980430654525386764}
   - component: {fileID: 4224034214953076262}
   - component: {fileID: -474807084476596672}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: AmmoInteractablePlaceholder
   m_TagString: Untagged
   m_Icon: {fileID: 0}

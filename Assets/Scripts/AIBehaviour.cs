@@ -6,13 +6,16 @@ using UnityEngine;
 public abstract class AIBehaviour
 {
     protected Transform me;
-    protected Transform lookingDirection;
+    protected Transform myFace;
+
+    protected Transform myTarget;
 
     public abstract void Update();
 
-    public virtual void EnterBehaviour(Transform newMe, Transform newLookingDirection)
+    public virtual void EnterBehaviour(Transform newMe, Transform newFace, Transform target)
     {
-        SetMe(newMe,newLookingDirection);
+        SetMe(newMe,newFace);
+        myTarget = target;
         Debug.Log(this.GetType().Name + " enter");
     }
     public virtual void ExitBehaviour()
@@ -21,10 +24,29 @@ public abstract class AIBehaviour
         Debug.Log(this.GetType().Name + " exit");
     }
 
-    public void SetMe(Transform newMe, Transform newLooking)
+    public void SetMe(Transform newMe, Transform newFace)
     {
         me = newMe;
-        lookingDirection = newLooking;
+        myFace = newFace;
+    }
+
+    protected void rotateToLookAt(Transform target)
+    {
+        if (target != null && me != null && myFace != null)
+        {
+            Vector3 v_diff;
+            float atan2;
+            
+            v_diff = (target.position - me.position);	
+            atan2 = Mathf.Atan2 ( v_diff.x, v_diff.z );
+            me.rotation = Quaternion.Euler(0f, atan2 * Mathf.Rad2Deg,0f );
+            
+            
+            v_diff = (target.position - myFace.position);	
+            atan2 = Mathf.Atan2 ( v_diff.y, new Vector2(v_diff.x, v_diff.z).magnitude );
+            myFace.localRotation = Quaternion.Euler(-atan2 * Mathf.Rad2Deg ,0f, 0f );
+            
+        }
     }
 }
 
@@ -58,6 +80,7 @@ public class AIApproach : AIBehaviour
         //apply a movement distance on whatever this script is attached to
         if (me != null)
         {
+            rotateToLookAt(myTarget);
             var distToMove = GetTargetDirection() * speed * Time.deltaTime;
             me.position += (Vector3) distToMove;
             
@@ -86,9 +109,9 @@ public class AIAttackMelee : AIBehaviour
     private MeleeAttacker thisMeleeAttacker;
     private bool getAttackFailed = false;
 
-    public override void EnterBehaviour(Transform newMe, Transform newLookingDirection)
+    public override void EnterBehaviour(Transform newMe, Transform newFace, Transform newTarget)
     {
-        base.EnterBehaviour(newMe, newLookingDirection);
+        base.EnterBehaviour(newMe, newFace, newTarget);
         
         attackCooldownCounter = attackCooldownMaxT;
         thisMeleeAttacker = me.GetComponent<MeleeAttacker>();
@@ -108,6 +131,12 @@ public class AIAttackMelee : AIBehaviour
         if (attackCooldownCounter > 0)
         {
             attackCooldownCounter -= Time.deltaTime;
+        }
+        
+        if (attackCooldownCounter > attackCooldownMaxT* 0.2f)
+        {
+            
+            rotateToLookAt(myTarget);
         }
 
         if (attackCooldownCounter <= 0)
@@ -131,12 +160,14 @@ public class AIAttackProjectile : AIBehaviour
         if (projectileCooldownCounter > 0)
         {
             projectileCooldownCounter -= Time.deltaTime;
+            
+            rotateToLookAt(myTarget);
         }
 
         if (projectileCooldownCounter <= 0)
         {
             projectileCooldownCounter = projectileCooldownMaxT;
-            ProjectileManager.Instance.MakeProjectileAt(me.gameObject, lookingDirection, 0); 
+            ProjectileManager.Instance.MakeProjectileAt(me.gameObject, myFace, 0); 
         }
         
     }

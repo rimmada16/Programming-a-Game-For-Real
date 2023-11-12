@@ -14,6 +14,8 @@ public class EnemyAI : MonoBehaviour
 
     [SerializeField]
     private Transform target;
+    [SerializeField] private float targetMemoryTimer, targetMemoryMaxRemember;
+    [SerializeField] private AISpotter spotter;
 
     [SerializeField] private Transform lookingObject;
 
@@ -24,10 +26,12 @@ public class EnemyAI : MonoBehaviour
 
     [SerializeField] private float previousLowerThreshold, previousHigherThreshold;
 
+
     // Start is called before the first frame update
     void Start()
     {
         SetBehaviour(new AIIdle(), false);
+        spotter = GetComponent<AISpotter>();
     }
 
     // Update is called once per frame
@@ -40,6 +44,18 @@ public class EnemyAI : MonoBehaviour
             return;
             
         }
+
+        if (targetMemoryTimer > 0)
+        {
+            targetMemoryTimer -= Time.deltaTime;
+        }
+        else
+        {
+            Debug.Log("time to look for a player");
+            isPlayerSeen();
+            targetMemoryTimer= targetMemoryMaxRemember;
+        }
+        
         //check that alert state has changed
         if (alerted != lastAlerted)
         {
@@ -72,6 +88,14 @@ public class EnemyAI : MonoBehaviour
         lastAlerted = alerted;
     }
 
+    private void isPlayerSeen()
+    {
+        Debug.Log("i am checking");
+        Transform targetFound = spotter.TryToSpotTargets();
+        alerted = (targetFound != null);
+        Debug.Log("target found: "+ alerted);
+        target = targetFound;
+    }
     private bool PastThresholds()
     {
         float targetDistance = GetDistanceTo(target);
@@ -178,6 +202,6 @@ public class EnemyAI : MonoBehaviour
             currentBehaviour.ExitBehaviour();
         }
         currentBehaviour = newBehaviour;
-        currentBehaviour.EnterBehaviour(transform, lookingObject);
+        currentBehaviour.EnterBehaviour(transform, lookingObject, target);
     }
 }
