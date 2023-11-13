@@ -43,12 +43,12 @@ public class MeleeAttacker : MonoBehaviour
         if (cooldownCounter > 0)
         {
             cooldownCounter -= Time.deltaTime;
+            if (cooldownBarUI != null)
+            {
+                cooldownBarUI.SetValue(cooldownCounter);
+            }
         }
         
-        if (cooldownBarUI != null)
-        {
-            cooldownBarUI.SetValue(cooldownCounter);
-        }
     }
 
 

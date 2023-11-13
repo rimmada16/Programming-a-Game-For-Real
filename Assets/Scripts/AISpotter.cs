@@ -62,26 +62,31 @@ public class AISpotter : MonoBehaviour
             Physics.RaycastNonAlloc(origin: eyes.position,direction: directionToTarget, results: results, maxDistance: distance, layerMask: opaqueLayers);
             //Physics.RaycastNonAlloc(origin: eyes.position,direction: directionToTarget, results: results, maxDistance: distance, );
 
-            try
-            {
-                if (results[0].transform.gameObject.layer == LayerMask.GetMask("Player"))
-                {
-                    Debug.Log("Hit player");
-                    return (allTarget[i]);
-                }
-                else
-                {
-                    //######################################## trying to figure out why raycast goes through player ###############################################################
-                    Debug.Log("Hit something on layer type " + results[0].transform.gameObject.layer);
-                    placeholderLook.position = results[0].point;
-                }
 
-            }
-            catch
+            for (int j = 0; j < results.Length; j++)
             {
-                Debug.LogWarning("Enemy looking for player raycast hit something without a proper game object");
-                hitTargets[i] = false;
+                try
+                {
+                    if (results[j].transform.gameObject.layer == LayerMask.NameToLayer ("Player"))
+                    {
+                        Debug.Log("Hit player");
+                        return (allTarget[i]);
+                    }
+                    else
+                    {
+                        //######################################## trying to figure out why raycast goes through player ###############################################################
+                        Debug.Log("Hit something on layer type " + results[j].transform.gameObject.layer);
+                        placeholderLook.position = results[j].point;
+                    }
+
+                }
+                catch
+                {
+                    Debug.LogWarning("Enemy looking for player raycast hit something without a proper game object");
+                    hitTargets[i] = false;
+                }
             }
+            
         }
         
         return null;

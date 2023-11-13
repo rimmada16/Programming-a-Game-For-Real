@@ -49,6 +49,8 @@ public class BarDisplay : MonoBehaviour
     private void UpdateValue()
     {
         segmentsShown = value.GetValueI();
+        Debug.Log("Then Value coming through is "+value.GetValueI());
+        Debug.Log("Then Value coming through is float "+value.GetValueF());
             UpdateSegmentDisplay();
     }
     

@@ -3,28 +3,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class HealthInteractable : MonoBehaviour
+public class HealthInteractable : Interactable
 {
-    public GameObject player;
     [SerializeField] private int heal;
 
-    private void Start()
+    
+    protected override void interact(Collider other)
     {
-        player = GameObject.Find("Player");
+        HealPlayer(other);
     }
     
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.gameObject.layer == 6)
-        {
-            HealPlayer(heal);
-        }
-    }
-    
-    public void HealPlayer(int heal)
+    public void HealPlayer( Collider other)
     {
         // Check if the player GameObject has the HealthUnit component attached.
-        HealthUnit healthUnit = player.GetComponent<HealthUnit>();
+        HealthUnit healthUnit = other.GetComponent<HealthUnit>();
         if (healthUnit != null)
         {
             // Do the heal + Nuke the object
