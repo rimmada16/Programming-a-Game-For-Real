@@ -5,17 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f8e236dd-b0a8-4a95-b682-3e772a3eb9e0" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Interactables/Interactable.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Interactables/Interactable.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Programming-a-Game-For-Real/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Programming-a-Game-For-Real/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/AISpotter.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/AISpotter.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/BarDisplay.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/BarDisplay.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Interactables/AmmoInteractables.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Interactables/AmmoInteractables.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Interactables/HealthInteractable.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Interactables/HealthInteractable.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/MeleeAttacker.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/MeleeAttacker.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/PlayerProjectile.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/PlayerProjectile.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ValueGrabber.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ValueGrabber.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/QualitySettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/QualitySettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Interactables/Interactable.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Interactables/Interactable.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -132,7 +122,7 @@
       <workItem from="1699195275581" duration="3669000" />
       <workItem from="1699288684008" duration="857000" />
       <workItem from="1699804912781" duration="8518000" />
-      <workItem from="1699884377174" duration="4765000" />
+      <workItem from="1699884377174" duration="5354000" />
     </task>
     <servers />
   </component>

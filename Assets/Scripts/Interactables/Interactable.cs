@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class Interactable: MonoBehaviour
 {
-    protected bool destroyOnContact;
+    [SerializeField] protected bool destroyOnContact = true;
     protected void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag( "Player"))
