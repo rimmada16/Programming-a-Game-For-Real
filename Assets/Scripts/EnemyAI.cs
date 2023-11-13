@@ -14,6 +14,7 @@ public class EnemyAI : MonoBehaviour
 
     [SerializeField]
     private Transform target;
+    
     [SerializeField] private float targetMemoryTimer, targetMemoryMaxRemember;
     [SerializeField] private AISpotter spotter;
 
@@ -51,7 +52,7 @@ public class EnemyAI : MonoBehaviour
         }
         else
         {
-            Debug.Log("time to look for a player");
+            //Debug.Log("time to look for a player");
             isPlayerSeen();
             targetMemoryTimer= targetMemoryMaxRemember;
         }
@@ -90,10 +91,11 @@ public class EnemyAI : MonoBehaviour
 
     private void isPlayerSeen()
     {
-        Debug.Log("i am checking");
+        //Debug.Log("i am checking");
         Transform targetFound = spotter.TryToSpotTargets();
+        
         alerted = (targetFound != null);
-        Debug.Log("target found: "+ alerted);
+        //Debug.Log("target found: "+ alerted);
         target = targetFound;
     }
     private bool PastThresholds()

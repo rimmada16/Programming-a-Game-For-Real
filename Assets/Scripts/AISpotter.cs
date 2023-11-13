@@ -12,7 +12,14 @@ public class AISpotter : MonoBehaviour
     [SerializeField] private float dotProductAngle;
     [SerializeField] private LayerMask opaqueLayers;
 
-    public Transform placeholderLook;
+    private RaycastHit hitInfo;
+
+
+    private void OnDrawGizmos()
+    {
+            Gizmos.DrawWireSphere(hitInfo.point,0.1f);
+            Gizmos.DrawLine(eyes.position, hitInfo.point);
+    }
 
     private void Start()
     {
@@ -30,7 +37,7 @@ public class AISpotter : MonoBehaviour
 
     public Transform TryToSpotTargets()
     {
-        Debug.Log("number of targets to check: "+allTarget.Length);
+        //Debug.Log("number of targets to check: "+allTarget.Length);
         bool[] hitTargets = new bool[allTarget.Length];
         
         
@@ -43,7 +50,7 @@ public class AISpotter : MonoBehaviour
             if (directionToTarget.magnitude > distance)
             {
                 
-                Debug.Log("target number "+i+" too far, distance is "+ directionToTarget.magnitude);
+                //Debug.Log("target number "+i+" too far, distance is "+ directionToTarget.magnitude);
                 continue;
             }
 
@@ -52,40 +59,49 @@ public class AISpotter : MonoBehaviour
             //checks if its outside the vision cone to not waste resources
             if (Vector3.Dot(directionToTarget, eyes.forward) < dotProductAngle)
             {
-                Debug.Log("target number "+i+" out of vision cone, dot is "+ Vector3.Dot(directionToTarget, eyes.forward));
+                //Debug.Log("target number "+i+" out of vision cone, dot is "+ Vector3.Dot(directionToTarget, eyes.forward));
                 continue;
 
             }
             
             //store results of raycast towards player
-            RaycastHit[] results = new RaycastHit[1];
-            Physics.RaycastNonAlloc(origin: eyes.position,direction: directionToTarget, results: results, maxDistance: distance, layerMask: opaqueLayers);
+            // var count = Physics.RaycastNonAlloc(origin: eyes.position,direction: directionToTarget, results: results, maxDistance: distance, layerMask: opaqueLayers);
             //Physics.RaycastNonAlloc(origin: eyes.position,direction: directionToTarget, results: results, maxDistance: distance, );
 
-
-            for (int j = 0; j < results.Length; j++)
+            if (Physics.Raycast(eyes.position, directionToTarget, out hitInfo, distance, opaqueLayers))
             {
-                try
+                if (hitInfo.collider.CompareTag("Player"))
                 {
-                    if (results[j].transform.gameObject.layer == LayerMask.NameToLayer ("Player"))
-                    {
-                        Debug.Log("Hit player");
-                        return (allTarget[i]);
-                    }
-                    else
-                    {
-                        //######################################## trying to figure out why raycast goes through player ###############################################################
-                        Debug.Log("Hit something on layer type " + results[j].transform.gameObject.layer);
-                        placeholderLook.position = results[j].point;
-                    }
-
-                }
-                catch
-                {
-                    Debug.LogWarning("Enemy looking for player raycast hit something without a proper game object");
-                    hitTargets[i] = false;
+                    return (allTarget[i]);
                 }
             }
+            
+            //Array.Sort(results, (hit, raycastHit) => raycastHit.distance.CompareTo(hit.distance));
+            
+            //checks each result of the raycast
+            // for (int j = 0; j < results.Length; j++)
+            // {
+            //     try
+            //     {
+            //         if (results[j].transform.gameObject.layer == LayerMask.NameToLayer ("Player"))
+            //         {
+            //             Debug.Log("Hit player");
+            //             return (allTarget[i]);
+            //         }
+            //         else
+            //         {
+            //             //######################################## trying to figure out why raycast goes through player ###############################################################
+            //             Debug.Log("Hit something on layer type " + results[j].transform.gameObject.layer);
+            //             placeholderLook.position = results[j].point;
+            //         }
+            //
+            //     }
+            //     catch
+            //     {
+            //         Debug.LogWarning("Enemy looking for player raycast hit something without a proper game object");
+            //         hitTargets[i] = false;
+            //     }
+            // }
             
         }
         
