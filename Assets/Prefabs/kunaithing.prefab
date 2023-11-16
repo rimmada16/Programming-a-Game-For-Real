@@ -199,8 +199,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 2
+  hardcoreDamage: 1000
   knockback: 10
-  source: {fileID: 0}
+  source: {fileID: 3544041461002043561, guid: dd477c6721551aa4592de64044e6207b, type: 3}
   speed: 20
   lifetime: 1
 --- !u!65 &8710122463884851401
