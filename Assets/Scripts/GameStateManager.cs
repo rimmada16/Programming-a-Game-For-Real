@@ -12,7 +12,9 @@ public class GameStateManager : Singleton<GameStateManager>
     
     public bool isDead;
     public GameObject deathmenu;
-    
+
+
+    public bool isHardcore;
     
     // Start is called before the first frame update
     void Start()

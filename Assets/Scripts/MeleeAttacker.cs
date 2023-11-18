@@ -30,6 +30,8 @@ public class MeleeAttacker : MonoBehaviour
         if (cooldownBarUI != null)
         {
             cooldownBarUI.SetInputMinMax(0, timeBeforeCanAttack+ extraTimeForFullDamage);
+            cooldownCounter = 0;
+            cooldownBarUI.SetValue(cooldownCounter);
         }
     }
 

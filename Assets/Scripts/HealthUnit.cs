@@ -26,6 +26,7 @@ public class HealthUnit : MonoBehaviour
     
     public delegate void DeathHandler();
     public event DeathHandler OnDeath;
+    public event DeathHandler OnDamage;
     public Rigidbody myRB;
     
     // Start is called before the first frame update
@@ -79,6 +80,7 @@ public class HealthUnit : MonoBehaviour
         
         currentHealth = newHealth;
         UpdateDisplay();
+        CallDamage();
         
         //if unit dies from the new value
         if (newHealth <= 0)
@@ -93,6 +95,7 @@ public class HealthUnit : MonoBehaviour
             }
             CallDeath();
         }
+        
         
         if (knockbackSource != null && GetComponent<Rigidbody>())
         {
@@ -148,5 +151,9 @@ public class HealthUnit : MonoBehaviour
     private void CallDeath()
     {
         OnDeath?.Invoke();
+    }
+    private void CallDamage()
+    {
+        OnDamage?.Invoke();
     }
 }

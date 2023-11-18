@@ -198,7 +198,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75e83bca4d0fc664ea7e54a414af14bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 2
+  baseDamage: 2
   hardcoreDamage: 1000
   knockback: 10
   source: {fileID: 3544041461002043561, guid: dd477c6721551aa4592de64044e6207b, type: 3}

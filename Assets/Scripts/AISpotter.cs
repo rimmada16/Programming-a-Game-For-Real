@@ -15,12 +15,6 @@ public class AISpotter : MonoBehaviour
     private RaycastHit hitInfo;
 
 
-    private void OnDrawGizmos()
-    {
-            Gizmos.DrawWireSphere(hitInfo.point,0.1f);
-            Gizmos.DrawLine(eyes.position, hitInfo.point);
-    }
-
     private void Start()
     {
         try
@@ -107,6 +101,11 @@ public class AISpotter : MonoBehaviour
         
         return null;
 
+    }
+
+    public Transform GetFirstTarget()
+    {
+        return (allTarget[0]);
     }
 
 

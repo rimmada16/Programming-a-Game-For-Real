@@ -85,6 +85,7 @@ public class PlayerController : MonoBehaviour
         //true if grounded
         bool castHitFloor = controller.isGrounded;
         
+        
         if (castHitFloor)
         {
             //provide a constant downward pull even when on the floor
@@ -108,15 +109,4 @@ public class PlayerController : MonoBehaviour
         controller.Move(_currentForceVelocity * Time.deltaTime + _currentMoveVelocity * Time.deltaTime);
     }
 
-    private void OnDrawGizmos()
-    {
-        
-        Vector3 castOrigin = transform.position + castOffset;
-        Gizmos.color = Color.yellow;
-        Gizmos.DrawSphere(castOrigin, 0.1f);
-        Gizmos.DrawWireSphere(castOrigin,castRadius);
-        Gizmos.color = Color.green;
-        Gizmos.DrawLine(transform.position, transform.position+ new Vector3(0,-raycastDepth,0));
-        
-    }
 }
