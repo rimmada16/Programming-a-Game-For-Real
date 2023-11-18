@@ -27,7 +27,7 @@ public class BarDisplay : MonoBehaviour
 
     
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         barSegments = new List<Transform>();
         UpdateBar();

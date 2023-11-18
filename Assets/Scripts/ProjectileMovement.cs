@@ -22,7 +22,7 @@ public class ProjectileMovement : MonoBehaviour
     private void Start()
     {
         //checks the variable in the game state manager and uses either the original or hardcore damage
-        damage = !GameStateManager.Instance.isHardcore ? baseDamage : hardcoreDamage;
+        damage = !GameStateManager.isHardcore ? baseDamage : hardcoreDamage;
     }
 
 

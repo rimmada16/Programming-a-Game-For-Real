@@ -201,15 +201,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 27ba1fe8a72821140ad19743311125e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  alerted: 1
-  lastAlerted: 0
   approachSpeed: 5
   escapeSpeed: 4
   ignoreVerticality: 1
-  target: {fileID: 0}
-  targetMemoryTimer: 0
   targetMemoryMaxRemember: 2
-  targetCheckerTimer: 0
   targetCheckerFrequency: 0.1
   spotter: {fileID: 0}
   lookingObject: {fileID: 3544041462426139739}
@@ -217,9 +212,7 @@ MonoBehaviour:
   maxProjectileDistance: 10
   minProjectileDistance: 6
   preferredDistance: 8
-  distanceComfortable: 0
-  previousLowerThreshold: 0
-  previousHigherThreshold: 0
+  attackCooldown: 0.5
 --- !u!114 &3544041461002043562
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -249,7 +242,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3544041461002043560}
   serializedVersion: 2
-  m_Mass: 0.0000001
+  m_Mass: 1
   m_Drag: 0
   m_AngularDrag: 1
   m_UseGravity: 1

@@ -8,18 +8,15 @@ public class EnemyAI : MonoBehaviour
     [SerializeField]
     private AIBehaviour currentBehaviour;
 
-    
-    [SerializeField]
     private bool alerted,lastAlerted;
 
     [SerializeField] private float approachSpeed, escapeSpeed;
     [SerializeField] private bool ignoreVerticality;
 
-    [SerializeField]
     private Transform target;
 
-    [SerializeField] private float targetMemoryTimer, targetMemoryMaxRemember;
-    [SerializeField] private float targetCheckerTimer, targetCheckerFrequency;
+    [SerializeField] private float  targetMemoryMaxRemember,targetCheckerFrequency;
+    private float targetMemoryTimer,targetCheckerTimer ;
     [SerializeField] private AISpotter spotter;
 
     [SerializeField] private Transform lookingObject;
@@ -27,9 +24,11 @@ public class EnemyAI : MonoBehaviour
     [SerializeField]
     private float maxMeleeDistance,maxProjectileDistance,minProjectileDistance,preferredDistance;
 
-    [SerializeField] private int distanceComfortable;
+    
+    private int distanceComfortable;
 
-    [SerializeField] private float previousLowerThreshold, previousHigherThreshold;
+    private float previousLowerThreshold, previousHigherThreshold;
+    [SerializeField] private float attackCooldown;
 
 
     // Start is called before the first frame update
@@ -171,7 +170,7 @@ public class EnemyAI : MonoBehaviour
         {
             
             //set behaviour to melee
-            SetBehaviour( new AIAttackMelee());
+            SetBehaviour( new AIAttackMelee( ));
 
             
             previousLowerThreshold = 0;

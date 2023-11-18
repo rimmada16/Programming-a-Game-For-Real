@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.Serialization;
 
 public class GameStateManager : Singleton<GameStateManager>
 {
@@ -11,10 +12,12 @@ public class GameStateManager : Singleton<GameStateManager>
     
     
     public bool isDead;
-    public GameObject deathmenu;
+    public GameObject deathMenu;
 
+    //static to access between different scenes
+    public static bool isHardcore;
+    public GameObject hardModeIndicator;
 
-    public bool isHardcore;
     
     // Start is called before the first frame update
     void Start()
@@ -42,10 +45,10 @@ public class GameStateManager : Singleton<GameStateManager>
         //code for game being pause
         if (willPause)
         {
-            if (pauseMenu != null)
-            {
-                pauseMenu.SetActive(true);
-            }
+            pauseMenu.SetActive(true);
+            
+            TryShowHardmodeIndicator(true);
+            
             isPaused = true;
             
             menuTimeStopAndCursorShow(true);
@@ -54,10 +57,10 @@ public class GameStateManager : Singleton<GameStateManager>
         //code for game resuming
         else
         {
-            if (pauseMenu != null)
-            {
-                pauseMenu.SetActive(false);
-            }
+            pauseMenu.SetActive(false);
+            
+            TryShowHardmodeIndicator(false);
+            
             isPaused = false;
             menuTimeStopAndCursorShow(false);
             
@@ -84,7 +87,9 @@ public class GameStateManager : Singleton<GameStateManager>
             pauseMenu.SetActive(false);
             
             
-            deathmenu.SetActive(true);
+            deathMenu.SetActive(true);
+            
+            TryShowHardmodeIndicator(true);
             isDead = true;
             isPaused = true;
             
@@ -93,11 +98,28 @@ public class GameStateManager : Singleton<GameStateManager>
         }
         else
         {
-            deathmenu.SetActive(false);
+            deathMenu.SetActive(false);
+            
+            TryShowHardmodeIndicator(false);
             isDead = false;
             
             SetPause(false);
         }
+    }
+
+    public void SetHardcore(bool newHardcore)
+    {
+        isHardcore = newHardcore;
+    }
+
+    public void TryShowHardmodeIndicator(bool active)
+    {
+        hardModeIndicator.SetActive(isHardcore && active);
+    }
+    
+    public void ToggleHardcore()
+    {
+        isHardcore = !isHardcore;
     }
     
     public void ReturnToCheckpoint()
@@ -115,6 +137,11 @@ public class GameStateManager : Singleton<GameStateManager>
     {
         Application.Quit();
     }
+    public void ExitToTitle()
+    {
+        SceneManager.LoadScene(sceneBuildIndex:0);
+    }
+
     
     private void OnApplicationPause(bool pauseStatus)
     {

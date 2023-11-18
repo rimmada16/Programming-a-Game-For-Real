@@ -109,6 +109,11 @@ public class AIAttackMelee : AIBehaviour
     private MeleeAttacker thisMeleeAttacker;
     private bool getAttackFailed = false;
 
+    public AIAttackMelee(float attackCooldown = 1.5f)
+    {
+        attackCooldownMaxT = attackCooldown;
+    }
+    
     public override void EnterBehaviour(Transform newMe, Transform newFace, Transform newTarget)
     {
         base.EnterBehaviour(newMe, newFace, newTarget);

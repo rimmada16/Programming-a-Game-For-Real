@@ -201,25 +201,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 27ba1fe8a72821140ad19743311125e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  alerted: 1
-  lastAlerted: 0
   approachSpeed: 8
   escapeSpeed: 4
   ignoreVerticality: 1
-  target: {fileID: 0}
-  targetMemoryTimer: 0
   targetMemoryMaxRemember: 2
-  targetCheckerTimer: 0
   targetCheckerFrequency: 0.1
   spotter: {fileID: 0}
   lookingObject: {fileID: 8668101690587733312}
   maxMeleeDistance: 3
   maxProjectileDistance: 0.1
   minProjectileDistance: 0
-  preferredDistance: 2
-  distanceComfortable: 0
-  previousLowerThreshold: 0
-  previousHigherThreshold: 0
+  preferredDistance: 1.5
+  attackCooldown: 0.5
 --- !u!114 &8668101689860104625
 MonoBehaviour:
   m_ObjectHideFlags: 0
