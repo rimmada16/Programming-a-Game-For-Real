@@ -19,14 +19,14 @@ public class MeleeAttacker : MonoBehaviour
 
     [SerializeField] private int damage, damageDud;
     [SerializeField] private float knockback, knockbackDud;
-    
-    
+
     [SerializeField] 
     private ValueGrabber cooldownBarUI;
 
 
     private void Start()
     {
+
         if (cooldownBarUI != null)
         {
             cooldownBarUI.SetInputMinMax(0, timeBeforeCanAttack+ extraTimeForFullDamage);
@@ -79,8 +79,18 @@ public class MeleeAttacker : MonoBehaviour
         {
             Debug.Log("attacked fully off cooldown");
             effectiveRayAngleCoverage = rayAngleCoverage;
-            effectiveDamage = damage;
             effectiveKnockback = knockback;
+            
+            // See if object is enemy + hc, if it is set dmg to 1000
+            if (!gameObject.CompareTag("Player") && GameStateManager.isHardcore)
+            {
+                effectiveDamage = 1000;
+            }
+            else
+            {
+                effectiveDamage = damage; 
+            }
+            
         }
         else //if player attacked while cooldown was still going down
         {

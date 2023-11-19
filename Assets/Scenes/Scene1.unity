@@ -9108,7 +9108,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ebdd4e4b18ccae4f9a7c36f538e8347, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projectileIndex: 0
+  projectileIndex: 1
   projectileCooldownCounter: 0
   projectileCooldownMax: 1
   rechargeBarUI: {fileID: 1267268872475379949}
@@ -14140,6 +14140,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   projectilePrefabs:
   - {fileID: 4943795615184951126, guid: fd38043f1ea35c040991f6fb867a8332, type: 3}
+  - {fileID: 4943795615184951126, guid: 7ea874458b3a03e438307d68209b3855, type: 3}
 --- !u!4 &1449241719
 Transform:
   m_ObjectHideFlags: 0

@@ -292,6 +292,8 @@ MonoBehaviour:
   damageDud: 0
   knockback: 10
   knockbackDud: 0
+  enemyBaseDmg: 3
+  enemyHcDmg: 1000
   cooldownBarUI: {fileID: 0}
 --- !u!114 &1922636934
 MonoBehaviour:
