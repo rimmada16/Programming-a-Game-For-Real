@@ -20,13 +20,21 @@ public class MeleeAttacker : MonoBehaviour
     [SerializeField] private int damage, damageDud;
     [SerializeField] private float knockback, knockbackDud;
     
-    
-    [SerializeField] 
+    // For the enemy, didn't want to mess w/ player
+    [SerializeField] private int enemyBaseDmg;
+    [SerializeField] private int enemyHcDmg;
+
+        [SerializeField] 
     private ValueGrabber cooldownBarUI;
 
 
     private void Start()
     {
+        if (!gameObject.CompareTag("Player"))
+        {
+            damage = !GameStateManager.isHardcore ? enemyBaseDmg : enemyHcDmg;
+        }
+
         if (cooldownBarUI != null)
         {
             cooldownBarUI.SetInputMinMax(0, timeBeforeCanAttack+ extraTimeForFullDamage);
