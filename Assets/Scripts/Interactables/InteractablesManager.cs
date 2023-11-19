@@ -2,70 +2,75 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 using Random = UnityEngine.Random;
 
-public class InteractablesManager : MonoBehaviour
+public class InteractablesManager : Singleton<InteractablesManager>
 {
     private int _randomiserChoice;
-    [SerializeField] private int randMinVal;
-    [SerializeField] private int randMaxVal;
-    
-    // For the HP Pickup
-    [SerializeField] private GameObject healthInteractablePrefab;
-    private GameObject healthInteractableGameObject;
-    
-    // For the Ammo Pickup
-    [SerializeField] private GameObject ammoInteractablePrefab;
-    private GameObject ammoInteractableGameObject;
+    [SerializeField] private GameObject[] droppableItems;
+    [SerializeField] private float[] decimalChance;
 
-    // Condenser 
-    private GameObject chosenInteractableGameObject;
-    private GameObject chosenInteractablePrefab;
-
-    // Update is called once per frame
-    void Update()
+    private GameObject chosenItem;
+    private Transform currentSpawnTarget;
+    
+    public GameObject ProduceRandomItem(Transform atTransform)
     {
+        //get random number within length of array
         Randomiser();
-        
-        if (_randomiserChoice == 1)
+
+        //assign item as that item
+        chosenItem = droppableItems[_randomiserChoice];
+
+        //sets the target transform location
+        currentSpawnTarget = atTransform;
+
+        //check if the same index has an assigned percent chance of being dropped
+        if (decimalChance.Length >= _randomiserChoice + 1)
         {
-            chosenInteractableGameObject = healthInteractableGameObject;
-            chosenInteractablePrefab = healthInteractablePrefab;
-            InteractableInstantiator();
+            //makes sure the drop chance is within the correct range
+            float dropChance = decimalChance[_randomiserChoice];
+            dropChance = Mathf.Clamp01(dropChance);
+            
+            //randomly generates a number to decide whether drop will succeed
+            float dropRandom = Random.Range(0f, 1f);
+            Debug.Log("randomiser random"+dropRandom);
+
+            //succeeds if rolls a lower number than %
+            if (dropChance >= dropRandom)
+            {
+                return InteractableInstantiator();
+            }
+            else
+            {
+                return null;
+            }
         }
-        
-        if (_randomiserChoice == 2)
-        {
-            chosenInteractableGameObject = ammoInteractableGameObject;
-            chosenInteractablePrefab = ammoInteractablePrefab;
-            InteractableInstantiator();
-        }
-        
+
+        //auto succeed if it doesnt have an assigned percent value
         else
         {
-            Debug.Log(_randomiserChoice + " - Spawned Nothing");
-            Destroy(gameObject);
+            return InteractableInstantiator();
         }
-
-        // Add in more Interactables here
         
              
     }
 
-    private void InteractableInstantiator()
+    private GameObject InteractableInstantiator()
     {
-        chosenInteractableGameObject = Instantiate(chosenInteractablePrefab, transform.position, Quaternion.identity);
-        chosenInteractableGameObject.transform.parent = transform;
-        chosenInteractableGameObject.transform.parent = null;
-        Debug.Log(_randomiserChoice);
-        
-        Destroy(gameObject);
+        var newObject = Instantiate(chosenItem, currentSpawnTarget.position, currentSpawnTarget.rotation);
+        newObject.transform.parent = transform;
+
+        return newObject;
     }
 
     private void Randomiser()
     {
         // Currently guaranteed to spawn health pickup
         //_randomiserChoice = Random.Range(minVal, maxVal);
-        _randomiserChoice = Random.Range(randMinVal, randMaxVal);
+        
+        //random number of anything in the droppable items
+        _randomiserChoice = Random.Range(0, droppableItems.Length );
+        Debug.Log("randomiser chose"+_randomiserChoice);
     }
 }

@@ -43,7 +43,7 @@ public class ValueGrabber : MonoBehaviour
 
     public void SetValue(float valueInput)
     {
-        Debug.Log("Value coming through is "+valueInput);
+        //Debug.Log("Value coming through is "+valueInput);
         if (inputMin < inputMax)
         {
             value = Mathf.Clamp(valueInput, inputMin, inputMax);
@@ -52,7 +52,7 @@ public class ValueGrabber : MonoBehaviour
         {
             value = Mathf.Clamp(valueInput, inputMax, inputMin);
         }
-        Debug.Log("value changed to "+valueInput+" but actually "+value);
+        //Debug.Log("value changed to "+valueInput+" but actually "+value);
         Notify();
     }
 

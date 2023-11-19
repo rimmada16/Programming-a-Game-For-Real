@@ -17,8 +17,6 @@ public class HealthUnit : MonoBehaviour
     [SerializeField]
     private bool invincible;
 
-    [SerializeField] private GameObject EnemyInteractableManagerPrefab;
-    private GameObject EnemyInteractableManager;
     
     //value grabber link?
     public ValueGrabber healthBarUI;
@@ -85,14 +83,6 @@ public class HealthUnit : MonoBehaviour
         //if unit dies from the new value
         if (newHealth <= 0)
         {
-            if (gameObject.CompareTag("Enemy"))
-            {
-                Vector3 enemyPosition = transform.position;
-                
-                EnemyInteractableManager = Instantiate(EnemyInteractableManagerPrefab, enemyPosition, Quaternion.identity);
-                EnemyInteractableManager.transform.parent = transform;
-                EnemyInteractableManager.transform.parent = null;
-            }
             CallDeath();
         }
         

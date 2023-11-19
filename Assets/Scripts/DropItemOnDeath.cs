@@ -6,7 +6,7 @@ public class DropItemOnDeath : MonoBehaviour
 {
 
     public bool destroySelfOnDeath;
-    
+
     void Start()
     {
         var HU = GetComponent<HealthUnit>();
@@ -18,6 +18,8 @@ public class DropItemOnDeath : MonoBehaviour
 
     void DropItem()
     {
+        InteractablesManager.Instance.ProduceRandomItem(transform);
+        
         //get loot table drop
         if (destroySelfOnDeath)
         {

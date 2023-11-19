@@ -15,9 +15,9 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/4a31731933e0419ca5a995305014ad37157a00/ba/8cd42096/Transform.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/PlayerMeleeController.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/AISpotter.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/TitleScreenManager.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/PlayerMeleeController.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/TitleScreenManager.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -86,10 +86,10 @@
       </option>
       <method v="2" />
     </configuration>
-    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="8216">
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
-      <option name="pid" value="8216" />
+      <option name="pid" />
       <option name="projectPathOnTarget" />
       <option name="selectedOptions">
         <list />
@@ -123,7 +123,8 @@
       <workItem from="1699804912781" duration="8518000" />
       <workItem from="1699884377174" duration="8398000" />
       <workItem from="1700074600535" duration="241000" />
-      <workItem from="1700317837804" duration="9044000" />
+      <workItem from="1700317837804" duration="9870000" />
+      <workItem from="1700412463690" duration="1805000" />
     </task>
     <servers />
   </component>
@@ -134,63 +135,5 @@
   <component name="UnityUnitTestConfiguration" currentTestLauncher="EditMode" />
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Assets/Scripts/HealthUnit.cs</url>
-          <line>99</line>
-          <properties documentPath="D:\GitHub\Programming-a-Game-For-Real\Assets\Scripts\HealthUnit.cs" initialLine="99" containingFunctionPresentation="method 'TakeDamage'">
-            <startOffsets>
-              <option value="2628" />
-            </startOffsets>
-            <endOffsets>
-              <option value="2685" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Assets/Scripts/HealthUnit.cs</url>
-          <line>108</line>
-          <properties documentPath="D:\GitHub\Programming-a-Game-For-Real\Assets\Scripts\HealthUnit.cs" initialLine="108" containingFunctionPresentation="method 'TakeDamage'">
-            <startOffsets>
-              <option value="2959" />
-            </startOffsets>
-            <endOffsets>
-              <option value="3005" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="2" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Assets/Scripts/HealthUnit.cs</url>
-          <line>102</line>
-          <properties documentPath="D:\GitHub\Programming-a-Game-For-Real\Assets\Scripts\HealthUnit.cs" initialLine="102" containingFunctionPresentation="method 'TakeDamage'">
-            <startOffsets>
-              <option value="2721" />
-            </startOffsets>
-            <endOffsets>
-              <option value="2752" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="3" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Assets/Scripts/HealthUnit.cs</url>
-          <line>106</line>
-          <properties documentPath="D:\GitHub\Programming-a-Game-For-Real\Assets\Scripts\HealthUnit.cs" initialLine="106" containingFunctionPresentation="method 'TakeDamage'">
-            <startOffsets>
-              <option value="2907" />
-            </startOffsets>
-            <endOffsets>
-              <option value="2933" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="4" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>
