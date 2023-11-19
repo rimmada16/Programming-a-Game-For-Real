@@ -10,11 +10,6 @@ public class EnableKunai : Interactable
     
     protected override void interact(Collider other)
     {
-        if (!other.GetComponent<PlayerProjectile>().enabled)
-        {
-            ammoBarUI.SetActive(true);
-            projectileCooldownBarUI.SetActive(true);
-            other.GetComponent<PlayerProjectile>().enabled = true; 
-        }
+        other.GetComponent<PlayerProjectile>().EnableSelf(true);
     }
 }

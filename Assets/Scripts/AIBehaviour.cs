@@ -16,12 +16,12 @@ public abstract class AIBehaviour
     {
         SetMe(newMe,newFace);
         myTarget = target;
-        Debug.Log(this.GetType().Name + " enter");
+        //Debug.Log(this.GetType().Name + " enter");
     }
     public virtual void ExitBehaviour()
     {
         
-        Debug.Log(this.GetType().Name + " exit");
+        //Debug.Log(this.GetType().Name + " exit");
     }
 
     public void SetMe(Transform newMe, Transform newFace)

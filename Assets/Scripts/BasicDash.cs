@@ -34,12 +34,22 @@ public class BasicDash : MonoBehaviour
     // Anti clipping measure
     private void OnCollisionEnter(Collision col)
     {
-        if (col.gameObject.tag == "Wall")
+        if (col.gameObject.CompareTag("Wall"))
         {
             dashTimeCounter = 0;
             transform.Translate(Vector3.zero);
             Debug.Log("The collision detector did its thing");
         }
+    }
+
+    public void EnableSelf(bool nowEnable)
+    {
+        if (!this.enabled == nowEnable)
+        {
+            GameStateManager.Instance.dashUi.SetActive(nowEnable);
+            this.enabled = nowEnable; 
+        }
+
     }
 
     // Grabs the player controller at the start

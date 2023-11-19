@@ -14,9 +14,18 @@ public class GameStateManager : Singleton<GameStateManager>
     public bool isDead;
     public GameObject deathMenu;
 
+    public GameObject kunaiUi;
+    public GameObject dashUi;
+    public GameObject checkpointButton;
+    public GameObject checkpointButton2;
+
     //static to access between different scenes
     public static bool isHardcore;
     public GameObject hardModeIndicator;
+
+    public GameObject player;
+
+    public static bool startAtCheckpoint;
 
     
     // Start is called before the first frame update
@@ -24,6 +33,21 @@ public class GameStateManager : Singleton<GameStateManager>
     {
         SetPause(false);
         SetDeathMenu(false);
+        
+        player = GameObject.FindWithTag("Player");
+
+        if ( startAtCheckpoint)
+        {
+            if (!isHardcore)
+            {
+                CheckpointManager.Instance.StartAtCheckpoint(player);
+            }
+            startAtCheckpoint = false;
+        }
+        
+        checkpointButton.SetActive(!isHardcore);
+        checkpointButton2.SetActive(!isHardcore);
+        
     }
 
     // Update is called once per frame
@@ -125,6 +149,9 @@ public class GameStateManager : Singleton<GameStateManager>
     public void ReturnToCheckpoint()
     {
         //code to find a checkpoint and return to it if we do checkpoints
+        
+        startAtCheckpoint = true;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
     public void RestartGame()

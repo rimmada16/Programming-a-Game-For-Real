@@ -36,7 +36,9 @@ public class TitleScreenManager : Singleton<TitleScreenManager>
     public void LaunchGame(bool isHardcore)
     {
         GameStateManager.isHardcore = isHardcore;
+        CheckpointManager.ResetToDefaults();
         SceneManager.LoadScene(sceneBuildIndex:1);
+
     }
 
     public void OpenDifficultyScreen()

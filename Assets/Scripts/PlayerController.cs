@@ -7,7 +7,7 @@ using UnityEngine.Serialization;
 public class PlayerController : MonoBehaviour
 {
     [SerializeField]
-    private float moveSmoothTime,gravityStrength,jumpStrength,walkSpeed,raycastDepth;
+    private float moveSmoothTime,gravityStrength,jumpStrength,walkSpeed;
 
     [SerializeField]
     private float altSpeed;
@@ -17,12 +17,7 @@ public class PlayerController : MonoBehaviour
     
     private Vector3 _currentMoveVelocity,_moveDampVelocity;
     private Vector3 _currentForceVelocity;
-
-
-    [SerializeField] 
-    private Vector3 castOffset;
-    [SerializeField] 
-    private float castRadius = 0.8f;
+    
 
     public bool lockMovement;
     

@@ -9,10 +9,7 @@ public class EnableDash : Interactable
     
     protected override void interact(Collider other)
     {
-        if (!other.GetComponent<BasicDash>().enabled)
-        {
-            targetUI.SetActive(true);
-            other.GetComponent<BasicDash>().enabled = true; 
-        }
+        other.GetComponent<BasicDash>().EnableSelf(true);
+        
     }
 }

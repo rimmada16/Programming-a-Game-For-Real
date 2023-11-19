@@ -15,6 +15,7 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/4a31731933e0419ca5a995305014ad37157a00/ba/8cd42096/Transform.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/CheckpointManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/AISpotter.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/PlayerMeleeController.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/TitleScreenManager.cs" root0="FORCE_HIGHLIGHTING" />
@@ -124,7 +125,8 @@
       <workItem from="1699884377174" duration="8398000" />
       <workItem from="1700074600535" duration="241000" />
       <workItem from="1700317837804" duration="9870000" />
-      <workItem from="1700412463690" duration="1805000" />
+      <workItem from="1700412463690" duration="2569000" />
+      <workItem from="1700423100178" duration="5248000" />
     </task>
     <servers />
   </component>

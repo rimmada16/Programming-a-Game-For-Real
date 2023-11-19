@@ -27,7 +27,7 @@ public class ProjectileManager : Singleton<ProjectileManager>
         newProjectile.layer = source.layer;
 
         
-        Debug.Log("The projectile has been created");
+        //Debug.Log("The projectile has been created");
         
     }
 }

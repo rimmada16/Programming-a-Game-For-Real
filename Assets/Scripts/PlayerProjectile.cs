@@ -28,6 +28,18 @@ public class PlayerProjectile : MonoBehaviour
         
         ChangeAmmoBy(0);
     }
+    
+    
+    public void EnableSelf(bool nowEnable)
+    {
+        if (!this.enabled == nowEnable)
+        {
+            GameStateManager.Instance.kunaiUi.SetActive(nowEnable);
+            this.enabled = nowEnable; 
+        }
+
+    }
+    
 
     // Update is called once per frame
     void Update()
