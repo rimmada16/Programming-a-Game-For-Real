@@ -7,9 +7,7 @@ using UnityEngine.Serialization;
 
 public class ProjectileMovement : MonoBehaviour
 {
-    private int damage;
-    [SerializeField] private int baseDamage;
-    [SerializeField] private int hardcoreDamage;
+    [SerializeField] private int damage = 2;
     [SerializeField] private int knockback;
     public Transform source;
     
@@ -19,12 +17,6 @@ public class ProjectileMovement : MonoBehaviour
     public float lifetime = 1;
     
     // Start is called before the first frame update
-    private void Start()
-    {
-        //checks the variable in the game state manager and uses either the original or hardcore damage
-        damage = !GameStateManager.isHardcore ? baseDamage : hardcoreDamage;
-    }
-
 
     private void Awake()
     {

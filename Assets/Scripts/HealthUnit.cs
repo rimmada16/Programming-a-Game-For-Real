@@ -61,6 +61,12 @@ public class HealthUnit : MonoBehaviour
     //take damage and return true if the damage got taken
     public bool TakeDamage(int damage, float knockback = 0, Transform knockbackSource = null)
     {
+        if (gameObject.CompareTag("Player") && GameStateManager.isHardcore)
+        {
+            damage = 1000;
+        }
+        
+        
         if (iFrameCounter > 0)
         {
             //Debug.Log("still has iframes");
