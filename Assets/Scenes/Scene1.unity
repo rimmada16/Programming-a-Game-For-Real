@@ -1028,6 +1028,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 509195d2ed029324ea9e3de1e3d6eb65, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dropItem: 1
   destroySelfOnDeath: 1
 --- !u!114 &162456238
 MonoBehaviour:
@@ -2136,6 +2137,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 509195d2ed029324ea9e3de1e3d6eb65, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dropItem: 1
   destroySelfOnDeath: 1
 --- !u!114 &237516726
 MonoBehaviour:
@@ -2714,6 +2716,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 509195d2ed029324ea9e3de1e3d6eb65, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dropItem: 1
   destroySelfOnDeath: 1
 --- !u!114 &296848751
 MonoBehaviour:
@@ -3172,6 +3175,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 509195d2ed029324ea9e3de1e3d6eb65, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dropItem: 1
   destroySelfOnDeath: 1
 --- !u!114 &340171968
 MonoBehaviour:
@@ -3836,6 +3840,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 509195d2ed029324ea9e3de1e3d6eb65, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dropItem: 1
   destroySelfOnDeath: 1
 --- !u!114 &398188133
 MonoBehaviour:
@@ -4750,6 +4755,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 509195d2ed029324ea9e3de1e3d6eb65, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dropItem: 1
   destroySelfOnDeath: 1
 --- !u!114 &472954802
 MonoBehaviour:
@@ -5155,6 +5161,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 509195d2ed029324ea9e3de1e3d6eb65, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dropItem: 1
   destroySelfOnDeath: 1
 --- !u!114 &493819340
 MonoBehaviour:
@@ -5489,6 +5496,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 509195d2ed029324ea9e3de1e3d6eb65, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dropItem: 1
   destroySelfOnDeath: 1
 --- !u!114 &529934033
 MonoBehaviour:
@@ -5853,6 +5861,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 509195d2ed029324ea9e3de1e3d6eb65, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dropItem: 1
   destroySelfOnDeath: 1
 --- !u!114 &570445755
 MonoBehaviour:
@@ -6629,6 +6638,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 509195d2ed029324ea9e3de1e3d6eb65, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dropItem: 1
   destroySelfOnDeath: 1
 --- !u!114 &649985356
 MonoBehaviour:
@@ -8316,6 +8326,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 509195d2ed029324ea9e3de1e3d6eb65, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dropItem: 1
   destroySelfOnDeath: 1
 --- !u!114 &829442545
 MonoBehaviour:
@@ -9104,6 +9115,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 509195d2ed029324ea9e3de1e3d6eb65, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dropItem: 1
   destroySelfOnDeath: 1
 --- !u!114 &898934243
 MonoBehaviour:
@@ -9265,8 +9277,8 @@ MonoBehaviour:
   pauseMenu: {fileID: 613608102}
   isDead: 0
   deathMenu: {fileID: 1560463840}
-  kunaiUi: {fileID: 950871122}
-  dashUi: {fileID: 825593808}
+  kunaiUi: {fileID: 825593808}
+  dashUi: {fileID: 905987417}
   checkpointButton: {fileID: 219068681}
   checkpointButton2: {fileID: 1608686170}
   hardModeIndicator: {fileID: 926447267}
@@ -10135,6 +10147,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 509195d2ed029324ea9e3de1e3d6eb65, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dropItem: 1
   destroySelfOnDeath: 1
 --- !u!114 &986215786
 MonoBehaviour:
@@ -10385,6 +10398,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 509195d2ed029324ea9e3de1e3d6eb65, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dropItem: 1
   destroySelfOnDeath: 1
 --- !u!114 &1018391532
 MonoBehaviour:
@@ -11960,6 +11974,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 509195d2ed029324ea9e3de1e3d6eb65, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dropItem: 1
   destroySelfOnDeath: 1
 --- !u!114 &1155499743
 MonoBehaviour:
@@ -12327,6 +12342,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 509195d2ed029324ea9e3de1e3d6eb65, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dropItem: 1
   destroySelfOnDeath: 1
 --- !u!114 &1184521585
 MonoBehaviour:
@@ -12609,6 +12625,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 509195d2ed029324ea9e3de1e3d6eb65, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dropItem: 1
   destroySelfOnDeath: 1
 --- !u!114 &1197943266
 MonoBehaviour:
@@ -12862,6 +12879,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 509195d2ed029324ea9e3de1e3d6eb65, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dropItem: 1
   destroySelfOnDeath: 1
 --- !u!114 &1222189050
 MonoBehaviour:
@@ -13273,6 +13291,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 509195d2ed029324ea9e3de1e3d6eb65, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dropItem: 1
   destroySelfOnDeath: 1
 --- !u!114 &1243552474
 MonoBehaviour:
@@ -14584,6 +14603,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 509195d2ed029324ea9e3de1e3d6eb65, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dropItem: 1
   destroySelfOnDeath: 1
 --- !u!114 &1402292411
 MonoBehaviour:
@@ -14779,6 +14799,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 509195d2ed029324ea9e3de1e3d6eb65, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dropItem: 1
   destroySelfOnDeath: 1
 --- !u!114 &1424681004
 MonoBehaviour:
@@ -15418,6 +15439,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 509195d2ed029324ea9e3de1e3d6eb65, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dropItem: 1
   destroySelfOnDeath: 1
 --- !u!114 &1488488064
 MonoBehaviour:
@@ -16279,6 +16301,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 509195d2ed029324ea9e3de1e3d6eb65, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dropItem: 1
   destroySelfOnDeath: 1
 --- !u!114 &1540455351
 MonoBehaviour:
@@ -16579,6 +16602,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 509195d2ed029324ea9e3de1e3d6eb65, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dropItem: 1
   destroySelfOnDeath: 1
 --- !u!114 &1573639213
 MonoBehaviour:
@@ -16873,6 +16897,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 509195d2ed029324ea9e3de1e3d6eb65, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dropItem: 1
   destroySelfOnDeath: 1
 --- !u!114 &1592497301
 MonoBehaviour:
@@ -17324,6 +17349,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 509195d2ed029324ea9e3de1e3d6eb65, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dropItem: 1
   destroySelfOnDeath: 1
 --- !u!114 &1617973534
 MonoBehaviour:
@@ -17753,6 +17779,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 509195d2ed029324ea9e3de1e3d6eb65, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dropItem: 1
   destroySelfOnDeath: 1
 --- !u!114 &1656561295
 MonoBehaviour:
@@ -18039,6 +18066,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 509195d2ed029324ea9e3de1e3d6eb65, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dropItem: 1
   destroySelfOnDeath: 1
 --- !u!114 &1660993626
 MonoBehaviour:
@@ -18288,6 +18316,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 509195d2ed029324ea9e3de1e3d6eb65, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dropItem: 1
   destroySelfOnDeath: 1
 --- !u!114 &1676543838
 MonoBehaviour:
@@ -18635,6 +18664,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 509195d2ed029324ea9e3de1e3d6eb65, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dropItem: 1
   destroySelfOnDeath: 1
 --- !u!114 &1696056890
 MonoBehaviour:
@@ -18824,6 +18854,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 509195d2ed029324ea9e3de1e3d6eb65, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dropItem: 1
   destroySelfOnDeath: 1
 --- !u!114 &1697291564
 MonoBehaviour:
@@ -19203,6 +19234,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 509195d2ed029324ea9e3de1e3d6eb65, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dropItem: 1
   destroySelfOnDeath: 1
 --- !u!114 &1737787403
 MonoBehaviour:
@@ -19636,6 +19668,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 509195d2ed029324ea9e3de1e3d6eb65, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dropItem: 1
   destroySelfOnDeath: 1
 --- !u!114 &1783036151
 MonoBehaviour:
@@ -20464,6 +20497,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 509195d2ed029324ea9e3de1e3d6eb65, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dropItem: 1
   destroySelfOnDeath: 1
 --- !u!114 &1886191769
 MonoBehaviour:
@@ -20942,6 +20976,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 509195d2ed029324ea9e3de1e3d6eb65, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dropItem: 1
   destroySelfOnDeath: 1
 --- !u!114 &1930155459
 MonoBehaviour:
@@ -21077,6 +21112,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 509195d2ed029324ea9e3de1e3d6eb65, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dropItem: 1
   destroySelfOnDeath: 1
 --- !u!114 &1933905263
 MonoBehaviour:
@@ -21317,6 +21353,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 509195d2ed029324ea9e3de1e3d6eb65, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dropItem: 1
   destroySelfOnDeath: 1
 --- !u!114 &1947536342
 MonoBehaviour:
@@ -21843,6 +21880,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 509195d2ed029324ea9e3de1e3d6eb65, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dropItem: 1
   destroySelfOnDeath: 1
 --- !u!114 &1965917839
 MonoBehaviour:
@@ -22174,6 +22212,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 509195d2ed029324ea9e3de1e3d6eb65, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dropItem: 1
   destroySelfOnDeath: 1
 --- !u!114 &2030490843
 MonoBehaviour:
@@ -22477,6 +22516,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 509195d2ed029324ea9e3de1e3d6eb65, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dropItem: 1
   destroySelfOnDeath: 1
 --- !u!114 &2055215191
 MonoBehaviour:
@@ -22732,6 +22772,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 509195d2ed029324ea9e3de1e3d6eb65, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dropItem: 1
   destroySelfOnDeath: 1
 --- !u!114 &2124413691
 MonoBehaviour:

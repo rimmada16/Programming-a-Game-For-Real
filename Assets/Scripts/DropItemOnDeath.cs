@@ -5,6 +5,7 @@ using UnityEngine;
 public class DropItemOnDeath : MonoBehaviour
 {
 
+    public bool dropItem = true;
     public bool destroySelfOnDeath;
 
     void Start()
@@ -18,7 +19,11 @@ public class DropItemOnDeath : MonoBehaviour
 
     void DropItem()
     {
-        InteractablesManager.Instance.ProduceRandomItem(transform);
+        if (dropItem)
+        {
+            
+            InteractablesManager.Instance.ProduceRandomItem(transform);
+        }
         
         //get loot table drop
         if (destroySelfOnDeath)
