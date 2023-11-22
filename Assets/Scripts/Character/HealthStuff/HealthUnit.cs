@@ -24,7 +24,12 @@ public class HealthUnit : MonoBehaviour
     
     public delegate void DeathHandler();
     public event DeathHandler OnDeath;
-    public event DeathHandler OnDamage;
+    
+    public delegate void HitHandler();
+    public event HitHandler OnHit;
+    
+    public delegate void DamageHandler(float damage, float knockback, Transform knockbackSource);
+    public event DamageHandler OnDamage;
     public Rigidbody myRB;
     
     // Start is called before the first frame update
@@ -84,7 +89,9 @@ public class HealthUnit : MonoBehaviour
         
         currentHealth = newHealth;
         UpdateDisplay();
-        CallDamage();
+
+        knockback *= knockbackMultiplier;
+        CallDamage(damage, knockback, knockbackSource);
         
         //if unit dies from the new value
         if (newHealth <= 0)
@@ -92,7 +99,18 @@ public class HealthUnit : MonoBehaviour
             CallDeath();
         }
         
+        if (gameObject.layer == LayerMask.NameToLayer("Prop"))
+        {
+            DoKnockbackPhysics(knockbackSource,knockback);
+        }
         
+        
+        //run damage effect to indicate taken damage
+        return true;
+    }
+
+    public void DoKnockbackPhysics(Transform knockbackSource, float knockback)
+    {
         if (knockbackSource != null && GetComponent<Rigidbody>())
         {
             
@@ -104,11 +122,8 @@ public class HealthUnit : MonoBehaviour
             
             myRB.AddForce(forceToApply,ForceMode.Impulse);
         }
-        
-        //run damage effect to indicate taken damage
-        return true;
     }
-
+    
     //get healed
     public void GetHealed(int heal)
     {
@@ -148,8 +163,8 @@ public class HealthUnit : MonoBehaviour
     {
         OnDeath?.Invoke();
     }
-    private void CallDamage()
+    private void CallDamage(float damage, float knockback, Transform knockbackSource)
     {
-        OnDamage?.Invoke();
+        OnDamage?.Invoke(damage,knockback, knockbackSource);
     }
 }

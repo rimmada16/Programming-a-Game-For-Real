@@ -227,11 +227,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 5
   currentHealth: 0
-  knockbackMultiplier: 0
+  knockbackMultiplier: 1
   iFrameTime: 0.5
   iFrameCounter: 0
   invincible: 0
-  EnemyInteractableManagerPrefab: {fileID: 8043055000312456301, guid: 5ae137877e900064a90a83ee2f32c699, type: 3}
   healthBarUI: {fileID: 0}
   myRB: {fileID: 0}
 --- !u!54 &8668101689860104524
@@ -262,6 +261,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 509195d2ed029324ea9e3de1e3d6eb65, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dropItem: 1
   destroySelfOnDeath: 1
 --- !u!114 &8668101689860104522
 MonoBehaviour:
@@ -292,8 +292,6 @@ MonoBehaviour:
   damageDud: 0
   knockback: 10
   knockbackDud: 0
-  enemyBaseDmg: 2
-  enemyHcDmg: 1000
   cooldownBarUI: {fileID: 0}
 --- !u!114 &5288842662441565597
 MonoBehaviour:

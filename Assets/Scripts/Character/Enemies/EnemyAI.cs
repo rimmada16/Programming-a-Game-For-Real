@@ -9,7 +9,9 @@ public class EnemyAI : MonoBehaviour
     private AIBehaviour currentBehaviour;
 
     private bool alerted,lastAlerted;
-
+    private bool forgotPlayer;
+    private bool gotKnockedBack;
+    
     [SerializeField] private float approachSpeed, escapeSpeed;
     [SerializeField] private bool ignoreVerticality;
 
@@ -34,13 +36,14 @@ public class EnemyAI : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        SetBehaviour(new AIIdle(), false);
+        SetBehaviour(new AIIdle(), doExit:false);
         spotter = GetComponent<AISpotter>();
+        forgotPlayer = true;
 
         try
         {
 
-            GetComponent<HealthUnit>().OnDamage += InstantSpotPlayer;
+            GetComponent<HealthUnit>().OnDamage += GetKnockedBack;
         }
         catch
         {
@@ -59,6 +62,22 @@ public class EnemyAI : MonoBehaviour
             
         }
 
+        if (gotKnockedBack)
+        {
+            if (currentBehaviour.IsBusy())
+            {
+                currentBehaviour.Update();
+                return;
+            }
+            else
+            {
+                gotKnockedBack = false;
+                InstantSpotPlayer();
+            }
+            
+        }
+        
+        
         //how often the raycasts for spotting the player are ran
         if (targetCheckerTimer > 0)
         {
@@ -78,22 +97,28 @@ public class EnemyAI : MonoBehaviour
         }
         else
         {
-            ForgetPlayer();
+            if (!forgotPlayer)
+            {
+                
+                ForgetPlayer();
+            }
         }
         
         //check that alert state has changed
         if (alerted != lastAlerted)
         {
-            //changed to be alert
+            //starts seeing player
             if (alerted )
             {
+                forgotPlayer = false;
                 CheckBehaviourAtDistance();
                 //SetBehaviour(new AIAlerted());
             }
-            //changed to not be alert
+            //stops seeing player
             else
             {
-                SetBehaviour(new AIIdle());
+                //approaches last known position    
+                SetBehaviour(new AIApproach( approachSpeed, useFirstPos:true));
             }
         }
         //while staying the same
@@ -101,6 +126,11 @@ public class EnemyAI : MonoBehaviour
         {
             if (alerted)
             {
+                if (currentBehaviour.IsStuck())
+                {
+                    SetBehaviour(new AIAttackProjectile());
+                }
+                    
                 if (PastThresholds())
                 {
                     CheckBehaviourAtDistance();
@@ -113,12 +143,24 @@ public class EnemyAI : MonoBehaviour
         lastAlerted = alerted;
     }
 
+    private void ForgetPlayer()
+    {
+        SetBehaviour(new AISearching());
+        forgotPlayer = true;
+    }
     private void InstantSpotPlayer()
     {
         
         alerted = true;
         target = spotter.GetFirstTarget();
+        
         targetMemoryTimer = targetMemoryMaxRemember;
+    }
+
+    private void GetKnockedBack(float damage, float knockback,Transform knockbackSource)
+    {
+        SetBehaviour(new AIKnockback(knockbackSource,knockback), forced: true);
+        gotKnockedBack = true;
     }
 
     private void IsPlayerSeen()
@@ -134,13 +176,13 @@ public class EnemyAI : MonoBehaviour
             target = targetFound;
             targetMemoryTimer = targetMemoryMaxRemember;
         }
+        else
+        {
+            
+            alerted = false;
+        }
     }
 
-    private void ForgetPlayer()
-    {
-        alerted = false;
-        target = null;
-    }
     private bool PastThresholds()
     {
         float targetDistance = GetDistanceTo(target);
@@ -168,13 +210,9 @@ public class EnemyAI : MonoBehaviour
         //if so close that melee range
         if (targetDistance <= maxMeleeDistance)
         {
-            
             //set behaviour to melee
-            SetBehaviour( new AIAttackMelee( ));
-
+            SetBehaviour( new AIAttackMelee( attackCooldown ),0, maxMeleeDistance);
             
-            previousLowerThreshold = 0;
-            previousHigherThreshold = maxMeleeDistance;
             return;
         }
 
@@ -183,10 +221,8 @@ public class EnemyAI : MonoBehaviour
         {
             distanceComfortable = -1;//too close
             //set behaviour to approach backwards
-            SetBehaviour( new AIApproach(target,-escapeSpeed,true));
+            SetBehaviour( new AIApproach(-escapeSpeed,true),maxMeleeDistance,preferredDistance);
 
-            previousLowerThreshold = maxMeleeDistance;
-            previousHigherThreshold = preferredDistance;
             return;
         }
         
@@ -196,10 +232,8 @@ public class EnemyAI : MonoBehaviour
             distanceComfortable = 1;//too far
             //set behaviour to approach forwards
             
-            SetBehaviour( new AIApproach(target,approachSpeed));
+            SetBehaviour( new AIApproach(approachSpeed),preferredDistance,9999999);
 
-            previousLowerThreshold = preferredDistance;
-            previousHigherThreshold = 9999999;
             return;
         }
 
@@ -222,11 +256,8 @@ public class EnemyAI : MonoBehaviour
         if (distanceComfortable == 0)
         {
             //set behaviour to shoot projectiles
-            SetBehaviour( new AIAttackProjectile());
+            SetBehaviour( new AIAttackProjectile(),minProjectileDistance,maxProjectileDistance);
             
-            
-            previousLowerThreshold = minProjectileDistance;
-            previousHigherThreshold = maxProjectileDistance;
             return;
         }
         
@@ -244,13 +275,34 @@ public class EnemyAI : MonoBehaviour
         return distance;
     }
 
-    private void SetBehaviour(AIBehaviour newBehaviour, bool doExit = true)
+    private bool SetBehaviour(AIBehaviour newBehaviour, float prevLow = -1, float prevHigh = -1, bool doExit = true, bool forced = false)
     {
-        if (doExit)
+        if (currentBehaviour != null)
         {
-            currentBehaviour.ExitBehaviour();
+            if (currentBehaviour.IsBusy() && !forced )
+            {
+                return false;
+            }
+            
+            if (doExit)
+            {
+                currentBehaviour.ExitBehaviour();
+            }
         }
+        
+
+        if (prevLow >=0)
+        {
+            previousLowerThreshold = prevLow;
+        }
+        if (prevHigh >=0)
+        {
+            previousHigherThreshold = prevHigh;
+        }
+        
         currentBehaviour = newBehaviour;
         currentBehaviour.EnterBehaviour(transform, lookingObject, target);
+
+        return true;
     }
 }

@@ -19,7 +19,7 @@ public class TitleScreenManager : Singleton<TitleScreenManager>
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (onStartScreen && Input.GetKeyDown(KeyCode.Escape))
         {
             ExitGame();
         }
@@ -29,6 +29,10 @@ public class TitleScreenManager : Singleton<TitleScreenManager>
             OpenDifficultyScreen();
         }
         
+        if (!onStartScreen && Input.GetKeyDown(KeyCode.Escape))
+        {
+            CloseDifficultyScreen();
+        }
         
     }
 

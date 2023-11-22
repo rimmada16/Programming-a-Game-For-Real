@@ -130,11 +130,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 10
   currentHealth: 0
-  knockbackMultiplier: 0
+  knockbackMultiplier: 1
   iFrameTime: 0.3
   iFrameCounter: 0
   invincible: 0
-  EnemyInteractableManagerPrefab: {fileID: 0}
   healthBarUI: {fileID: 0}
   myRB: {fileID: 0}
 --- !u!114 &4811968761653219117
@@ -149,4 +148,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 509195d2ed029324ea9e3de1e3d6eb65, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dropItem: 1
   destroySelfOnDeath: 1

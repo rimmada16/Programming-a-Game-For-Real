@@ -117,7 +117,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 5
   currentHealth: 0
-  knockbackMultiplier: 0
+  knockbackMultiplier: 1
   iFrameTime: 0.3
   iFrameCounter: 0
   invincible: 0

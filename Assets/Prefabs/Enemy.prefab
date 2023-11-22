@@ -204,15 +204,15 @@ MonoBehaviour:
   approachSpeed: 5
   escapeSpeed: 4
   ignoreVerticality: 1
-  targetMemoryMaxRemember: 2
-  targetCheckerFrequency: 0.1
+  targetMemoryMaxRemember: 5
+  targetCheckerFrequency: 0.01
   spotter: {fileID: 0}
   lookingObject: {fileID: 3544041462426139739}
   maxMeleeDistance: 3
   maxProjectileDistance: 10
   minProjectileDistance: 6
   preferredDistance: 8
-  attackCooldown: 0.5
+  attackCooldown: 0.7
 --- !u!114 &3544041461002043562
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -227,11 +227,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 10
   currentHealth: 0
-  knockbackMultiplier: 0
+  knockbackMultiplier: 1
   iFrameTime: 0.5
   iFrameCounter: 0
   invincible: 0
-  EnemyInteractableManagerPrefab: {fileID: 8043055000312456301, guid: 5ae137877e900064a90a83ee2f32c699, type: 3}
   healthBarUI: {fileID: 0}
   myRB: {fileID: 0}
 --- !u!54 &3544041461002043479
@@ -262,6 +261,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 509195d2ed029324ea9e3de1e3d6eb65, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dropItem: 1
   destroySelfOnDeath: 1
 --- !u!114 &3544041461002043473
 MonoBehaviour:
@@ -277,7 +277,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   locked: 0
   cooldownCounter: 0
-  timeBeforeCanAttack: 0.2
+  timeBeforeCanAttack: 0
   extraTimeForFullDamage: 0
   castSource: {fileID: 3544041462426139739}
   knockbackSource: {fileID: 0}
@@ -292,8 +292,6 @@ MonoBehaviour:
   damageDud: 0
   knockback: 10
   knockbackDud: 0
-  enemyBaseDmg: 3
-  enemyHcDmg: 1000
   cooldownBarUI: {fileID: 0}
 --- !u!114 &1922636934
 MonoBehaviour:

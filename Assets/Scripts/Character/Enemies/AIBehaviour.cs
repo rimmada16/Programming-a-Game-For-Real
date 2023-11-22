@@ -10,6 +10,9 @@ public abstract class AIBehaviour
 
     protected Transform myTarget;
 
+    protected bool busy;
+    protected bool isStuck;
+    
     public abstract void Update();
 
     public virtual void EnterBehaviour(Transform newMe, Transform newFace, Transform target)
@@ -18,6 +21,17 @@ public abstract class AIBehaviour
         myTarget = target;
         //Debug.Log(this.GetType().Name + " enter");
     }
+
+    public bool IsBusy()
+    {
+        return busy;
+    }
+    
+    public bool IsStuck()
+    {
+        return isStuck;
+    }
+
     public virtual void ExitBehaviour()
     {
         
@@ -30,19 +44,19 @@ public abstract class AIBehaviour
         myFace = newFace;
     }
 
-    protected void rotateToLookAt(Transform target)
+    protected void rotateToLookAt(Vector3 lookTarget)
     {
-        if (target != null && me != null && myFace != null)
+        if ( me != null && myFace != null)
         {
             Vector3 v_diff;
             float atan2;
             
-            v_diff = (target.position - me.position);	
+            v_diff = (lookTarget - me.position);	
             atan2 = Mathf.Atan2 ( v_diff.x, v_diff.z );
             me.rotation = Quaternion.Euler(0f, atan2 * Mathf.Rad2Deg,0f );
             
             
-            v_diff = (target.position - myFace.position);	
+            v_diff = (lookTarget - myFace.position);	
             atan2 = Mathf.Atan2 ( v_diff.y, new Vector2(v_diff.x, v_diff.z).magnitude );
             myFace.localRotation = Quaternion.Euler(-atan2 * Mathf.Rad2Deg ,0f, 0f );
             
@@ -50,28 +64,100 @@ public abstract class AIBehaviour
     }
 }
 
-public class AIIdle : AIBehaviour
+public class AIKnockback : AIBehaviour
 {
+    private Vector3 source, momentum;
+    private float force;
+
+    private float maxKnockbackTime = 1, currentKnockbackTime;
+    
+    public AIKnockback(Transform transformSource, float strength)
+    {
+        busy = true;
+        source = transformSource.position;
+        force = strength;
+        
+        
+    }
+
+    public override void EnterBehaviour(Transform newMe, Transform newFace, Transform target)
+    {
+        base.EnterBehaviour(newMe, newFace, target);
+
+        Vector3 offset = me.position - source;
+        offset.y = 0;
+        offset = offset.normalized * force;
+
+        offset.y = 3;
+
+        momentum = offset;
+        currentKnockbackTime = maxKnockbackTime;
+    }
+
     public override void Update()
     {
         
+        var distToMove = momentum *(currentKnockbackTime/maxKnockbackTime)* Time.deltaTime;
+            
+        me.position += (Vector3) distToMove;
+
+        currentKnockbackTime -= Time.deltaTime;
+
+        if (currentKnockbackTime <= 0)
+        {
+            busy = false;
+        }
+            
+
+
+    }
+}
+public class AIIdle : AIBehaviour
+{
+    
+    public override void Update()
+    {
     }
 }
 
+public class AISearching: AIBehaviour
+{
+    private float spinSpeed = 90;
+    public override void Update()
+    {
+        myFace.localRotation = new Quaternion();
+        me.eulerAngles += new Vector3(0,spinSpeed * Time.deltaTime,0) ;
+    }
+}
 
 public class AIApproach : AIBehaviour
 {
     private float speed;
-    private Transform target;
     private bool moveBackwards;
+    private bool useFirstPosition;
+    private Vector3 nextPosition;
 
-    public AIApproach(Transform newTarget, float newSpeed, bool movingBackwards = false)
+    private Vector3 myLastPos;
+
+    public AIApproach( float newSpeed, bool movingBackwards = false, bool useFirstPos = false)
     {
         speed = newSpeed;
-        target = newTarget;
         moveBackwards = movingBackwards;
+        useFirstPosition = useFirstPos;
+
     }
-    
+
+    public override void EnterBehaviour(Transform newMe, Transform newFace, Transform target)
+    {
+        base.EnterBehaviour(newMe, newFace, target);
+        
+        
+        nextPosition = myTarget.position;
+
+        myLastPos = me.position;
+    }
+
+
     public override void Update()
     {
         //Debug.Log("want to move");
@@ -80,19 +166,47 @@ public class AIApproach : AIBehaviour
         //apply a movement distance on whatever this script is attached to
         if (me != null)
         {
-            rotateToLookAt(myTarget);
+            if (!useFirstPosition)
+            {
+                nextPosition = myTarget.position;
+            }
+            rotateToLookAt(nextPosition);
             var distToMove = GetTargetDirection() * speed * Time.deltaTime;
-            me.position += (Vector3) distToMove;
             
+            me.position += (Vector3) distToMove;
+
+            //Debug.Log("moved by "+(myLastPos - me.position).magnitude);
+            //Debug.Log("compared to "+0.3f*speed* Time.deltaTime);
+            if ((myLastPos - me.position).magnitude < 0.5f*speed* Time.deltaTime)
+            {
+                isStuck = true;
+            }
+            else
+            {
+                isStuck = false;
+            }
+
+            myLastPos = me.position;
             //Debug.Log("moving by "+ distToMove);
         }
     }
     public Vector3 GetTargetDirection()
     {
-        Vector3 newDir =  target.position - me.position;
+        Vector3 newDir =  nextPosition - me.position;
 
         newDir.y = 0;
-        newDir = newDir.normalized;
+
+        if (newDir.magnitude > 0.1f)
+        {
+            
+            newDir = newDir.normalized;
+        }
+        else
+        {
+            newDir = new Vector3();
+            busy = false;
+        }
+            
         return(newDir);
     }
 
@@ -141,14 +255,16 @@ public class AIAttackMelee : AIBehaviour
         if (attackCooldownCounter > attackCooldownMaxT* 0.2f)
         {
             
-            rotateToLookAt(myTarget);
+            rotateToLookAt(myTarget.position);
+            busy = false;
         }
 
         if (attackCooldownCounter <= 0)
         {
             attackCooldownCounter = attackCooldownMaxT;
             thisMeleeAttacker.Attack();
-            
+            busy = true;
+
         }
     }
 }
@@ -166,7 +282,7 @@ public class AIAttackProjectile : AIBehaviour
         {
             projectileCooldownCounter -= Time.deltaTime;
             
-            rotateToLookAt(myTarget);
+            rotateToLookAt(myTarget.position);
         }
 
         if (projectileCooldownCounter <= 0)
