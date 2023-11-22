@@ -77,34 +77,52 @@ public class BasicDash : MonoBehaviour
 
         // Raycasting shenanigans - Sets up the Raycast plus a Debug Raycast for use in the editor
         Vector3 direction = Vector3.forward;
-        Ray theRay = new Ray(transform.position, transform.TransformDirection(direction * range));
-        Debug.DrawRay(transform.position, transform.TransformDirection(direction * range));
 
-        // Raycast hit condition
-        if (Physics.Raycast(theRay, out RaycastHit hit, range) && hit.collider.tag == "Wall")
+        // Define the cast positions and counts
+        Vector3[] castPositions = { Vector3.up, Vector3.down };
+        int castCount = 20;
+
+        foreach (Vector3 castPosition in castPositions)
         {
-            dashTimeCounter = 0;
-            transform.Translate(Vector3.zero);
-            //Debug.Log("The raycast has hit a wall and a dash cannot occur");
-
-            _moveScript.lockMovement = false;
-        }
-
-        // Raycast miss condition - runs the dash code
-        else
-        {
-            // If the player presses E and the Dash Cooldown is less than or equal to 0 then the Dash
-            // Coroutine will execute
-            if (Input.GetKey(KeyCode.E) && dashCooldownCounter <= 0)
+            for (int i = 0; i < castCount; i++)
             {
-                // Sets the dash to a cooldown of 3s in the script, currently 1s in the editor
-                dashCooldownCounter = dashCooldownMax;
+                float castOffset = 0.99f - 0.1f * i;
+                
+                Vector3 raycastFrom = transform.position + castPosition * castOffset;
+                Ray theRaycast = new Ray(raycastFrom, transform.TransformDirection(direction * range));
+                Debug.DrawRay(raycastFrom, transform.TransformDirection(direction * range), Color.red);
+                
+                if (Physics.Raycast(theRaycast, out RaycastHit hit, range) && hit.collider.CompareTag("Wall"))
+                {
+                    dashTimeCounter = 0;
+                    transform.Translate(Vector3.zero);
+                    Debug.Log("The raycast has hit a wall and a dash cannot occur");
 
-                _moveScript.lockMovement = true;
-                StartCoroutine(Dash());
+                    _moveScript.lockMovement = false;
+                }
+
+                // Raycast miss condition - runs the dash code
+                else
+                {
+                    // If the player presses SHIFT :) and the Dash Cooldown is less than or equal to 0 then the Dash
+                    // Coroutine will execute
+                    if (Input.GetKey(KeyCode.LeftShift) && dashCooldownCounter <= 0)
+                    {
+                        // Sets the dash to a cooldown of 3s in the script, currently 1s in the editor
+                        dashCooldownCounter = dashCooldownMax;
+
+                        _moveScript.lockMovement = true;
+                        StartCoroutine(Dash());
+                    }
+                }
             }
         }
-
+        
+        // I used a Coroutine for the while loop I think when I made this
+        // I did try changing this to be rigidbody based but I couldn't get it to work sadly
+        // Also tried pulling it out of the coroutine, while loop did the funny, changed the while
+        // then the Dash moved the player like 1mm
+        
         // Dash stuff
         IEnumerator Dash()
         {
@@ -113,16 +131,13 @@ public class BasicDash : MonoBehaviour
             dashTimeCounter = dashTimeMax;
             while (Time.time < startTime + dashTimeCounter && !GameStateManager.Instance.isPaused)
             {
-
-                transform.Translate(Vector3.forward * dashSpeed * Time.deltaTime);
+                transform.Translate(Vector3.forward * (dashSpeed * Time.deltaTime));
                 yield return null;
             }
             if (Time.time >= startTime + dashTimeCounter)
             {
                 _moveScript.lockMovement = false;
             }
-
-            yield return null;
         }
     }
 }

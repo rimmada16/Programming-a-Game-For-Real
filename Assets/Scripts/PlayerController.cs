@@ -63,7 +63,7 @@ public class PlayerController : MonoBehaviour
         Vector3 moveVector = transform.TransformDirection(playerInput);
         
         //if left shift being held down, use a different speed value
-        float currentSpeed = Input.GetKey(KeyCode.LeftShift) ? altSpeed : walkSpeed;
+        float currentSpeed = walkSpeed;
 
         //dampen the movement velocity
         _currentMoveVelocity = Vector3.SmoothDamp(
