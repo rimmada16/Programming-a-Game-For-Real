@@ -256,14 +256,14 @@ public class AIAttackMelee : AIBehaviour
         {
             
             rotateToLookAt(myTarget.position);
-            busy = false;
+            busy = true;
         }
 
         if (attackCooldownCounter <= 0)
         {
             attackCooldownCounter = attackCooldownMaxT;
             thisMeleeAttacker.Attack();
-            busy = true;
+            busy = false;
 
         }
     }

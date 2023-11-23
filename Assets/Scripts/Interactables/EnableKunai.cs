@@ -10,6 +10,7 @@ public class EnableKunai : Interactable
     
     protected override void interact(Collider other)
     {
+        base.interact(other);
         other.GetComponent<PlayerProjectile>().EnableSelf(true);
     }
 }

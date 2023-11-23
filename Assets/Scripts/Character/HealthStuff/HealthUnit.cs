@@ -22,11 +22,10 @@ public class HealthUnit : MonoBehaviour
     public ValueGrabber healthBarUI;
     
     
-    public delegate void DeathHandler();
-    public event DeathHandler OnDeath;
-    
-    public delegate void HitHandler();
-    public event HitHandler OnHit;
+    public delegate void GeneralHandler();
+    public event GeneralHandler OnHit;
+    public event GeneralHandler OnHeal;
+    public event GeneralHandler OnDeath;
     
     public delegate void DamageHandler(float damage, float knockback, Transform knockbackSource);
     public event DamageHandler OnDamage;
@@ -94,14 +93,17 @@ public class HealthUnit : MonoBehaviour
         knockback *= knockbackMultiplier;
         CallDamage(damage, knockback, knockbackSource);
         
+        CallHit();
+        
         //if unit dies from the new value
         if (newHealth <= 0)
         {
             targetTransform = transform;
-            AudioManager.Instance.PlaySoundAtPoint(1, targetTransform);
+            //AudioManager.Instance.PlaySoundAtPoint(1, targetTransform);
             
             CallDeath();
         }
+        
         
         if (gameObject.layer == LayerMask.NameToLayer("Prop"))
         {
@@ -141,7 +143,7 @@ public class HealthUnit : MonoBehaviour
         newHealth = Mathf.Clamp(newHealth, 0, maxHealth);//clamp health
         currentHealth = newHealth;
         
-        
+        CallHeal();
         UpdateDisplay();
         //run healing effects to indicate player got healed
     }
@@ -163,9 +165,17 @@ public class HealthUnit : MonoBehaviour
         
     }
 
+    private void CallHit()
+    {
+        OnHit?.Invoke();
+    }
     private void CallDeath()
     {
         OnDeath?.Invoke();
+    }
+    private void CallHeal()
+    {
+        OnHeal?.Invoke();
     }
     private void CallDamage(float damage, float knockback, Transform knockbackSource)
     {

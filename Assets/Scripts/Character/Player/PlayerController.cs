@@ -18,6 +18,8 @@ public class PlayerController : MonoBehaviour
     private Vector3 _currentMoveVelocity,_moveDampVelocity;
     private Vector3 _currentForceVelocity;
     
+    public delegate void GeneralHandler();
+    public event GeneralHandler OnJump;
 
     public bool lockMovement;
     
@@ -90,7 +92,7 @@ public class PlayerController : MonoBehaviour
 
             if (Input.GetKey(KeyCode.Space))
             {
-                _currentForceVelocity.y = jumpStrength;
+                Jump();
             }
         }
         else
@@ -102,6 +104,12 @@ public class PlayerController : MonoBehaviour
         //------------apply all motions--------------
         
         controller.Move(_currentForceVelocity * Time.deltaTime + _currentMoveVelocity * Time.deltaTime);
+    }
+
+    public void Jump()
+    {
+        _currentForceVelocity.y = jumpStrength;
+        OnJump?.Invoke();
     }
 
 }

@@ -23,6 +23,9 @@ public class MeleeAttacker : MonoBehaviour
     [SerializeField] 
     private ValueGrabber cooldownBarUI;
 
+    public delegate void GeneralHandler();
+    public event GeneralHandler OnAttackSuccess;
+    public event GeneralHandler OnAttackDud;
 
     private void Start()
     {
@@ -77,28 +80,21 @@ public class MeleeAttacker : MonoBehaviour
         //true if fully completed both cooldowns
         if (cooldownCounter <= 0) //if player waited for cooldown to be off
         {
-            Debug.Log("attacked fully off cooldown");
+            //Debug.Log("attacked fully off cooldown");
             effectiveRayAngleCoverage = rayAngleCoverage;
             effectiveKnockback = knockback;
+            effectiveDamage = damage; 
+            OnSlash();
             
-            // See if object is enemy + hc, if it is set dmg to 1000
-            if (!gameObject.CompareTag("Player") && GameStateManager.isHardcore)
-            {
-                effectiveDamage = 1000;
-            }
-            else
-            {
-                effectiveDamage = damage; 
-            }
             
         }
         else //if player attacked while cooldown was still going down
         {
-            Debug.Log("attacked with a dud");
+            //Debug.Log("attacked with a dud");
             effectiveRayAngleCoverage = rayAngleCoverageDud;
             effectiveDamage = damageDud;
             effectiveKnockback = knockbackDud;
-            
+            OnDud();
         }
         
         //set timer for next time
@@ -179,8 +175,17 @@ public class MeleeAttacker : MonoBehaviour
 
         return damageDone;
     }
+
+    void OnSlash()
+    {
+        OnAttackSuccess?.Invoke();
+    }
     
-    
+    void OnDud()
+    {
+        
+        OnAttackDud?.Invoke();
+    }
     //---Gizmos--------------------------------------------------------------
     private void OnDrawGizmos()
     {

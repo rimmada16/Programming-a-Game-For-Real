@@ -10,6 +10,7 @@ public class HealthInteractable : Interactable
     
     protected override void interact(Collider other)
     {
+        base.interact(other);
         HealPlayer(other);
     }
     

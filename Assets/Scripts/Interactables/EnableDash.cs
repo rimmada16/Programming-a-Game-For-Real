@@ -9,6 +9,7 @@ public class EnableDash : Interactable
     
     protected override void interact(Collider other)
     {
+        base.interact(other);
         other.GetComponent<BasicDash>().EnableSelf(true);
         
     }

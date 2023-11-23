@@ -18,7 +18,9 @@ public class PlayerProjectile : MonoBehaviour
     public ValueGrabber ammoBarUI;
 
     [SerializeField] Transform shootTransform;
-    private Transform targetTransform;
+    
+    public delegate void GeneralHandler();
+    public event GeneralHandler OnShoot;
     
     private void Start()
     {
@@ -62,11 +64,8 @@ public class PlayerProjectile : MonoBehaviour
         // For the player
         if (Input.GetMouseButtonDown(1) && projectileCooldownCounter <= 0 && kunaiAmmo >= 1)
         {
-            ChangeAmmoBy(-1);
-            projectileCooldownCounter = projectileCooldownMax;
-            ProjectileManager.Instance.MakeProjectileAt(gameObject,shootTransform, projectileIndex);
-            targetTransform = transform;
-            AudioManager.Instance.PlaySoundAtPoint(0, targetTransform);
+            ShootKunai();
+            
         }
 
 
@@ -78,6 +77,19 @@ public class PlayerProjectile : MonoBehaviour
         kunaiAmmo = Mathf.Clamp(kunaiAmmo, 0, maxKunaiAmmo);
         
         ammoBarUI.SetValue(kunaiAmmo);
+    }
+
+    public void ShootKunai()
+    {
+        ChangeAmmoBy(-1);
+        projectileCooldownCounter = projectileCooldownMax;
+        ProjectileManager.Instance.MakeProjectileAt(gameObject,shootTransform, projectileIndex);
+        
+        OnShoot?.Invoke();
+            
+        //AudioManager.Instance.PlaySoundAtPoint(0, targetTransform);
+        
+        
     }
 
     

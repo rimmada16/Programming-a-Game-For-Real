@@ -30,6 +30,10 @@ public class BasicDash : MonoBehaviour
     public float range = 2f;
 
     public ValueGrabber rechargeBarUI;
+    
+    public delegate void GeneralHandler();
+    public event GeneralHandler OnDash;
+    
 
     // Anti clipping measure
     private void OnCollisionEnter(Collision col)
@@ -112,6 +116,8 @@ public class BasicDash : MonoBehaviour
                         dashCooldownCounter = dashCooldownMax;
 
                         _moveScript.lockMovement = true;
+                        
+                        OnDash?.Invoke();
                         StartCoroutine(Dash());
                     }
                 }
