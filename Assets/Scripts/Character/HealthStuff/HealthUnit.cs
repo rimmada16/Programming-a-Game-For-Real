@@ -31,7 +31,8 @@ public class HealthUnit : MonoBehaviour
     public delegate void DamageHandler(float damage, float knockback, Transform knockbackSource);
     public event DamageHandler OnDamage;
     public Rigidbody myRB;
-    
+    private Transform targetTransform;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -96,6 +97,9 @@ public class HealthUnit : MonoBehaviour
         //if unit dies from the new value
         if (newHealth <= 0)
         {
+            targetTransform = transform;
+            AudioManager.Instance.PlaySoundAtPoint(1, targetTransform);
+            
             CallDeath();
         }
         

@@ -18,6 +18,7 @@ public class PlayerProjectile : MonoBehaviour
     public ValueGrabber ammoBarUI;
 
     [SerializeField] Transform shootTransform;
+    private Transform targetTransform;
     
     private void Start()
     {
@@ -64,6 +65,8 @@ public class PlayerProjectile : MonoBehaviour
             ChangeAmmoBy(-1);
             projectileCooldownCounter = projectileCooldownMax;
             ProjectileManager.Instance.MakeProjectileAt(gameObject,shootTransform, projectileIndex);
+            targetTransform = transform;
+            AudioManager.Instance.PlaySoundAtPoint(0, targetTransform);
         }
 
 
