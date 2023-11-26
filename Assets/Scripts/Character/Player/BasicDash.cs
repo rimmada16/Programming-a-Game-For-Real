@@ -100,7 +100,7 @@ public class BasicDash : MonoBehaviour
                 {
                     dashTimeCounter = 0;
                     transform.Translate(Vector3.zero);
-                    Debug.Log("The raycast has hit a wall and a dash cannot occur");
+                    //Debug.Log("The raycast has hit a wall and a dash cannot occur");
 
                     _moveScript.lockMovement = false;
                 }

@@ -27,6 +27,11 @@ public class MeleeAttacker : MonoBehaviour
     public event GeneralHandler OnAttackSuccess;
     public event GeneralHandler OnAttackDud;
 
+    public LineRenderer lineRend;
+    private bool lineRendGot;
+
+    private Vector3[] linePositions;
+
     private void Start()
     {
 
@@ -36,6 +41,16 @@ public class MeleeAttacker : MonoBehaviour
             cooldownCounter = 0;
             cooldownBarUI.SetValue(cooldownCounter);
         }
+
+        lineRend = GetComponent<LineRenderer>();
+        if (lineRend != null)
+        {
+            lineRendGot = true;
+            linePositions = new Vector3[rayAmount];
+            lineRend.positionCount = rayAmount;
+
+        }
+
     }
 
     private void Update()
@@ -120,6 +135,12 @@ public class MeleeAttacker : MonoBehaviour
                 newDirection = newDirection.normalized;
 
             }
+
+            if (lineRendGot)
+            {
+                linePositions[i] =  castSource.position+ (newDirection * (rayDistance));
+            }
+            
             
             RaycastHit[] newResults = new RaycastHit[1];
             
@@ -131,13 +152,21 @@ public class MeleeAttacker : MonoBehaviour
                 layerMask: layerMask
             );
 
+            
+            
             if (newResults[0].transform != null)
             {
                 allResults[i] = newResults[0];
             }
             
         }
-        
+
+
+        if (lineRendGot)
+        {
+            lineRend.SetPositions(linePositions);
+        }
+
         //----------------------apply damage----------------------------------
 
         //tally damage done for extra effects
@@ -166,7 +195,7 @@ public class MeleeAttacker : MonoBehaviour
             }
             
             //deal damage but check if it was stopped by iframes
-            if (hitHU.TakeDamage(effectiveDamage, effectiveKnockback, knockbackSource));
+            if (hitHU.TakeDamage(effectiveDamage, effectiveKnockback, knockbackSource, exactHitPos:hit.point));
             {
                 damageDone += effectiveDamage;
             }

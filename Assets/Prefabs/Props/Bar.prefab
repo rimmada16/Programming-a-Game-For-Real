@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 5698882704882107421}
   - component: {fileID: 995844965392248982}
   - component: {fileID: 6504382870018084889}
+  - component: {fileID: -7723276576287411781}
   m_Layer: 8
   m_Name: Bar
   m_TagString: Untagged
@@ -166,3 +167,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   audioClip: {fileID: 8300000, guid: e7a7f67bc8ff6ee4f8f10f658e2e8b6c, type: 3}
   localVolume: 1
+--- !u!114 &-7723276576287411781
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5698882704882107410}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d3a7586d597d49dca8d667c7b8693bea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  particles: {fileID: 644456147244393030, guid: 06bf976818dc2944d9b769935154c03b, type: 3}

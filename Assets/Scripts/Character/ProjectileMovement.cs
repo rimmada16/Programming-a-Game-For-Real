@@ -36,7 +36,7 @@ public class ProjectileMovement : MonoBehaviour
     
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.layer == gameObject.layer)
+        if (other.gameObject.layer == gameObject.layer || other.gameObject.layer == LayerMask.NameToLayer("Interactible"))
         {
             return;
         }
@@ -60,7 +60,7 @@ public class ProjectileMovement : MonoBehaviour
             return;
         }
         Debug.Log("hit success");
-        HU.TakeDamage(damage, knockback, source);
+        HU.TakeDamage(damage, knockback, source, exactHitPos: transform.position);
         Destroy(gameObject);
         
     }

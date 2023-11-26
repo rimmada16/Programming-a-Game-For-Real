@@ -71,13 +71,14 @@ public class AIKnockback : AIBehaviour
 
     private float maxKnockbackTime = 1, currentKnockbackTime;
     
-    public AIKnockback(Transform transformSource, float strength)
+    public AIKnockback(Transform transformSource, float strength, float time)
     {
         busy = true;
         source = transformSource.position;
         force = strength;
-        
-        
+        maxKnockbackTime = time;
+
+
     }
 
     public override void EnterBehaviour(Transform newMe, Transform newFace, Transform target)
@@ -92,13 +93,26 @@ public class AIKnockback : AIBehaviour
 
         momentum = offset;
         currentKnockbackTime = maxKnockbackTime;
+
+        /*
+        Debug.Log("i'm at "+me.position);
+        Debug.Log("source is"+source);
+        Debug.Log("Momentum is "+momentum);*/
     }
 
     public override void Update()
     {
+        if (busy == false)
+        {
+            return;
+        }
+        float timeThrough = currentKnockbackTime / maxKnockbackTime;
+        timeThrough = Mathf.Clamp01(timeThrough);
         
-        var distToMove = momentum *(currentKnockbackTime/maxKnockbackTime)* Time.deltaTime;
-            
+        var distToMove = momentum *timeThrough* Time.deltaTime;
+        
+        //Debug.Log("moved by "+distToMove);
+        
         me.position += (Vector3) distToMove;
 
         currentKnockbackTime -= Time.deltaTime;

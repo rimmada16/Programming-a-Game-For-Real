@@ -58,7 +58,7 @@ public class InteractablesManager : Singleton<InteractablesManager>
 
     private GameObject InteractableInstantiator()
     {
-        var newObject = Instantiate(chosenItem, currentSpawnTarget.position, currentSpawnTarget.rotation);
+        var newObject = Instantiate(chosenItem, currentSpawnTarget.position, Quaternion.Euler(0,Random.Range(0f, 360f),0));
         newObject.transform.parent = transform;
 
         return newObject;

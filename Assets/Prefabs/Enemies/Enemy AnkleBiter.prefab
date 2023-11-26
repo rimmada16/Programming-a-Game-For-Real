@@ -88,6 +88,10 @@ PrefabInstance:
       value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 3544041461002043563, guid: dd477c6721551aa4592de64044e6207b, type: 3}
+      propertyPath: flinchTime
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3544041461002043563, guid: dd477c6721551aa4592de64044e6207b, type: 3}
       propertyPath: approachSpeed
       value: 8
       objectReference: {fileID: 0}

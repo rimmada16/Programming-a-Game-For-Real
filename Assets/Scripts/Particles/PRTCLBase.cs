@@ -17,9 +17,10 @@ public class PRTCLBase : MonoBehaviour
     }
 
 
-    protected void MakeParticles()
+    protected void MakeParticlesAt(Vector3 pos)
     {
-        Instantiate(particles, parent: null, position: transform.position, rotation: new Quaternion());
+        Instantiate(particles, parent: null, position: pos, rotation: new Quaternion());
 
     }
+    
 }

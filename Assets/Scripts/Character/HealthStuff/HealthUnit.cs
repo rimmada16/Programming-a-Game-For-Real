@@ -27,6 +27,9 @@ public class HealthUnit : MonoBehaviour
     public event GeneralHandler OnHeal;
     public event GeneralHandler OnDeath;
     
+    public delegate void PositionHandler(Vector3 pos);
+    public event PositionHandler OnHitAt;
+    
     public delegate void DamageHandler(float damage, float knockback, Transform knockbackSource);
     public event DamageHandler OnDamage;
     public Rigidbody myRB;
@@ -62,7 +65,7 @@ public class HealthUnit : MonoBehaviour
     }
 
     //take damage and return true if the damage got taken
-    public bool TakeDamage(int damage, float knockback = 0, Transform knockbackSource = null)
+    public bool TakeDamage(int damage, float knockback = 0, Transform knockbackSource = null, Vector3 exactHitPos = new Vector3())
     {
         if (gameObject.CompareTag("Player") && GameStateManager.isHardcore)
         {
@@ -94,6 +97,12 @@ public class HealthUnit : MonoBehaviour
         CallDamage(damage, knockback, knockbackSource);
         
         CallHit();
+
+        if (exactHitPos == Vector3.zero)
+        {
+            exactHitPos = transform.position;
+        }
+        CallHitAt(exactHitPos);
         
         //if unit dies from the new value
         if (newHealth <= 0)
@@ -168,6 +177,12 @@ public class HealthUnit : MonoBehaviour
     private void CallHit()
     {
         OnHit?.Invoke();
+    }
+
+    private void CallHitAt(Vector3 hitPos)
+    {
+        
+        OnHitAt?.Invoke(hitPos);
     }
     private void CallDeath()
     {

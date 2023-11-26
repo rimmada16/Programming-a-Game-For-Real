@@ -22,6 +22,10 @@ public class PlayerController : MonoBehaviour
     public event GeneralHandler OnJump;
 
     public bool lockMovement;
+
+    [SerializeField] private Vector3 groundSphereCastOrigin;
+    [SerializeField] private float groundSphereCastDist;
+    [SerializeField] private float groundSphereCastRadius;
     
     void Start()
     {
@@ -80,10 +84,12 @@ public class PlayerController : MonoBehaviour
         //-----------vertical motion-----------
         
         //true if grounded
-        bool castHitFloor = controller.isGrounded;
-        
-        
-        if (castHitFloor)
+        bool controllerIsGrounded = controller.isGrounded;
+
+        bool castHit =  Physics.SphereCast(origin: groundSphereCastOrigin+ transform.position, radius: groundSphereCastRadius,
+            direction: Vector3.down, hitInfo: out var hitInfo, maxDistance:groundSphereCastDist, layerMask: LayerMask.GetMask("Terrain", "Prop"));
+
+        if (controllerIsGrounded && castHit)
         {
             //provide a constant downward pull even when on the floor
 
@@ -112,4 +118,9 @@ public class PlayerController : MonoBehaviour
         OnJump?.Invoke();
     }
 
+    public void OnDrawGizmos()
+    {
+        Gizmos.DrawWireSphere(groundSphereCastOrigin+ transform.position, groundSphereCastRadius );
+        Gizmos.DrawWireSphere(groundSphereCastOrigin + Vector3.down*groundSphereCastDist+ transform.position, groundSphereCastRadius );
+    }
 }

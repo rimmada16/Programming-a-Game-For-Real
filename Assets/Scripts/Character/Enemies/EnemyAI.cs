@@ -32,6 +32,8 @@ public class EnemyAI : MonoBehaviour
     private float previousLowerThreshold, previousHigherThreshold;
     [SerializeField] private float attackCooldown;
 
+    [SerializeField] private float flinchTime = 1;
+
 
     // Start is called before the first frame update
     void Start()
@@ -159,7 +161,7 @@ public class EnemyAI : MonoBehaviour
 
     private void GetKnockedBack(float damage, float knockback,Transform knockbackSource)
     {
-        SetBehaviour(new AIKnockback(knockbackSource,knockback), forced: true);
+        SetBehaviour(new AIKnockback(knockbackSource,knockback, flinchTime), forced: true);
         gotKnockedBack = true;
     }
 

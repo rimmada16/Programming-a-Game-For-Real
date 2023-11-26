@@ -22,6 +22,6 @@ public class PSoundBase : MonoBehaviour
     {
         
         AudioSource.PlayClipAtPoint(audioClip, transform.position, localVolume * AudioManager.Instance.volume);
-        Debug.Log("sound played");
+        //Debug.Log("sound played");
     }
 }
