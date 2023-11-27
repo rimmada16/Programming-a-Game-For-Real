@@ -162,7 +162,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   destroyOnContact: 1
-  targetUI: {fileID: 0}
+  presentationPage:
+    currentImage: {fileID: 21300000, guid: 547551fa47776124e9e40837b4a6d805, type: 3}
+    keyToContinue: 304
+    keyToSkipAll: 27
 --- !u!114 &-8425488262342376602
 MonoBehaviour:
   m_ObjectHideFlags: 0

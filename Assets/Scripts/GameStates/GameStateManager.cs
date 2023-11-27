@@ -1,9 +1,12 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.Serialization;
+using UnityEngine.UIElements;
+using Cursor = UnityEngine.Cursor;
 
 public class GameStateManager : Singleton<GameStateManager>
 {
@@ -16,8 +19,22 @@ public class GameStateManager : Singleton<GameStateManager>
 
     public GameObject kunaiUi;
     public GameObject dashUi;
+    
+    
     public GameObject checkpointButton;
     public GameObject checkpointButton2;
+
+    public bool isCutscene;
+    public GameObject imagePage;
+
+    public PresentationPage[] presentationPageQueue;
+    public int presentationPageNumber;
+    
+    public PresentationPage[] startCutscene;
+
+    public PresentationPage tutorialFight;
+    public PresentationPage tutorialDash;
+    public PresentationPage tutorialShoot;
 
     //static to access between different scenes
     public static bool isHardcore;
@@ -56,9 +73,25 @@ public class GameStateManager : Singleton<GameStateManager>
         
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            if (isDead == false)
+            if (!isDead && !isCutscene)
             {
                 SetPause(!isPaused);
+            }
+            
+        }
+        
+        // !! if continue key and last index, make it exit
+        // !! if skip key, make it exit
+        // !! if continue key and there is more, go to next page
+        if (isCutscene && !(presentationPageNumber >= presentationPageQueue.Length))
+        {
+            if (Input.GetKeyDown(presentationPageQueue[presentationPageNumber].keyToContinue))
+            {
+                NextSlide();
+            }
+            if (Input.GetKeyDown(presentationPageQueue[presentationPageNumber].keyToSkipAll))
+            {
+                CloseSlide();
             }
             
         }
@@ -104,6 +137,57 @@ public class GameStateManager : Singleton<GameStateManager>
         }
     }
 
+    public void StartSlideshow(PresentationPage[] newPres)
+    {
+        if (newPres.Length == 0)
+        { return;
+        }
+        
+        isCutscene = true;
+        isPaused = true;
+        imagePage.SetActive(true);
+
+        menuTimeStopAndCursorShow(true,false);
+
+        presentationPageQueue = newPres;
+        
+        
+        if (presentationPageNumber >= presentationPageQueue.Length)
+        {
+            CloseSlide();
+            return;
+        }
+        
+        imagePage.GetComponent<UnityEngine.UI.Image>().sprite  = 
+            presentationPageQueue[presentationPageNumber].currentImage;
+    }
+
+    public void NextSlide()
+    {
+        presentationPageNumber++;
+        if (presentationPageNumber >= presentationPageQueue.Length)
+        {
+            CloseSlide();
+            return;
+        }
+        
+        imagePage.GetComponent<UnityEngine.UI.Image>().sprite = presentationPageQueue[presentationPageNumber].currentImage;
+    }
+
+    public void CloseSlide()
+    {
+        presentationPageQueue = null;
+        presentationPageNumber = 0;
+        isCutscene = false;
+        
+        isPaused = false;
+        imagePage.SetActive(false);
+
+        menuTimeStopAndCursorShow(false);
+
+    }
+
+    
     public void SetDeathMenu(bool willDeath)
     {
         if (willDeath)
@@ -178,14 +262,18 @@ public class GameStateManager : Singleton<GameStateManager>
         }
     }
 
-    public void menuTimeStopAndCursorShow(bool menuMode)
+    public void menuTimeStopAndCursorShow(bool menuMode, bool doCursorLock = true)
     {
         if (menuMode)
         {
             
             Time.timeScale = 0;
-            
-            Cursor.lockState = CursorLockMode.None;
+
+            if (doCursorLock)
+            {
+                
+                Cursor.lockState = CursorLockMode.None;
+            }
             // Locks the cursor upon script start
             // Documentation used: https://docs.unity3d.com/ScriptReference/Cursor-lockState.html
             // This line was added for the Discord Git test
@@ -194,7 +282,11 @@ public class GameStateManager : Singleton<GameStateManager>
         {
             
             Time.timeScale = 1;
-            Cursor.lockState = CursorLockMode.Locked;
+            if (doCursorLock)
+            {
+
+                Cursor.lockState = CursorLockMode.Locked;
+            }
         }
     }
 }

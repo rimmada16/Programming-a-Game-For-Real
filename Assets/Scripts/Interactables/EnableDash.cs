@@ -5,12 +5,14 @@ using UnityEngine;
 
 public class EnableDash : Interactable
 {
-    [SerializeField] private GameObject targetUI;
+    [SerializeField] private PresentationPage presentationPage;
     
     protected override void interact(Collider other)
     {
         base.interact(other);
         other.GetComponent<BasicDash>().EnableSelf(true);
-        
+
+        GameStateManager.Instance.StartSlideshow(new []{presentationPage} );
+
     }
 }

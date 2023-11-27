@@ -5,12 +5,12 @@ using UnityEngine;
 
 public class EnableKunai : Interactable
 {
-    [SerializeField] private GameObject ammoBarUI;
-    [SerializeField] private GameObject projectileCooldownBarUI;
-    
+    [SerializeField] private PresentationPage presentationPage;
+
     protected override void interact(Collider other)
     {
         base.interact(other);
         other.GetComponent<PlayerProjectile>().EnableSelf(true);
+        GameStateManager.Instance.StartSlideshow(new []{presentationPage} );
     }
 }

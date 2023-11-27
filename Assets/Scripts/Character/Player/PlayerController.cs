@@ -87,13 +87,16 @@ public class PlayerController : MonoBehaviour
         bool controllerIsGrounded = controller.isGrounded;
 
         bool castHit =  Physics.SphereCast(origin: groundSphereCastOrigin+ transform.position, radius: groundSphereCastRadius,
-            direction: Vector3.down, hitInfo: out var hitInfo, maxDistance:groundSphereCastDist, layerMask: LayerMask.GetMask("Terrain", "Prop"));
+            direction: Vector3.down, hitInfo: out _, maxDistance:groundSphereCastDist, layerMask: LayerMask.GetMask("Terrain", "Prop"));
+        
+        bool castHitHead =  Physics.SphereCast(origin: groundSphereCastOrigin+ transform.position, radius: groundSphereCastRadius,
+            direction: Vector3.up, hitInfo: out _, maxDistance:groundSphereCastDist, layerMask: LayerMask.GetMask("Terrain"));
 
         if (controllerIsGrounded && castHit)
         {
             //provide a constant downward pull even when on the floor
 
-            _currentForceVelocity.y = Mathf.Clamp(_currentForceVelocity.y, -100, -2);
+            //_currentForceVelocity.y = Mathf.Clamp(_currentForceVelocity.y, -100, -2);
             //_currentForceVelocity.y = -2f;
 
             if (Input.GetKey(KeyCode.Space))
@@ -106,6 +109,16 @@ public class PlayerController : MonoBehaviour
             //Debug.Log("gravitied");
             _currentForceVelocity.y -= gravityStrength * Time.deltaTime;
         }
+        
+        if (castHitHead)
+        {
+            //provide a constant downward pull even when on the floor
+
+            _currentForceVelocity.y = Mathf.Clamp(_currentForceVelocity.y, -100, 0);
+            //_currentForceVelocity.y = -2f;
+
+        }
+
 
         //------------apply all motions--------------
         

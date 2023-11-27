@@ -76,8 +76,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   destroyOnContact: 1
-  ammoBarUI: {fileID: 0}
-  projectileCooldownBarUI: {fileID: 0}
+  presentationPage:
+    currentImage: {fileID: 21300000, guid: 547551fa47776124e9e40837b4a6d805, type: 3}
+    keyToContinue: 324
+    keyToSkipAll: 27
 --- !u!1 &3566782071713259024
 GameObject:
   m_ObjectHideFlags: 0
