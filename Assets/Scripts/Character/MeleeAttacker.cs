@@ -27,8 +27,6 @@ public class MeleeAttacker : MonoBehaviour
     public event GeneralHandler OnAttackSuccess;
     public event GeneralHandler OnAttackDud;
 
-    public LineRenderer lineRend;
-    private bool lineRendGot;
 
     private Vector3[] linePositions;
 
@@ -42,14 +40,7 @@ public class MeleeAttacker : MonoBehaviour
             cooldownBarUI.SetValue(cooldownCounter);
         }
 
-        lineRend = GetComponent<LineRenderer>();
-        if (lineRend != null)
-        {
-            lineRendGot = true;
-            linePositions = new Vector3[rayAmount];
-            lineRend.positionCount = rayAmount;
-
-        }
+        linePositions = new Vector3[rayAmount];
 
     }
 
@@ -120,8 +111,6 @@ public class MeleeAttacker : MonoBehaviour
         //origin: castSource.position, direction: castSource.forward 
         RaycastHit[] allResults = new RaycastHit[rayAmount];
 
-
-
         for (int i = 0; i < rayAmount; i++)
         {
             Vector3 newDirection = castSource.forward;
@@ -135,12 +124,8 @@ public class MeleeAttacker : MonoBehaviour
                 newDirection = newDirection.normalized;
 
             }
-
-            if (lineRendGot)
-            {
-                linePositions[i] =  castSource.position+ (newDirection * (rayDistance));
-            }
             
+            linePositions[i] =  castSource.position+ (newDirection * (rayDistance));
             
             RaycastHit[] newResults = new RaycastHit[1];
             
@@ -160,12 +145,10 @@ public class MeleeAttacker : MonoBehaviour
             }
             
         }
+        
 
 
-        if (lineRendGot)
-        {
-            lineRend.SetPositions(linePositions);
-        }
+        SlashManager.Instance.MakeNewSlash(linePositions);
 
         //----------------------apply damage----------------------------------
 
