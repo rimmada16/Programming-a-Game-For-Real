@@ -85,17 +85,25 @@ public class GameStateManager : Singleton<GameStateManager>
         // !! if continue key and there is more, go to next page
         if (isCutscene && !(presentationPageNumber >= presentationPageQueue.Length))
         {
-            if (Input.GetKeyDown(presentationPageQueue[presentationPageNumber].keyToContinue))
-            {
-                NextSlide();
-            }
-            if (Input.GetKeyDown(presentationPageQueue[presentationPageNumber].keyToSkipAll))
-            {
-                CloseSlide();
-            }
+            PresentationUpdate();
             
         }
     }
+
+    void PresentationUpdate()
+    {
+        if (Input.GetKeyDown(presentationPageQueue[presentationPageNumber].keyToContinue))
+        {
+            NextSlide();
+            return;
+        }
+        if (Input.GetKeyDown(presentationPageQueue[presentationPageNumber].keyToSkipAll))
+        {
+            CloseSlide();
+            return;
+        }
+    }
+    
 
     public void SetPause(bool willPause)
     {
