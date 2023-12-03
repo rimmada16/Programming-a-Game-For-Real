@@ -9395,7 +9395,15 @@ MonoBehaviour:
   imagePageBackdrop: {fileID: 2101252865}
   presentationPageQueue: []
   presentationPageNumber: 0
-  startCutscene: []
+  startCutscene:
+  - currentImage: {fileID: 21300000, guid: b0eb91430f559e94d83473604e8517d6, type: 3}
+    keyToContinue: 32
+    keyToSkipAll: 27
+    useBackdrop: 1
+  - currentImage: {fileID: 21300000, guid: 103387e8bbc8391439ccbb61664f755f, type: 3}
+    keyToContinue: 32
+    keyToSkipAll: 27
+    useBackdrop: 1
   hardModeIndicator: {fileID: 926447267}
   player: {fileID: 0}
 --- !u!4 &904080872
@@ -9830,7 +9838,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 946236357}
   m_LocalRotation: {x: -0, y: 0.30976066, z: -0, w: 0.9508146}
-  m_LocalPosition: {x: 37.445, y: -0.2, z: -25.499}
+  m_LocalPosition: {x: 37.445, y: 0.219, z: -25.499}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -23935,7 +23943,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5695206491517682421, guid: 36007ef279eb3f24c9a9a08065201568, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -12.022
+      value: -12.757
       objectReference: {fileID: 0}
     - target: {fileID: 5695206491517682421, guid: 36007ef279eb3f24c9a9a08065201568, type: 3}
       propertyPath: m_LocalPosition.y
@@ -23943,7 +23951,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5695206491517682421, guid: 36007ef279eb3f24c9a9a08065201568, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -58.168
+      value: -58.767
       objectReference: {fileID: 0}
     - target: {fileID: 5695206491517682421, guid: 36007ef279eb3f24c9a9a08065201568, type: 3}
       propertyPath: m_LocalRotation.w

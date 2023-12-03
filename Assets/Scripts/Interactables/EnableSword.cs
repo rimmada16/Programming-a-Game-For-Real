@@ -9,6 +9,10 @@ public class EnableSword : Interactable
     
     protected override void interact(Collider other)
     {
+        if (GameStateManager.Instance.isPaused)
+        {
+            return;
+        }
         base.interact(other);
         //other.GetComponent<BasicDash>().EnableSelf(true);
 

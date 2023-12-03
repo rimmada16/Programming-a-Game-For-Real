@@ -58,6 +58,11 @@ public class GameStateManager : Singleton<GameStateManager>
             }
             startAtCheckpoint = false;
         }
+        else
+        {
+            
+            StartSlideshow(startCutscene);
+        }
         
         checkpointButton.SetActive(!isHardcore);
         checkpointButton2.SetActive(!isHardcore);
