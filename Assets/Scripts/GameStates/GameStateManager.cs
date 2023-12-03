@@ -26,15 +26,12 @@ public class GameStateManager : Singleton<GameStateManager>
 
     public bool isCutscene;
     public GameObject imagePage;
+    public GameObject imagePageBackdrop;
 
     public PresentationPage[] presentationPageQueue;
     public int presentationPageNumber;
     
     public PresentationPage[] startCutscene;
-
-    public PresentationPage tutorialFight;
-    public PresentationPage tutorialDash;
-    public PresentationPage tutorialShoot;
 
     //static to access between different scenes
     public static bool isHardcore;
@@ -168,6 +165,8 @@ public class GameStateManager : Singleton<GameStateManager>
         
         imagePage.GetComponent<UnityEngine.UI.Image>().sprite  = 
             presentationPageQueue[presentationPageNumber].currentImage;
+        
+        imagePageBackdrop.SetActive(presentationPageQueue[presentationPageNumber].useBackdrop );
     }
 
     public void NextSlide()
@@ -180,6 +179,7 @@ public class GameStateManager : Singleton<GameStateManager>
         }
         
         imagePage.GetComponent<UnityEngine.UI.Image>().sprite = presentationPageQueue[presentationPageNumber].currentImage;
+        imagePageBackdrop.SetActive(presentationPageQueue[presentationPageNumber].useBackdrop );
     }
 
     public void CloseSlide()
@@ -190,6 +190,7 @@ public class GameStateManager : Singleton<GameStateManager>
         
         isPaused = false;
         imagePage.SetActive(false);
+        imagePageBackdrop.SetActive(false);
 
         menuTimeStopAndCursorShow(false);
 

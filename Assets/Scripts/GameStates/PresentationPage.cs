@@ -9,4 +9,5 @@ public class PresentationPage
     public Sprite currentImage;
     public KeyCode keyToContinue;
     public KeyCode keyToSkipAll;
+    public bool useBackdrop;
 }
