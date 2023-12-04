@@ -31,8 +31,7 @@ public class CheckpointManager : Singleton<CheckpointManager>
         lastCheckpointRot = newPos.eulerAngles;
         hasCheckpoint = true;
         EnemyGateManager.Instance.StoreGateData();
-
-
+        
     }
     
     

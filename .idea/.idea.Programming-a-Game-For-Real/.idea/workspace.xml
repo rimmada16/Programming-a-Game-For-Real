@@ -6,12 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="f8e236dd-b0a8-4a95-b682-3e772a3eb9e0" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Programming-a-Game-For-Real/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Programming-a-Game-For-Real/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Enemies/Enemy.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Enemies/Enemy.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/Scene1.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Scene1.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/EnemyGate.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/EnemyGate.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/EnemyGateManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/EnemyGateManager.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/GameStates/CheckpointManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/GameStates/CheckpointManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/Packages/com.unity.testtools.codecoverage/Settings.json" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/Packages/com.unity.testtools.codecoverage/Settings.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -153,7 +149,7 @@
       <workItem from="1701098890865" duration="5039000" />
       <workItem from="1701532866503" duration="4536000" />
       <workItem from="1701613699533" duration="2996000" />
-      <workItem from="1701698430283" duration="3834000" />
+      <workItem from="1701698430283" duration="5054000" />
     </task>
     <servers />
   </component>
