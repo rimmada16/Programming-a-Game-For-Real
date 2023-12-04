@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Net.Mime;
@@ -5,65 +6,67 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class EnemyGateManager : MonoBehaviour
+public class EnemyGateManager : Singleton<EnemyGateManager>
 {
-    public static EnemyGateManager Instance;
-
-    // This needs to be stored in the Checkpoint system
-    private int _enemiesKilled;
 
     [SerializeField] private Text flavourText;
     [SerializeField] private Canvas canvas;
 
-    // Copy paste for each gate
-    [Header("Health Gate One")]
-    [SerializeField] private GameObject enemyGateOne;
-    [SerializeField] private int enemyGateOneKillAmountRequired;
-    [SerializeField] private TMP_Text enemyGateOneText;
+    [SerializeField] private EnemyGateController[] enemyGates;
 
-    private void Awake()
-    {
-        Instance = this;
-    }
+    private static bool[] gatesOpened;
+    private static bool boolArraySetup = false;
 
-    // Update is called once per frame
-    private void Update()
+    private void Start()
     {
-        if (Input.GetKeyDown(KeyCode.L))
+        if (!boolArraySetup)
         {
-            Debug.Log(_enemiesKilled);
+            gatesOpened = new bool[enemyGates.Length];
+            boolArraySetup = true;
         }
 
-        // Gate one
-        if (enemyGateOne.activeSelf)
-        {
-            GateOne();
-        }
-    }
 
-    private void GateOne()
-    {
-        if (_enemiesKilled < enemyGateOneKillAmountRequired)
+        for (int i = 0; i < enemyGates.Length; i++)
         {
-            enemyGateOneText.SetText("Something blocks the way... <br>" + _enemiesKilled + "/" + enemyGateOneKillAmountRequired + "<br>Kills");
-        }
-
-        if (_enemiesKilled >= enemyGateOneKillAmountRequired)
-        {
-            enemyGateOne.SetActive(false);
-            FlavourText();
+            if (gatesOpened[i])
+            {
+                enemyGates[i].SetEnoughKills();
+            }
+            enemyGates[i].CheckEnoughKills(true);
         }
     }
 
-    private void FlavourText()
+
+    public void GateOpenText()
     {
         var instantiatedText = Instantiate(flavourText, canvas.transform);
         instantiatedText.text = "A gate has opened somewhere...";
         Destroy(instantiatedText, 3f);
     }
     
-    public void OnEnemyKilled()
+
+    public void EnemyDiedAt(int gate)
     {
-        _enemiesKilled++;
+        if (gate < 0 || gate >= enemyGates.Length)
+        {
+            return;
+        }
+
+        enemyGates[gate].EnemyKilledAtHere();
+
+    }
+
+    public void StoreGateData()
+    {
+        
+        for (int i = 0; i < enemyGates.Length; i++)
+        {
+            gatesOpened[i] = enemyGates[i].HasOpened();
+        }
+    }
+
+    public static void ResetGateData()
+    {
+        boolArraySetup = false;
     }
 }

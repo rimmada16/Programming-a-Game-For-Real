@@ -1,10 +1,13 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class EnemyGate : MonoBehaviour
 {
+    [SerializeField] private int gateNumber = -1;
+    
     void Start()
     {
         var HU = GetComponent<HealthUnit>();
@@ -21,7 +24,8 @@ public class EnemyGate : MonoBehaviour
 
     private void EnemyDeath()
     {
-        EnemyGateManager.Instance.OnEnemyKilled();
+        
+        EnemyGateManager.Instance.EnemyDiedAt(gateNumber);
     }
     
 }

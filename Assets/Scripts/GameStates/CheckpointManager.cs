@@ -20,6 +20,7 @@ public class CheckpointManager : Singleton<CheckpointManager>
         lastCheckpointRot = new Vector3();
         hasDash = false;
         hasKunai = false;
+        EnemyGateManager.ResetGateData();
     }
 
     public void StoreNewCheckpoint(GameObject player, Transform newPos)
@@ -29,7 +30,8 @@ public class CheckpointManager : Singleton<CheckpointManager>
         lastCheckpoint = newPos.position;
         lastCheckpointRot = newPos.eulerAngles;
         hasCheckpoint = true;
-        
+        EnemyGateManager.Instance.StoreGateData();
+
 
     }
     
