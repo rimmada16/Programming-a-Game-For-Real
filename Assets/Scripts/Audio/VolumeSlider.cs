@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class VolumeSlider : MonoBehaviour
+public class VolumeSlider : Singleton<VolumeSlider>
 {
     [SerializeField] private Slider volumeSlider;
     [SerializeField] private AudioManager audioManager;
@@ -15,7 +15,7 @@ public class VolumeSlider : MonoBehaviour
         volumeSlider.onValueChanged.AddListener(ChangeVolume);
     }
 
-    private void ChangeVolume(float newVolume)
+    public void ChangeVolume(float newVolume)
     {
        AudioManager.volume = newVolume;
         audioManager.playerAudioSource.volume = newVolume;

@@ -11,4 +11,10 @@ public class AudioManager : Singleton<AudioManager>
     // For the music
     [SerializeField] public AudioSource playerAudioSource;
     [SerializeField] public static float volume = 0.5f;
+
+    private void Awake()
+    {
+        VolumeSlider.Instance.ChangeVolume(volume);
+    }
+    
 }
