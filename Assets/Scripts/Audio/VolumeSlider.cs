@@ -9,7 +9,7 @@ public class VolumeSlider : MonoBehaviour
     private void Start()
     {
         // Set the initial value of the slider to the current volume.
-        volumeSlider.value = audioManager.volume;
+        volumeSlider.value = AudioManager.volume;
 
         // Youtube subscription
         volumeSlider.onValueChanged.AddListener(ChangeVolume);
@@ -17,7 +17,7 @@ public class VolumeSlider : MonoBehaviour
 
     private void ChangeVolume(float newVolume)
     {
-        audioManager.volume = newVolume;
+       AudioManager.volume = newVolume;
         audioManager.playerAudioSource.volume = newVolume;
     }
 }
