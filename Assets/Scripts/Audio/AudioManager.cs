@@ -10,5 +10,5 @@ public class AudioManager : Singleton<AudioManager>
 {
     // For the music
     [SerializeField] public AudioSource playerAudioSource;
-    [SerializeField] public float volume = 0.5f;
+    [SerializeField] public static float volume = 0.5f;
 }
