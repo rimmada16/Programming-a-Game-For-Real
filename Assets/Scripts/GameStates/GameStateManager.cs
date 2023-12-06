@@ -20,6 +20,9 @@ public class GameStateManager : Singleton<GameStateManager>
     public GameObject kunaiUi;
     public GameObject dashUi;
     
+    public bool isWon;
+    public GameObject winMenu;
+
     
     public GameObject checkpointButton;
     public GameObject checkpointButton2;
@@ -47,6 +50,7 @@ public class GameStateManager : Singleton<GameStateManager>
     {
         SetPause(false);
         SetDeathMenu(false);
+        SetWinMenu(false);
         
         player = GameObject.FindWithTag("Player");
 
@@ -228,6 +232,33 @@ public class GameStateManager : Singleton<GameStateManager>
             SetPause(false);
         }
     }
+    
+    
+    public void SetWinMenu(bool willWin)
+    {
+        if (willWin)
+        {
+            pauseMenu.SetActive(false);
+            
+            
+            winMenu.SetActive(true);
+            
+            isWon = true;
+            isPaused = true;
+            
+            menuTimeStopAndCursorShow(true);
+            
+        }
+        else
+        {
+            winMenu.SetActive(false);
+            
+            isWon = false;
+            
+            SetPause(false);
+        }
+    }
+
 
     public void SetHardcore(bool newHardcore)
     {
