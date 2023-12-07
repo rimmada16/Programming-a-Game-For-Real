@@ -12819,11 +12819,27 @@ MonoBehaviour:
   presentationPageQueue: []
   presentationPageNumber: 0
   startCutscene:
-  - currentImage: {fileID: 21300000, guid: b0eb91430f559e94d83473604e8517d6, type: 3}
+  - currentImage: {fileID: 21300000, guid: cf1967d7b16ec2c4781b417127664a3a, type: 3}
     keyToContinue: 32
     keyToSkipAll: 27
     useBackdrop: 1
-  - currentImage: {fileID: 21300000, guid: 103387e8bbc8391439ccbb61664f755f, type: 3}
+  - currentImage: {fileID: 21300000, guid: afb08053544e7a04fb6129b95d173453, type: 3}
+    keyToContinue: 32
+    keyToSkipAll: 27
+    useBackdrop: 1
+  - currentImage: {fileID: 21300000, guid: d00e429d4482c914c99c9fdc144d0e89, type: 3}
+    keyToContinue: 32
+    keyToSkipAll: 27
+    useBackdrop: 1
+  - currentImage: {fileID: 21300000, guid: eab11b181b05c4f4e88fa61a0c93255a, type: 3}
+    keyToContinue: 32
+    keyToSkipAll: 27
+    useBackdrop: 1
+  - currentImage: {fileID: 21300000, guid: 4b30b5dbb9f5df541bd7afb9424ae44f, type: 3}
+    keyToContinue: 32
+    keyToSkipAll: 27
+    useBackdrop: 1
+  - currentImage: {fileID: 21300000, guid: c3842f3fce6da404895dea3d3614ee3e, type: 3}
     keyToContinue: 32
     keyToSkipAll: 27
     useBackdrop: 1
