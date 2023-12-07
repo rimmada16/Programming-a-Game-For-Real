@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 7385104713592739909}
   - component: {fileID: 5896041007023986656}
   - component: {fileID: 8518001548907635498}
+  - component: {fileID: -8741656931671650004}
   m_Layer: 9
   m_Name: tori gate  (1)
   m_TagString: Wall
@@ -84,3 +85,17 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &-8741656931671650004
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7869751415381574399}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -8678823145569952518, guid: eabb0f3c2a7730142a96aa8097f70c1f, type: 3}
