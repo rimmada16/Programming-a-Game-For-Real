@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class AmmoInteractables : Interactable
@@ -9,7 +10,7 @@ public class AmmoInteractables : Interactable
     {
         base.interact(other);
         // Add to the Kunai count
-        other.GetComponent<PlayerProjectile>().ChangeAmmoBy(4);
+        other.GetComponentInParent<PlayerProjectile>().ChangeAmmoBy(4);
         //Debug.Log(player.GetComponent<PlayerProjectile>().kunaiAmmo);
 
     }

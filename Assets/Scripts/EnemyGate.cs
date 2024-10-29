@@ -25,7 +25,7 @@ public class EnemyGate : MonoBehaviour
     private void EnemyDeath()
     {
         
-        EnemyGateManager.Instance.EnemyDiedAt(gateNumber);
+        EnemyGateManager.Instance.RegisterEnemyDeathAtGate(gateNumber);
     }
     
 }

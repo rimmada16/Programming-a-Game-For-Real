@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Interactables;
 using UnityEngine;
 
 public class DropItemOnDeath : MonoBehaviour

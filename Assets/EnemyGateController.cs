@@ -29,7 +29,7 @@ public class EnemyGateController : MonoBehaviour
             OpenGate();
             if (!skipGateText)
             {
-                EnemyGateManager.Instance.GateOpenText();    
+                EnemyGateManager.Instance.DisplayGateOpenText();    
             }
         }
         else

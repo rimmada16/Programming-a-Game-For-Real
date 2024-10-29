@@ -1,76 +1,74 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Serialization;
 using Random = UnityEngine.Random;
 
-public class InteractablesManager : Singleton<InteractablesManager>
+namespace Interactables
 {
-    private int _randomiserChoice;
-    [SerializeField] private GameObject[] droppableItems;
-    [SerializeField] private float[] decimalChance;
-
-    private GameObject chosenItem;
-    private Transform currentSpawnTarget;
-    
-    public GameObject ProduceRandomItem(Transform atTransform)
+    /// <summary>
+    /// Handles the spawning of interactable objects
+    /// </summary>
+    public class InteractablesManager : Singleton<InteractablesManager>
     {
-        //get random number within length of array
-        Randomiser();
+        private int _randomiserChoice;
+        [SerializeField] private List<DroppableItem> droppableItems;
+        [SerializeField] private float[] decimalChance;
 
-        //assign item as that item
-        chosenItem = droppableItems[_randomiserChoice];
+        private GameObject _chosenItem;
+        private Transform _currentSpawnTarget;
 
-        //sets the target transform location
-        currentSpawnTarget = atTransform;
-
-        //check if the same index has an assigned percent chance of being dropped
-        if (decimalChance.Length >= _randomiserChoice + 1)
+        /// <summary>
+        /// Data structure for the droppable items
+        /// </summary>
+        [System.Serializable]
+        public class DroppableItem
         {
-            //makes sure the drop chance is within the correct range
-            float dropChance = decimalChance[_randomiserChoice];
-            dropChance = Mathf.Clamp01(dropChance);
-            
-            //randomly generates a number to decide whether drop will succeed
-            float dropRandom = Random.Range(0f, 1f);
-            Debug.Log("randomiser random"+dropRandom);
+            public GameObject item;
+            public float weight;
+        }
 
-            //succeeds if rolls a lower number than %
-            if (dropChance >= dropRandom)
+        /// <summary>
+        /// Will produce a random item from the list of droppable items using the weight of each item
+        /// </summary>
+        /// <param name="atTransform">The location of the enemy/crate that was destroyed/killed</param>
+        /// <returns></returns>
+        public GameObject ProduceRandomItem(Transform atTransform)
+        {
+            if (droppableItems.Count == 0)
             {
-                return InteractableInstantiator();
-            }
-            else
-            {
+                Debug.Log("We have no droppable items in the list");
                 return null;
             }
-        }
+            
+            var totalWeight = 0f;
+            // Find the total weight of all the droppable items
+            foreach (var droppableItem in droppableItems)
+            {
+             totalWeight += droppableItem.weight;   
+            }
+            
+            var randomValue = Random.Range(0f, totalWeight);
+            var weightSum = 0f;
+            
+            // Accumulates weights of droppable items until the random value is surpassed, then instantiates
+            // and returns the selected item.
+            foreach (var droppableItem in droppableItems)
+            {
+                weightSum += droppableItem.weight;
+                
+                if (randomValue < weightSum)
+                {
+                    return InteractableInstantiator(atTransform, droppableItem.item);
+                }
+            }
 
-        //auto succeed if it doesnt have an assigned percent value
-        else
+            return null;
+        }
+        
+        private GameObject InteractableInstantiator(Transform spawnLocation, GameObject itemToInstantiate)
         {
-            return InteractableInstantiator();
+            var newObject = Instantiate(itemToInstantiate, spawnLocation.position, Quaternion.Euler(0, Random.Range(0f, 360f), 0));
+            newObject.transform.parent = transform;
+            return newObject;
         }
-        
-             
-    }
-
-    private GameObject InteractableInstantiator()
-    {
-        var newObject = Instantiate(chosenItem, currentSpawnTarget.position, Quaternion.Euler(0,Random.Range(0f, 360f),0));
-        newObject.transform.parent = transform;
-
-        return newObject;
-    }
-
-    private void Randomiser()
-    {
-        // Currently guaranteed to spawn health pickup
-        //_randomiserChoice = Random.Range(minVal, maxVal);
-        
-        //random number of anything in the droppable items
-        _randomiserChoice = Random.Range(0, droppableItems.Length );
-        Debug.Log("randomiser chose"+_randomiserChoice);
     }
 }

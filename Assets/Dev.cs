@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Character.Player;
 using UnityEngine;
 
 // Was getting lazy and couldn't be bothered to do the parkour every time
@@ -23,7 +24,7 @@ public class Dev : MonoBehaviour
         {
             // Dash
             targetUI.SetActive(true);
-            thePlayer.GetComponent<BasicDash>().EnableSelf(true);
+            thePlayer.GetComponent<DashSystem>().EnableSelf(true);
 
             // Kunai
             ammoBarUI.SetActive(true);

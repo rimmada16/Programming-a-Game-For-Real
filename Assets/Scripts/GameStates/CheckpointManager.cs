@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Character.Player;
 using UnityEngine;
 
 public class CheckpointManager : Singleton<CheckpointManager>
@@ -25,7 +26,7 @@ public class CheckpointManager : Singleton<CheckpointManager>
 
     public void StoreNewCheckpoint(GameObject player, Transform newPos)
     {
-        hasDash = player.GetComponent<BasicDash>().enabled;
+        hasDash = player.GetComponent<DashSystem>().enabled;
         hasKunai = player.GetComponent<PlayerProjectile>().enabled;
         lastCheckpoint = newPos.position;
         lastCheckpointRot = newPos.eulerAngles;
@@ -41,7 +42,7 @@ public class CheckpointManager : Singleton<CheckpointManager>
         if ( hasCheckpoint)
         {
             Debug.Log("Starting at checkpoint");
-            player.GetComponent<BasicDash>().EnableSelf(hasDash); 
+            player.GetComponent<DashSystem>().EnableSelf(hasDash); 
             player.GetComponent<PlayerProjectile>().EnableSelf(hasKunai);
             player.transform.position = lastCheckpoint;
             player.transform.eulerAngles = lastCheckpointRot;

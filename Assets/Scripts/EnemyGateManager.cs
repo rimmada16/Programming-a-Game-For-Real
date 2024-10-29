@@ -1,34 +1,48 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Net.Mime;
-using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
+/// <summary>
+/// Handles the enemy gates in the game
+/// </summary>
 public class EnemyGateManager : Singleton<EnemyGateManager>
 {
-
     [SerializeField] private Text flavourText;
     [SerializeField] private Canvas canvas;
 
     [SerializeField] private EnemyGateController[] enemyGates;
+    
+    private static GateData[] _gatesData;
+    private static bool _boolArraySetup = false;
 
-    private static bool[] gatesOpened;
-    private static bool boolArraySetup = false;
+    /// <summary>
+    /// Contains the data for the gates
+    /// </summary>
+    [Serializable]
+    public struct GateData
+    {
+        public bool isOpened;
 
+        public GateData(bool isOpened)
+        {
+            this.isOpened = isOpened;
+        }
+    }
+    
+    /// <summary>
+    /// Handles the initial setup of the gates
+    /// </summary>
     private void Start()
     {
-        if (!boolArraySetup)
+        if (!_boolArraySetup)
         {
-            gatesOpened = new bool[enemyGates.Length];
-            boolArraySetup = true;
+            _gatesData = new GateData[enemyGates.Length];
+            _boolArraySetup = true;
         }
-
-
+        
         for (int i = 0; i < enemyGates.Length; i++)
         {
-            if (gatesOpened[i])
+            if (_gatesData[i].isOpened)
             {
                 enemyGates[i].SetEnoughKills();
             }
@@ -36,8 +50,10 @@ public class EnemyGateManager : Singleton<EnemyGateManager>
         }
     }
 
-
-    public void GateOpenText()
+    /// <summary>
+    /// Handles the display of the gate open text
+    /// </summary>
+    public void DisplayGateOpenText()
     {
         var instantiatedText = Instantiate(flavourText, canvas.transform);
         instantiatedText.text = "A gate has opened somewhere...";
@@ -45,7 +61,11 @@ public class EnemyGateManager : Singleton<EnemyGateManager>
     }
     
 
-    public void EnemyDiedAt(int gate)
+    /// <summary>
+    /// Registers the death of an enemy at a gate
+    /// </summary>
+    /// <param name="gate"></param>
+    public void RegisterEnemyDeathAtGate(int gate)
     {
         if (gate < 0 || gate >= enemyGates.Length)
         {
@@ -53,20 +73,28 @@ public class EnemyGateManager : Singleton<EnemyGateManager>
         }
 
         enemyGates[gate].EnemyKilledAtHere();
-
     }
 
+    /// <summary>
+    /// Handles the storing of the gate data
+    /// </summary>
     public void StoreGateData()
     {
-        
         for (int i = 0; i < enemyGates.Length; i++)
         {
-            gatesOpened[i] = enemyGates[i].HasOpened();
+            _gatesData[i].isOpened = enemyGates[i].HasOpened();
         }
     }
 
+    /// <summary>
+    /// Resets the gate data
+    /// </summary>
     public static void ResetGateData()
     {
-        boolArraySetup = false;
+        _boolArraySetup = false;
+        for (int i = 0; i < _gatesData.Length; i++)
+        {
+            _gatesData[i] = new GateData(false);
+        }
     }
 }

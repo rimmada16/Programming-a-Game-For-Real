@@ -12,7 +12,7 @@ public class Interactable: MonoBehaviour
     
     protected void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag( "Player"))
+        if (other.gameObject.CompareTag("Player"))
         {
             interact(other);
             TryDestroy();

@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Character.Player;
 using UnityEngine;
 
 public class EnableDash : Interactable
@@ -10,7 +11,7 @@ public class EnableDash : Interactable
     protected override void interact(Collider other)
     {
         base.interact(other);
-        other.GetComponent<BasicDash>().EnableSelf(true);
+        other.GetComponent<DashSystem>().EnableSelf(true);
 
         GameStateManager.Instance.StartSlideshow(new []{presentationPage} );
 

@@ -17,7 +17,7 @@ public class HealthInteractable : Interactable
     public void HealPlayer( Collider other)
     {
         // Check if the player GameObject has the HealthUnit component attached.
-        HealthUnit healthUnit = other.GetComponent<HealthUnit>();
+        HealthUnit healthUnit = other.GetComponentInParent<HealthUnit>();
         if (healthUnit != null)
         {
             // Do the heal + Nuke the object

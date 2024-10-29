@@ -40,18 +40,19 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "main",
+    "git-widget-placeholder": "CreativePortfolioStuff",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
     "vue.rearranger.settings.migration": "true"
   },
   "keyToStringList": {
     "rider.external.source.directories": [
-      "C:\\Users\\muk405\\AppData\\Roaming\\JetBrains\\Rider2023.2\\resharper-host\\DecompilerCache",
-      "C:\\Users\\muk405\\AppData\\Roaming\\JetBrains\\Rider2023.2\\resharper-host\\SourcesCache",
-      "C:\\Users\\muk405\\AppData\\Local\\Symbols\\src"
+      "C:\\Users\\mul783\\AppData\\Roaming\\JetBrains\\Rider2024.1\\resharper-host\\DecompilerCache",
+      "C:\\Users\\mul783\\AppData\\Roaming\\JetBrains\\Rider2024.1\\resharper-host\\SourcesCache",
+      "C:\\Users\\mul783\\AppData\\Local\\Symbols\\src"
     ]
   }
 }]]></component>
@@ -65,7 +66,7 @@
       <method v="2" />
     </configuration>
     <configuration name="Start Unity" type="RunUnityExe" factoryName="Unity Executable">
-      <option name="EXE_PATH" value="C:\Program Files\Unity 2021.3.5f1\Editor\Unity.exe" />
+      <option name="EXE_PATH" value="C:\Program Files\Unity\Hub\Editor\2022.3.50f1\Editor\Unity.exe" />
       <option name="PROGRAM_PARAMETERS" value="-projectPath D:\GitHub\Programming-a-Game-For-Real -debugCodeOptimization" />
       <option name="WORKING_DIRECTORY" value="D:\GitHub\Programming-a-Game-For-Real" />
       <option name="PASS_PARENT_ENVS" value="1" />
@@ -73,7 +74,7 @@
       <method v="2" />
     </configuration>
     <configuration name="Unit Tests (batch mode)" type="RunUnityExe" factoryName="Unity Executable">
-      <option name="EXE_PATH" value="C:\Program Files\Unity 2021.3.5f1\Editor\Unity.exe" />
+      <option name="EXE_PATH" value="C:\Program Files\Unity\Hub\Editor\2022.3.50f1\Editor\Unity.exe" />
       <option name="PROGRAM_PARAMETERS" value="-runTests -batchmode -projectPath C:\Users\muk405\Desktop\Github\Programming-a-Game-For-Real -testResults Logs/results.xml -testPlatform EditMode -debugCodeOptimization" />
       <option name="WORKING_DIRECTORY" value="C:\Users\muk405\Desktop\Github\Programming-a-Game-For-Real" />
       <option name="PASS_PARENT_ENVS" value="1" />
@@ -150,6 +151,7 @@
       <workItem from="1701734028322" duration="616000" />
       <workItem from="1701882118133" duration="1709000" />
       <workItem from="1701944735480" duration="714000" />
+      <workItem from="1730202994860" duration="16117000" />
     </task>
     <servers />
   </component>
@@ -157,6 +159,11 @@
     <option name="version" value="3" />
   </component>
   <component name="UnityProjectConfiguration" hasMinimizedUI="true" />
+  <component name="UnityProjectDiscoverer">
+    <option name="hasUnityReference" value="true" />
+    <option name="unityProject" value="true" />
+    <option name="unityProjectFolder" value="true" />
+  </component>
   <component name="UnityUnitTestConfiguration" currentTestLauncher="EditMode" />
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
@@ -167,7 +174,7 @@
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/Assets/Scripts/Character/SlashManager.cs</url>
           <line>29</line>
-          <properties documentPath="D:\GitHub\Programming-a-Game-For-Real\Assets\SlashManager.cs" initialLine="29" containingFunctionPresentation="method 'MakeNewSlash'" />
+          <properties documentPath="D:\GitHub\Programming-a-Game-For-Real\Assets\SlashManager.cs" containingFunctionPresentation="method 'MakeNewSlash'" />
           <option name="timeStamp" value="1" />
         </line-breakpoint>
       </breakpoints>
