@@ -91,6 +91,11 @@ public class EnemyGateManager : Singleton<EnemyGateManager>
     /// </summary>
     public static void ResetGateData()
     {
+        if (_gatesData == null || _gatesData.Length == 0)
+        {
+            return;
+        }
+        
         _boolArraySetup = false;
         for (int i = 0; i < _gatesData.Length; i++)
         {
